@@ -29,7 +29,7 @@ if page.status_code == 404:
 	print("not found")
 	sys.exit() 
 
-soup = BeautifulSoup(page.text)
+soup = BeautifulSoup(page.text, "html.parser")
 nadpis = soup.h1.get_text().replace('\xad', '')
 
 smpage = dict()
