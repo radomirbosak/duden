@@ -53,6 +53,15 @@ smpage = {
 	sec.h2.get_text().split()[0]: sec for sec in secs if sec.h2
 }
 
+try:
+        wortart = soup.findAll('strong', {"class":"lexem"})[0].get_text()
+        print(wortart)
+        print()
+except :
+        pass
+
+
+
 # 1. Meaning overview
 meaning_section = smpage[Sections.meaning_overview.value]
 
