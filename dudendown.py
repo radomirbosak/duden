@@ -1,5 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+Dudendown
+
+This script takes a german word as a commandline input and returns its meaning
+overview, as parsed from the dictionary on the website `www.duden.de`.
+
+Words with non-ascii characters should be given using following
+transliteration:
+* ä -> ae
+* ö -> oe
+* ü -> ue
+* ß -> sz
+"""
+
 
 import sys
 
@@ -22,6 +36,36 @@ class Sections(Enum):
 
 
 def recursively_extract(node, exfun, maxdepth=2):
+    """
+    Transform a html ul/ol tree into a python list tree.
+
+    Converts a html node containing ordered and unordered lists and list items
+    into an object of lists with tree-like structure. Leaves are retrieved by
+    applying `exfun` function to the html nodes not containing any ul/ol list.
+
+    Args:
+        node: BeautifulSoup HTML node to traverse
+        exfun: function to apply to every string node found
+        maxdepth: maximal depth of lists to go in the node
+
+    Returns:
+        A tree-like python object composed of lists.
+
+
+    Examples:
+
+    >>> node_content = \
+    '''
+    <ol>
+        <li>Hase</li>
+        <li>Nase<ol><li>Eins</li><li>Zwei</li></ol></li>
+    </ol>'''
+    >>> node = BeautifulSoup(node_content, "lxml")
+    >>> recursively_extract(node, lambda x: x)
+    [<li>Hase</li>, [<li>Eins</li>, <li>Zwei</li>]]
+    >>> recursively_extract(node, lambda x: x.get_text())
+    ['Hase', ['Eins', 'Zwei']]
+    """
     lilist = node.ol or node.ul
     if lilist and maxdepth:
         return [recursively_extract(li, exfun, maxdepth=(maxdepth - 1))
@@ -30,10 +74,33 @@ def recursively_extract(node, exfun, maxdepth=2):
 
 
 def meaning_fun(node):
+    """
+    Extract stripped text from node
+
+    Args:
+        node: HTML node to extract from
+
+    Return:
+        extracted string
+    """
     return node.get_text().strip()
 
 
 def print_meaning(meaning):
+    """
+    Print a tree of strings
+
+    Args:
+        meaning: tree of strings
+
+    Example:
+
+    >>> print_meaning(['Hase', ['Eins', 'Zwei']])
+    0. Hase
+    <BLANKLINE>
+    1.  a. Eins
+        b. Zwei
+    """
     for i1, m1 in enumerate(meaning):
         if type(m1) is str:
             print("{:>2}. {}".format(i1, m1))
@@ -45,6 +112,21 @@ def print_meaning(meaning):
 
 
 def correct_parenthesis(text):
+    """
+    Convert semincolons inside parentheses to commas.
+    Convert commas outside parentheses to semincolons.
+
+    Args:
+        text: string to transform
+
+    Returns:
+        Corrected text
+
+    Example:
+
+    >>> correct_parenthesis('a, b; c (d, e; f)')
+    'a; b; c (d, e, f)'
+    """
     newtext = []
     inner = False
     for l in text:
@@ -58,11 +140,64 @@ def correct_parenthesis(text):
 
 
 def extract_synonym_from_li(node):
+    """
+    Convert a node containing synonym overview to a list of strings
+
+    Args:
+        li: a html node to convert
+
+    Returns:
+        list of strings
+
+    Example:
+
+    >>> li_content = 'a, b; c (d, e; f)'
+    >>> li_node = BeautifulSoup('<li>' + li_content + '</li>', 'lxml').li
+    >>> extract_synonym_from_li(li_node)
+    ['a', 'b', 'c (d, e, f)']
+    """
     totaltext = correct_parenthesis(node.get_text())
     return [synonym.strip() for synonym in totaltext.split(';')]
 
 
 def meaning_struct_from_li(li):
+    """
+    Convert a 'li' html node to dict containing text and section information
+
+    All text descriptions of images are removed.
+
+    Args:
+        li: a html node to convert
+
+    Returns:
+        A dictionary containing text and section information extracted from
+        the provided html node
+
+    Example:
+
+    >>> node_text = \
+    '''<li>
+        Bare text
+        <section>
+            <h3>A</h3>
+            B
+        </section>
+        <section>
+            <h3>C</h3>
+            <ul>
+                <li>D</li>
+                <li>E</li>
+            </ul>
+        </section>
+    </li>'''
+    >>> node = BeautifulSoup(node_text, 'lxml').li
+    >>> meaning_struct_from_li(node)
+    {
+        'Text': Bare text,
+        'A': 'B',
+        'C': ['D', 'E'],
+    }
+    """
     mean = dict()
     global myli
     myli = li
