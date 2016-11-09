@@ -8,18 +8,19 @@ from enum import Enum
 import sys
 
 word = 'Loeffel'
-if len(sys.argv)>1:
+if len(sys.argv) > 1:
     word = sys.argv[1]
 url = 'http://www.duden.de/rechtschreibung/{word}'.format(word=word)
+
 
 def recursively_extract(node, exfun, maxdepth=2):
     lilist = node.ol or node.ul
     if lilist and maxdepth:
-        return [recursively_extract(li, exfun, maxdepth=(maxdepth-1)) for li in lilist.find_all('li', recursive=False)]
+        return [recursively_extract(li, exfun, maxdepth=(maxdepth - 1)) for li in lilist.find_all('li', recursive=False)]
     return exfun(node)
 
 print(word)
-print("="*len(word))
+print("=" * len(word))
 
 page = requests.get(url)
 if page.status_code == 404:
@@ -31,6 +32,7 @@ nadpis = soup.h1.get_text().replace('\xad', '')
 
 smpage = dict()
 secs = soup.findAll('section')
+
 
 class Sections(Enum):
     grammar = "Grammatik"
@@ -47,23 +49,23 @@ smpage = {
 }
 
 try:
-    wortart = soup.findAll('strong', {"class":"lexem"})[0].get_text()
+    wortart = soup.findAll('strong', {"class": "lexem"})[0].get_text()
     print(wortart)
     print()
-except :
+except:
     pass
-
-
 
 # 1. Meaning overview
 meaning_section = smpage[Sections.meaning_overview.value]
 
 mean_over_array = []
 
+
 def meaning_fun(node):
     return node.get_text().strip()
 
 mean_over_array = recursively_extract(meaning_section, meaning_fun)
+
 
 def print_meaning(meaning):
     for i1, m1 in enumerate(meaning):
@@ -71,12 +73,13 @@ def print_meaning(meaning):
             print("{:>2}. {}".format(i1, m1))
         elif type(m1) is list:
             for i2, m2 in zip(ascii_lowercase, m1):
-                indent = "{:>2}. ".format(i1) if i2 == 'a' else " "*4
-                print("{} {}. {}".format(indent,i2, m2))
+                indent = "{:>2}. ".format(i1) if i2 == 'a' else " " * 4
+                print("{} {}. {}".format(indent, i2, m2))
         print()
 
 # 2. Synonyms
 syn_section = smpage[Sections.synonyms.value]
+
 
 def correct_parenthesis(text):
     newtext = []
@@ -90,6 +93,7 @@ def correct_parenthesis(text):
         newtext.append(l)
     return ''.join(newtext)
 
+
 def extract_synonym_from_li(node):
     totaltext = correct_parenthesis(node.get_text())
     return [synonym.strip() for synonym in totaltext.split(';')]
@@ -99,7 +103,6 @@ syn_array = recursively_extract(syn_section, extract_synonym_from_li)
 # 3. Meanings
 try:
     meanings = smpage[Sections.meanings.value]
-
 
     mean_cats = ['Gebrauch', 'Grammatik', 'Text', 'Beispiel', 'Beispiele']
 
