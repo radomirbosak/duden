@@ -16,7 +16,8 @@ url = 'http://www.duden.de/rechtschreibung/{word}'.format(word=word)
 def recursively_extract(node, exfun, maxdepth=2):
     lilist = node.ol or node.ul
     if lilist and maxdepth:
-        return [recursively_extract(li, exfun, maxdepth=(maxdepth - 1)) for li in lilist.find_all('li', recursive=False)]
+        return [recursively_extract(li, exfun, maxdepth=(maxdepth - 1))
+                for li in lilist.find_all('li', recursive=False)]
     return exfun(node)
 
 print(word)
@@ -123,7 +124,8 @@ try:
         mean["Text"] = li.get_text().strip()
         return mean
 
-    means_array = recursively_extract(meanings, meaning_struct_from_li, maxdepth=2)
+    means_array = recursively_extract(
+        meanings, meaning_struct_from_li, maxdepth=2)
 except KeyError:
     means_array = []
 
