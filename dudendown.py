@@ -26,6 +26,9 @@ from bs4 import BeautifulSoup
 
 
 class Sections(Enum):
+    """
+    Common sections found on a page of any word
+    """
     grammar = "Grammatik"
     pronounciation = "Aussprache"
     correct_writing = "Rechtschreibung"
@@ -68,8 +71,11 @@ def recursively_extract(node, exfun, maxdepth=2):
     """
     lilist = node.ol or node.ul
     if lilist and maxdepth:
+        # apply 'recursively_extract' to every 'li' node found under this node
         return [recursively_extract(li, exfun, maxdepth=(maxdepth - 1))
                 for li in lilist.find_all('li', recursive=False)]
+    # if this node doesn't contain 'ol' or 'ul' node, return the transformed
+    # leaf (using the 'exfun' function)
     return exfun(node)
 
 
@@ -88,7 +94,7 @@ def meaning_fun(node):
 
 def print_meaning(meaning):
     """
-    Print a tree of strings
+    Print a tree of strings up to depth 2
 
     Args:
         meaning: tree of strings
@@ -130,6 +136,8 @@ def correct_parenthesis(text):
     newtext = []
     inner = False
     for l in text:
+        # if '(' was found, switch to True
+        # if ')' was found, switch to False
         inner = (l == "(") if (l in "()") else inner
         if inner and l == ";":
             l = ","
@@ -202,15 +210,23 @@ def meaning_struct_from_li(li):
     global myli
     myli = li
     for sec in li.find_all('section'):
+        # extract the section title
         sectitle = sec.h3.get_text()
+        # and remove the section
         sec.h3.extract()
         if sec.ul:
+            # if the section contains a list, return a list of strings
             mean[sectitle] = [li2.get_text() for li2 in sec.find_all('li')]
         else:
+            # if section has no list, return only a string
             mean[sectitle] = sec.get_text()
         sec.extract()
+
+    # remove any figure captions
     for fig in li('figure'):
         fig.extract()
+
+    # cast the remainings to string
     mean["Text"] = li.get_text().strip()
     return mean
 
@@ -221,25 +237,32 @@ def main():
         word = sys.argv[1]
     url = 'http://www.duden.de/rechtschreibung/{word}'.format(word=word)
 
+    # print the searched word formatted as a title
     print(word)
     print("=" * len(word))
 
+    # download the appropriate page
     page = requests.get(url)
     if page.status_code == 404:
         print("not found")
         sys.exit()
 
+    # load the BeautifulSoup object
     soup = BeautifulSoup(page.text, "html.parser")
     nadpis = soup.h1.get_text().replace('\xad', '')
 
     smpage = dict()
     secs = soup.findAll('section')
 
+    # delete the soft hyphens sometimes found in the h1 html tag
     word = soup.h1.get_text().replace('\xad', '')
+
+    # create a dict mapping section name to the section html node
     smpage = {
         sec.h2.get_text().split()[0]: sec for sec in secs if sec.h2
     }
 
+    # display the gender and part of speech of the word (Wortart)
     try:
         wortart = soup.findAll('strong', {"class": "lexem"})[0].get_text()
         print(wortart)
@@ -247,19 +270,20 @@ def main():
     except:
         pass
 
-    # 1. Meaning overview
+    # 1. Parse meaning overview section
     meaning_section = smpage[Sections.meaning_overview.value]
 
     mean_over_array = []
     mean_over_array = recursively_extract(meaning_section, meaning_fun)
 
-
-    # 2. Synonyms
+    # 2. Parse synonyms section
+    # currently unused
     syn_section = smpage[Sections.synonyms.value]
 
     syn_array = recursively_extract(syn_section, extract_synonym_from_li)
 
-    # 3. Meanings
+    # 3. Parse meaning section
+    # currently unused
     try:
         meanings = smpage[Sections.meanings.value]
 
@@ -270,7 +294,8 @@ def main():
     except KeyError:
         means_array = []
 
-    # 4. Letters
+    # 4. Parse letters section
+    # currently unused
 
     sec_letters = smpage[Sections.letters.value]
 
@@ -279,7 +304,8 @@ def main():
         letters_array[name] = \
             [li.a.get_text() for li in ul.find_all('li')]
 
-    # 5. Correct writing
+    # 5. Parse correct writing section
+    # currently unused
 
     sec_writing = smpage[Sections.correct_writing.value]
     writing_dict = dict()
@@ -289,6 +315,7 @@ def main():
         parts = div.get_text().split(':')
         writing_dict[parts[0]] = parts[1].strip()
 
+    # print meaning overview
     print_meaning(mean_over_array)
 
 
