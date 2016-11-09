@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import requests
-from bs4 import BeautifulSoup, NavigableString
-from string import ascii_lowercase
-from enum import Enum
 import sys
+
+from enum import Enum
+from string import ascii_lowercase
+
+
+import requests
+
+from bs4 import BeautifulSoup, NavigableString
+
 
 word = 'Loeffel'
 if len(sys.argv) > 1:
