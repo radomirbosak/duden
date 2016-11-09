@@ -29,7 +29,7 @@ if page.status_code == 404:
 	print("not found")
 	sys.exit() 
 
-soup = BeautifulSoup(page.text)
+soup = BeautifulSoup(page.text, "html.parser")
 nadpis = soup.h1.get_text().replace('\xad', '')
 
 smpage = dict()
@@ -52,6 +52,15 @@ word = soup.h1.get_text().replace('\xad', '')
 smpage = {
 	sec.h2.get_text().split()[0]: sec for sec in secs if sec.h2
 }
+
+try:
+        wortart = soup.findAll('strong', {"class":"lexem"})[0].get_text()
+        print(wortart)
+        print()
+except :
+        pass
+
+
 
 # 1. Meaning overview
 meaning_section = smpage[Sections.meaning_overview.value]
