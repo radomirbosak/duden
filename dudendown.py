@@ -27,7 +27,7 @@ print("="*len(word))
 page = requests.get(url)
 if page.status_code == 404:
     print("not found")
-    sys.exit() 
+    sys.exit()
 
 soup = BeautifulSoup(page.text, "html.parser")
 nadpis = soup.h1.get_text().replace('\xad', '')
@@ -36,7 +36,7 @@ smpage = dict()
 secs = soup.findAll('section')
 
 # sections = [ "Grammatik", "Aussprache", "Rechtschreibung", "Bedeutungsübersicht",
-# "Synonyme", "Bedeutungen,", "Blättern", 
+# "Synonyme", "Bedeutungen,", "Blättern",
 # ]
 
 class Sections(Enum):
@@ -77,7 +77,7 @@ mean_over_array = recursively_extract(meaning_section, meaning_fun)
 #         mean_over_array.append(mli.a.get_text().strip())
 #     else:
 #         mean_over_array.append([
-#             mlili.a.get_text().strip() for mlili 
+#             mlili.a.get_text().strip() for mlili
 #             in mli.ol.findChildren('li', recursive=False)
 #             ])
 
@@ -122,7 +122,7 @@ try:
     meanings = smpage[Sections.meanings.value]
 
 
-    mean_cats = ['Gebrauch', 'Grammatik', 'Text', 'Beispiel', 'Beispiele'] # 
+    mean_cats = ['Gebrauch', 'Grammatik', 'Text', 'Beispiel', 'Beispiele'] #
 
     def meaning_struct_from_li(li):
         mean = dict()
