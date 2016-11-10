@@ -32,15 +32,29 @@ class DudenWord():
     def title(self):
         return self.soup.h1.get_text().replace('\xad', '')
 
+    def _section_main_get_node(self, name, use_label=True):
+        """
+        Return the div in main section which contains the text <name> as label
+        """
+        section = self.soup.find('section', id='block-system-main')
+        entry = section.find('div', class_='entry')
+        for div in entry.find_all('div'):
+            labelnode = div.find('span', class_='label') if use_label else div
+
+            if name in labelnode.text:
+                return div
+        else:
+            return None
+
     @property
     def part_of_speech(self):
-        section = self.soup.find('section', id='block-system-main')
-        return section.strong.text
+        pos_div = self._section_main_get_node('Wortart:')
+        return pos_div.strong.text
 
     @property
     def frequency(self):
-        section = self.soup.find('section', id='block-system-main')
-        return section.find_all('strong')[1].text.count('▮')
+        pos_div = self._section_main_get_node('Häufigkeit:', use_label=False)
+        return pos_div.strong.text.count('▮')
 
 
 def get(word):
