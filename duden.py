@@ -37,6 +37,11 @@ class DudenWord():
         section = self.soup.find('section', id='block-system-main')
         return section.strong.text
 
+    @property
+    def frequency(self):
+        section = self.soup.find('section', id='block-system-main')
+        return section.find_all('strong')[1].text.count('▮')
+
 
 def get(word):
     return DudenWord(word)
