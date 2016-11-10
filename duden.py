@@ -11,6 +11,7 @@ URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
 class DudenWord():
 
     def __init__(self, word):
+        self.query = word
         url = URL_FORM.format(word=word)
         response = requests.get(url)
 
@@ -27,6 +28,19 @@ class DudenWord():
     @property
     def exists(self):
         return self._exists
+
+    def describe(self):
+        if not self.exists:
+            print('\'{}\' not found'.format(self.query))
+            return
+
+        print(self.title)
+        print('=' * len(self.title))
+
+        print('Word type: ' + self.part_of_speech)
+        if self.usage:
+            print('Usage: ' + self.usage)
+        print('Commonness: {}/5'.format(self.frequency))
 
     @property
     def title(self):
