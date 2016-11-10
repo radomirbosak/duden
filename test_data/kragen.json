@@ -2,8 +2,6 @@
     "name": "Kragen",
     "title": "Kragen, der",
 
-    "main": {
-        "part_of_speech": "Substantiv, maskulin",
-        "frequency": 2
-    }
+    "part_of_speech": "Substantiv, maskulin",
+    "frequency": 2
 }
