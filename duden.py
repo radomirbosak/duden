@@ -9,6 +9,7 @@ URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
 
 
 class DudenWord():
+
     def __init__(self, word):
         url = URL_FORM.format(word=word)
         response = requests.get(url)
@@ -30,7 +31,12 @@ class DudenWord():
     @property
     def title(self):
         return self.soup.h1.get_text().replace('\xad', '')
-    
+
+    @property
+    def part_of_speech(self):
+        section = self.soup.find('section', id='block-system-main')
+        return section.strong.text
+
 
 def get(word):
     return DudenWord(word)
