@@ -42,5 +42,8 @@ class TestDudenJsons(unittest.TestCase):
     def test_frequency(self):
         self._all_words_test('frequency')
 
+    def test_usage(self):
+        self._all_words_test('usage')
+
 if __name__ == '__main__':
     unittest.main()

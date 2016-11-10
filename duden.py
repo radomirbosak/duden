@@ -56,6 +56,14 @@ class DudenWord():
         pos_div = self._section_main_get_node('Häufigkeit:', use_label=False)
         return pos_div.strong.text.count('▮')
 
+    @property
+    def usage(self):
+        try:
+            pos_div = self._section_main_get_node('Gebrauch:')
+            return pos_div.strong.text
+        except AttributeError:
+            return None
+
 
 def get(word):
     return DudenWord(word)
