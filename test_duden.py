@@ -10,6 +10,7 @@ import duden
 
 JSON_DIR = 'test_data'
 
+
 class TestDudenJsons(unittest.TestCase):
 
     @classmethod
@@ -25,10 +26,15 @@ class TestDudenJsons(unittest.TestCase):
 
                     cls.samples.append((word_json, word_obj))
 
-    def test_title(self):
+    def _all_words_test(self, attribute_name):
         for word_json, word_obj in self.__class__.samples:
             with self.subTest(word=word_json['name']):
-                self.assertEqual(word_obj.title, word_json['title'])
+                real_value = getattr(word_obj, attribute_name)
+                test_value = word_json[attribute_name]
+                self.assertEqual(real_value, test_value)
+
+    def test_title(self):
+        self._all_words_test('title')
 
 if __name__ == '__main__':
     unittest.main()
