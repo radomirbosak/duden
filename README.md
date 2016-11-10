@@ -10,3 +10,8 @@ The program uses `BeautifulSoup` package to parse and traverse the HTML structur
 Usage
 -----
 	python3 dudendown.py Loeffel
+
+
+Unit Testing
+------------
+    python3 -m unittest discover tests/ -v
