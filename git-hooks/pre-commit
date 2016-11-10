@@ -20,11 +20,11 @@ then
 fi
 
 #echo "Running pyflakes check."
-python3 -m pyflakes . || {
-    echo "Pyflakes COMPLAINS!"
-    echo "Fix code or use --no-verify."
-    exit 1
-}
+# python3 -m pyflakes . || {
+#     echo "Pyflakes COMPLAINS!"
+#     echo "Fix code or use --no-verify."
+#     exit 1
+# }
 
 #echo "Ready to commit !"
 exit 0
