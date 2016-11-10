@@ -22,7 +22,7 @@ class TestDudenJsons(unittest.TestCase):
             if filename.endswith('.json'):
                 with open(full_path, 'r') as fh:
                     word_json = json.load(fh)
-                    word_obj = duden.DudenWord(word_json['name'])
+                    word_obj = duden.DudenWord(word_json['urlname'])
 
                     cls.samples.append((word_json, word_obj))
 
