@@ -278,9 +278,12 @@ def main():
 
     # 2. Parse synonyms section
     # currently unused
-    syn_section = smpage[Sections.synonyms.value]
+    try:
+        syn_section = smpage[Sections.synonyms.value]
 
-    syn_array = recursively_extract(syn_section, extract_synonym_from_li)
+        syn_array = recursively_extract(syn_section, extract_synonym_from_li)
+    except:
+        pass
 
     # 3. Parse meaning section
     # currently unused
