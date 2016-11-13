@@ -70,6 +70,22 @@ class DudenWord():
     def title(self):
         return self.soup.h1.get_text().replace('\xad', '')
 
+    @property
+    def name(self):
+        if ', ' not in self.title:
+            return self.title
+        else:
+            name, article = self.title.split(', ')
+            return name
+
+    @property
+    def article(self):
+        if ', ' not in self.title:
+            return None
+        else:
+            name, article = self.title.split(', ')
+            return article
+
     def _section_main_get_node(self, name, use_label=True):
         """
         Return the div in main section which contains the text <name> as label
