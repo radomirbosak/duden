@@ -5,6 +5,8 @@ import bs4
 import copy
 import requests
 
+from common import recursively_extract, print_tree_of_strings
+
 
 URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
 
@@ -44,6 +46,10 @@ class DudenWord():
         print('Commonness: {}/5'.format(self.frequency))
         if self.word_separation:
             print('Separation: ' + '|'.join(self.word_separation))
+
+        if self.meaning_overview:
+            print('Meaning overview:')
+            print_tree_of_strings(self.meaning_overview)
 
     @property
     def title(self):
@@ -125,6 +131,22 @@ class DudenWord():
             return div.text.strip().split('|')
         except AttributeError:
             return None
+
+    @property
+    def meaning_overview(self):
+        try:
+            section = self._find_section('Bedeutungsübersicht')
+            entry = section.find(class_='entry')
+        except AttributeError:
+            return None
+        entry = copy.copy(entry)
+
+        # remove examples
+        if entry.section and entry.section.h3.text == 'Beispiele':
+            entry.section.extract()
+
+        return recursively_extract(entry, maxdepth=2,
+                                   exfun=lambda x: x.text.strip())
 
 
 def get(word):
