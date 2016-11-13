@@ -267,7 +267,7 @@ def main():
         wortart = soup.findAll('strong', {"class": "lexem"})[0].get_text()
         print(wortart)
         print()
-    except:
+    except AttributeError:
         pass
 
     # 1. Parse meaning overview section
@@ -282,7 +282,7 @@ def main():
         syn_section = smpage[Sections.synonyms.value]
 
         syn_array = recursively_extract(syn_section, extract_synonym_from_li)
-    except:
+    except (KeyError, AttributeError):
         pass
 
     # 3. Parse meaning section
