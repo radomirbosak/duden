@@ -160,6 +160,10 @@ class DudenWord():
         if entry.section and entry.section.h3.text == 'Beispiele':
             entry.section.extract()
 
+        # remove figures
+        while entry.figure:
+            entry.figure.extract()
+
         return recursively_extract(entry, maxdepth=2,
                                    exfun=lambda x: x.text.strip())
 
