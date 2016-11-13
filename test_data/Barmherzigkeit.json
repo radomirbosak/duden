@@ -7,5 +7,7 @@
     "usage": "gehoben",
     "frequency": 2,
 
-    "word_separation": ["Barm", "her", "zig", "keit"]
+    "word_separation": ["Barm", "her", "zig", "keit"],
+
+    "meaning_overview": "barmherziges Wesen, Verhalten"
 }

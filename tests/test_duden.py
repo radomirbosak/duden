@@ -48,5 +48,8 @@ class TestDudenJsons(unittest.TestCase):
     def test_word_separation(self):
         self._all_words_test('word_separation')
 
+    def test_meaning_overview(self):
+        self._all_words_test('meaning_overview')
+
 if __name__ == '__main__':
     unittest.main()
