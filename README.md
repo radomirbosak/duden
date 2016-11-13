@@ -38,14 +38,19 @@ Non-hotfix changes should be first merged to develop branch; multiple develop br
 
 Unit Testing
 ------------
-    python3 -m unittest discover tests/ -v
-
+This command checks if the code passes unit tests:
+```
+python3 -m unittest discover tests/ -v
+```
 
 Pep8 code quality check
 -----------------------
-    python3-autopep8 -r . --diff
+This command checks if the code adheres to PEP8 standard:
+```
+python3-autopep8 -r . --diff
+```
 
-Note that this command requires the autopep8 python module. In Fedora 24 it can be installed by:
+Note that it requires the autopep8 python module. In Fedora 24 it can be installed by:
 
 ```
 dnf info python3-autopep8
