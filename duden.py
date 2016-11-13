@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import bs4
+import copy
 import requests
 
 
@@ -72,13 +73,20 @@ class DudenWord():
 
     @property
     def part_of_speech(self):
-        pos_div = self._section_main_get_node('Wortart:')
-        return pos_div.strong.text
+        try:
+            pos_div = self._section_main_get_node('Wortart:')
+            return pos_div.strong.text
+        except AttributeError:
+            return None
 
     @property
     def frequency(self):
-        pos_div = self._section_main_get_node('Häufigkeit:', use_label=False)
-        return pos_div.strong.text.count('▮')
+        try:
+            pos_div = self._section_main_get_node(
+                'Häufigkeit:', use_label=False)
+            return pos_div.strong.text.count('▮')
+        except AttributeError:
+            return None
 
     @property
     def usage(self):
@@ -97,10 +105,24 @@ class DudenWord():
 
     @property
     def word_separation(self):
-        section = self._find_section('Rechtschreibung')
-        div = self._section_other_get_div('Worttrennung:', section,
-                                          use_label=False)
-        return div.find('span', class_='lexem').text.split('|')
+        try:
+            section = self._find_section('Rechtschreibung')
+            div = self._section_other_get_div('Worttrennung:', section,
+                                              use_label=False)
+            return div.find('span', class_='lexem').text.split('|')
+        except AttributeError:
+            pass
+
+        # If the word_separation was not found in the Rechtschreibung section
+        # we try it again in the main section (see e.g. word 'Qat').
+        try:
+            div = self._section_main_get_node('Worttrennung:')
+            div = copy.copy(div)
+            label = div.find('span', class_='label')
+            label.extract()
+            return div.text.strip().split('|')
+        except AttributeError:
+            return None
 
 
 def get(word):
