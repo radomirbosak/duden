@@ -1,0 +1,16 @@
+{
+    "name": "Feiertag",
+    "urlname": "Feiertag",
+    "title": "Feiertag, der",
+    "article": "der",
+
+    "part_of_speech": "Substantiv, maskulin",
+    "usage": null,
+    "frequency": 3,
+
+    "word_separation": ["Fei", "er", "tag"],
+
+    "meaning_overview": ["jährlich wiederkehrender Gedenktag [an dem nicht gearbeitet wird]", "Tag, an dem jemand etwas besonders Schönes erlebt"],
+
+    "synonyms": ["Festtag, Gedenktag", "Ehrentag"]
+}
