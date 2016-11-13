@@ -209,6 +209,17 @@ class DudenWord():
         except AttributeError:
             return None
 
+    @property
+    def origin(self):
+        section = self._find_section('Herkunft')
+        if section is None:
+            return None
+
+        section = copy.copy(section)
+        if section.header:
+            section.header.extract()
+        return section.text
+
 
 def get(word):
     return DudenWord(word)
