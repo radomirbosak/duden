@@ -26,10 +26,12 @@ dnf install python3-requests python3-beautifulsoup4
 
 Contributing
 ------------
-The code in `master` in `develop` branches should
+The code (in the most recent commit) of `master` and `develop` branches should
 * pass the unit tests
 * pass the pep8 check (see further sections).
 * be functional and usable by user (master) or developer (develop)
+
+Code in other branches can be broken/non-functional/not-adhering to standards.
 
 Non-hotfix changes should be first merged to develop branch; multiple develop branch changes can then be merged to master.
 
