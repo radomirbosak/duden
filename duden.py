@@ -14,9 +14,10 @@ transliteration:
 * ß -> sz
 """
 
-import bs4
 import sys
 import copy
+
+import bs4
 import requests
 
 from common import recursively_extract, print_tree_of_strings
