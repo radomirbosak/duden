@@ -5,5 +5,7 @@
 
     "part_of_speech": "Substantiv, maskulin",
     "usage": null,
-    "frequency": 2
+    "frequency": 2,
+
+    "word_separation": ["Kra", "gen"]
 }

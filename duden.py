@@ -60,6 +60,16 @@ class DudenWord():
         else:
             return None
 
+    def _section_other_get_div(self, name, section, use_label=True):
+        entries = section.find_all('div', class_='entry')
+        for div in entries:
+            labelnode = div.find('span', class_='label') if use_label else div
+
+            if name in labelnode.text:
+                return div
+        else:
+            return None
+
     @property
     def part_of_speech(self):
         pos_div = self._section_main_get_node('Wortart:')
@@ -77,6 +87,20 @@ class DudenWord():
             return pos_div.strong.text
         except AttributeError:
             return None
+
+    def _find_section(self, name):
+        for section in self.soup.find_all('section'):
+            if section.h2 and name == section.h2.text:
+                return section
+        else:
+            return None
+
+    @property
+    def word_separation(self):
+        section = self._find_section('Rechtschreibung')
+        div = self._section_other_get_div('Worttrennung:', section,
+                                          use_label=False)
+        return div.find('span', class_='lexem').text.split('|')
 
 
 def get(word):

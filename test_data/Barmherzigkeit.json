@@ -5,5 +5,7 @@
 
     "part_of_speech": "Substantiv, feminin",
     "usage": "gehoben",
-    "frequency": 2
+    "frequency": 2,
+
+    "word_separation": ["Barm", "her", "zig", "keit"]
 }

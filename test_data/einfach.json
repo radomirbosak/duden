@@ -5,5 +5,7 @@
 
     "part_of_speech": "Adjektiv",
     "usage": null,
-    "frequency": 4
+    "frequency": 4,
+
+    "word_separation": ["ein", "fach"]
 }
