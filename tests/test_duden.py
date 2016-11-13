@@ -36,6 +36,12 @@ class TestDudenJsons(unittest.TestCase):
     def test_title(self):
         self._all_words_test('title')
 
+    def test_name(self):
+        self._all_words_test('name')
+
+    def test_article(self):
+        self._all_words_test('article')
+
     def test_part_of_speech(self):
         self._all_words_test('part_of_speech')
 
@@ -50,6 +56,7 @@ class TestDudenJsons(unittest.TestCase):
 
     def test_meaning_overview(self):
         self._all_words_test('meaning_overview')
+
 
 if __name__ == '__main__':
     unittest.main()
