@@ -66,6 +66,10 @@ class DudenWord():
             print('Meaning overview:')
             print_tree_of_strings(self.meaning_overview)
 
+        if self.synonyms:
+            print('Synonyms:')
+            print_tree_of_strings(self.synonyms)
+
     @property
     def title(self):
         return self.soup.h1.get_text().replace('\xad', '')
@@ -135,10 +139,13 @@ class DudenWord():
         except AttributeError:
             return None
 
-    def _find_section(self, name):
+    def _find_section(self, name, approximate=False):
         for section in self.soup.find_all('section'):
-            if section.h2 and name == section.h2.text:
-                return section
+            if section.h2:
+                if name == section.h2.text:
+                    return section
+                elif approximate and name in section.h2.text:
+                    return section
         else:
             return None
 
@@ -182,6 +189,18 @@ class DudenWord():
 
         return recursively_extract(entry, maxdepth=2,
                                    exfun=lambda x: x.text.strip())
+
+    @property
+    def synonyms(self):
+        try:
+            section = self._find_section('Synonyme zu', approximate=True)
+            section = copy.copy(section)
+            if section.header:
+                section.header.extract()
+            return recursively_extract(section, maxdepth=2,
+                                       exfun=lambda x: x.text.strip())
+        except AttributeError:
+            return None
 
 
 def get(word):

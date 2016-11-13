@@ -57,6 +57,8 @@ class TestDudenJsons(unittest.TestCase):
     def test_meaning_overview(self):
         self._all_words_test('meaning_overview')
 
+    def test_synonyms(self):
+        self._all_words_test('synonyms')
 
 if __name__ == '__main__':
     unittest.main()
