@@ -174,20 +174,27 @@ class DudenWord():
     def meaning_overview(self):
         try:
             section = self._find_section('Bedeutungsübersicht')
-            entry = section.find(class_='entry')
         except AttributeError:
             return None
-        entry = copy.copy(entry)
+
+        if section is None:
+            return None
+
+        node = copy.copy(section)
+
+        # remove the meaning overview header
+        if node.header:
+            node.header.extract()
 
         # remove examples
-        if entry.section and entry.section.h3.text == 'Beispiele':
-            entry.section.extract()
+        if node.section and node.section.h3.text == 'Beispiele':
+            node.section.extract()
 
         # remove figures
-        while entry.figure:
-            entry.figure.extract()
+        while node.figure:
+            node.figure.extract()
 
-        return recursively_extract(entry, maxdepth=2,
+        return recursively_extract(node, maxdepth=2,
                                    exfun=lambda x: x.text.strip())
 
     @property
