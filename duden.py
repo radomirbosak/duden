@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import bs4
+import sys
 import copy
 import requests
 
@@ -151,3 +152,17 @@ class DudenWord():
 
 def get(word):
     return DudenWord(word)
+
+
+def main():
+    if len(sys.argv) < 2:
+        print('Usage:')
+        print('python3 duden.py <WORD>')
+        sys.exit(1)
+
+    word = get(sys.argv[1])
+    word.describe()
+
+
+if __name__ == '__main__':
+    main()
