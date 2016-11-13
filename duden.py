@@ -42,6 +42,8 @@ class DudenWord():
         if self.usage:
             print('Usage: ' + self.usage)
         print('Commonness: {}/5'.format(self.frequency))
+        if self.word_separation:
+            print('Separation: ' + '|'.join(self.word_separation))
 
     @property
     def title(self):
