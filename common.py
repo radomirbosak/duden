@@ -72,3 +72,7 @@ def print_tree_of_strings(tree):
                 indent = "{:>2}. ".format(i1) if i2 == 'a' else " " * 4
                 print("{} {}. {}".format(indent, i2, m2))
         print()
+
+
+def clear_text(text):
+    return text.replace('\xad', '').strip()

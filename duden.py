@@ -16,14 +16,35 @@ transliteration:
 
 import sys
 import copy
+from itertools import cycle
 
 import bs4
 import requests
 
-from common import recursively_extract, print_tree_of_strings
+from common import recursively_extract, print_tree_of_strings, clear_text
 
 
 URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
+
+# grammar forms constants
+SINGULAR = 'Singular'
+PLURAL = 'Plural'
+
+PRASENS = 'Präsens'
+PRATERITUM = 'Präteritum'
+
+INDIKATIV = 'Indikativ'
+IMPERATIV = 'Imperativ'
+KONJUKTIV_1 = 'Konjunktiv I'
+KONJUKTIV_2 = 'Konjunktiv II'
+
+PARTIZIP_1 = 'Partizip I'
+PARTIZIP_2 = 'Partizip II'
+INFINITIV_MIT_ZU = 'Infinitiv mit zu'
+
+PERSON_1 = 'Person I'
+PERSON_2 = 'Person II'
+PERSON_3 = 'Person III'
 
 
 class DudenWord():
@@ -241,6 +262,85 @@ class DudenWord():
                     if word_cloud else []
                 d[pos] = words
         return d
+
+    def grammar(self, *target_tags):
+        tagged_strings = self.grammar_raw()
+        target_tags = set(target_tags)
+        return [string
+                for tags, string in tagged_strings
+                if target_tags.issubset(tags)]
+
+    def grammar_raw(self):
+        section = self._find_section('Grammatik')
+        if not section:
+            return None
+
+        table_nodes = section.find_all('table')
+
+        tagged_strings = []
+        for table_node in table_nodes:
+            tagged_strings.extend(
+                self._table_node_to_tagged_cells(table_node))
+        return tagged_strings
+
+    def _table_node_to_tagged_cells(self, table_node):
+        left_header = []
+        top_header = None
+        table_content = []
+        table_name = ''
+
+        # convert table html node to raw table (list of lists) and optional
+        # left and top headers (also lists)
+        if table_node.thead:
+            top_header = [clear_text(t.text)
+                          for t in table_node.thead.find_all('th')]
+
+        for row in table_node.tbody.find_all('tr'):
+            if row.th:
+                left_header.append(clear_text(row.th.text))
+
+            tds = row.find_all('td')
+            table_content.append([clear_text(td.text) for td in tds])
+
+        if top_header and left_header:
+            table_name = top_header[0]
+            top_header = top_header[1:]
+
+        # sanitize missing cells
+        last_nonempty_cell = ''
+        for i, cell in enumerate(left_header):
+            if cell == '':
+                left_header[i] = last_nonempty_cell
+            else:
+                last_nonempty_cell = cell
+
+        # convert left, top, and table headers to sets for easier tagging
+        if left_header:
+            left_header = [{cell} for cell in left_header]
+        else:
+            left_header = [set() for _ in table_content]
+        if top_header:
+            top_header = [{cell} for cell in top_header]
+        else:
+            top_header = [set() for _ in table_content[0]]
+        table_tag = {table_name} if table_name else set()
+
+        if table_name in [PRASENS, PRATERITUM]:
+            person_tags = [{PERSON_1}, {PERSON_2}, {PERSON_3}]
+        else:
+            person_tags = [set(), set(), set()]
+
+        # create a list of tagged strings
+        tagged_strings = []
+        for row, row_tag, person_tag \
+                in zip(table_content, left_header, cycle(person_tags)):
+            for cell, col_tag in zip(row, top_header):
+                taglist = table_tag \
+                    .union(row_tag) \
+                    .union(col_tag) \
+                    .union(person_tag)
+                tagged_strings.append((taglist, cell))
+        return tagged_strings
 
 
 def get(word):
