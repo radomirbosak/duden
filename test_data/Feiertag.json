@@ -12,6 +12,7 @@
 
     "meaning_overview": ["jährlich wiederkehrender Gedenktag [an dem nicht gearbeitet wird]", "Tag, an dem jemand etwas besonders Schönes erlebt"],
     "origin": "mittelhochdeutsch vīretac, althochdeutsch fīratag",
+    "compounds": {"adjektive": ["gesetzlich", "hoch", "kirchlich", "national", "allgemein", "christlich", "jüdisch", "arbeitsfrei"], "substantive": ["Wochenende", "Sonntag", "Sonnabend", "Freitag", "Urlaub", "Geburtstag", "Fest", "Samstag"], "verben": ["schließen", "ausnehmen", "abschaffen", "begehen", "öffnen", "bleiben", "verbringen", "erklären"]},
 
     "synonyms": ["Festtag, Gedenktag", "Ehrentag"]
 }

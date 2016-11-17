@@ -28,6 +28,8 @@ URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
 
 class DudenWord():
 
+    wordcloud_parts_of_speech = ['substantive', 'verben', 'adjektive']
+
     def __init__(self, word):
         self.query = word
         url = URL_FORM.format(word=word)
@@ -69,6 +71,11 @@ class DudenWord():
         if self.synonyms:
             print('Synonyms:')
             print_tree_of_strings(self.synonyms)
+
+        if self.compounds:
+            print('Typical compounds:')
+            for part_of_speech, words in self.compounds.items():
+                print(' - {}: {}'.format(part_of_speech, ', '.join(words)))
 
     @property
     def title(self):
@@ -219,6 +226,21 @@ class DudenWord():
         if section.header:
             section.header.extract()
         return section.text
+
+    @property
+    def compounds(self):
+        section = self._find_section('Typische Verbindungen', approximate=True)
+        if not section:
+            return None
+
+        d = {}
+        for pos in DudenWord.wordcloud_parts_of_speech:
+            word_cloud = section.find(id=pos)
+            if word_cloud:
+                words = [a.text for a in word_cloud.find_all('a')] \
+                    if word_cloud else []
+                d[pos] = words
+        return d
 
 
 def get(word):

@@ -63,5 +63,9 @@ class TestDudenJsons(unittest.TestCase):
     def test_origin(self):
         self._all_words_test('origin')
 
+    def test_compounds(self):
+        self._all_words_test('compounds')
+
+
 if __name__ == '__main__':
     unittest.main()
