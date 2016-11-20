@@ -26,11 +26,13 @@ class TestDudenJsons(unittest.TestCase):
 
                     cls.samples.append((word_json, word_obj))
 
-    def _all_words_test(self, attribute_name):
+    def _all_words_test(self, attribute_name, transorm_test_data=None):
         for word_json, word_obj in self.__class__.samples:
             with self.subTest(word=word_json['name']):
                 real_value = getattr(word_obj, attribute_name)
                 test_value = word_json[attribute_name]
+                if transorm_test_data:
+                    test_value = transorm_test_data(test_value)
                 self.assertEqual(real_value, test_value)
 
     def test_title(self):
@@ -65,6 +67,15 @@ class TestDudenJsons(unittest.TestCase):
 
     def test_compounds(self):
         self._all_words_test('compounds')
+
+    def test_grammar_raw(self):
+        def grammar_data_change(raw_grammar_data):
+            if raw_grammar_data is None:
+                return None
+            return [(set(tags), string) for tags, string in raw_grammar_data]
+
+        self._all_words_test('grammar_raw',
+                             transorm_test_data=grammar_data_change)
 
 
 if __name__ == '__main__':

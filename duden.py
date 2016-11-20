@@ -264,12 +264,19 @@ class DudenWord():
         return d
 
     def grammar(self, *target_tags):
+        """
+        Example:
+        >>> word_laufen.grammar(duden.SINGULAR, duden.PRASENS, \
+                                duden.INDIKATIV, duden.PERSON_3)
+        ['er/sie/es läuft']
+        """
         tagged_strings = self.grammar_raw()
         target_tags = set(target_tags)
         return [string
                 for tags, string in tagged_strings
                 if target_tags.issubset(tags)]
 
+    @property
     def grammar_raw(self):
         """
         Find the Grammar sections in the document and extract tagged string
