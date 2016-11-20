@@ -271,6 +271,12 @@ class DudenWord():
                 if target_tags.issubset(tags)]
 
     def grammar_raw(self):
+        """
+        Find the Grammar sections in the document and extract tagged string
+        list of all tables found there.
+
+        The concatinated tagged string list (for all tables) is returned
+        """
         section = self._find_section('Grammatik')
         if not section:
             return None
@@ -284,6 +290,26 @@ class DudenWord():
         return tagged_strings
 
     def _table_node_to_tagged_cells(self, table_node):
+        """
+        Takes a table HTML node and returns the list of table cell strings
+        tagged using the table top and left header (optionally using the table
+        name found in the upper-leftmost cell).
+
+        The return type is a list of 2-tuples:
+        [(tag_set, text), ...]
+
+        where text is a string taken from the cell, and tag_set is a set of
+        strings (tags). If e.g. cell in the 3rd row and 2nd column with the
+        text 'der Barmherzigkeit', has its top_header tag (1st row, 2nd
+        column) 'Singular' and its left_header tag (1st column, 3rd row)
+        'Genitiv', the corresponding tuple would look like:
+        ({'Singular', 'Genitiv'}, 'der Barmherzigkeit')
+        .
+
+        The first row is considered a header row, if it's inside of <thead>
+        html tag. The first column is considered a header column if the
+        corresponding cells are <th> html nodes.
+        """
         left_header = []
         top_header = None
         table_content = []
