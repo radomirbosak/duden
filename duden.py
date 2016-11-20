@@ -55,6 +55,9 @@ class DudenWord():
     def __init__(self, soup):
         self.soup = soup
 
+    def __repr__(self):
+        return '{} ({})'.format(self.title, self.part_of_speech)
+
     def describe(self):
         print(self.title)
         print('=' * len(self.title))
