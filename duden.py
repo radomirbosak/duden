@@ -51,20 +51,8 @@ class DudenWord():
 
     wordcloud_parts_of_speech = ['substantive', 'verben', 'adjektive']
 
-    def __init__(self, word):
-        self.query = word
-        url = URL_FORM.format(word=word)
-        response = requests.get(url)
-
-        code = response.status_code
-        if code == 200:
-            self._exists = True
-            self.soup = bs4.BeautifulSoup(response.text, 'html.parser')
-        elif code == 404:
-            self._exists = False
-        else:
-            raise Exception(
-                "Unexpected HTTP response status code {}".format(code))
+    def __init__(self, soup):
+        self.soup = soup
 
     @property
     def exists(self):
@@ -377,7 +365,24 @@ class DudenWord():
 
 
 def get(word):
-    return DudenWord(word)
+    url = URL_FORM.format(word=word)
+    response = requests.get(url)
+
+    code = response.status_code
+    if code == 200:
+        soup = bs4.BeautifulSoup(response.text, 'html.parser')
+    elif code == 404:
+        # non-existent word
+        return None
+    else:
+        raise Exception(
+            "Unexpected HTTP response status code {}".format(code))
+
+    return load_soup(soup)
+
+
+def load_soup(soup):
+    return DudenWord(soup)
 
 
 def main():

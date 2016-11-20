@@ -5,6 +5,9 @@ import os
 import json
 import unittest
 
+import bs4
+import requests
+
 import duden
 
 
@@ -22,7 +25,7 @@ class TestDudenJsons(unittest.TestCase):
             if filename.endswith('.json'):
                 with open(full_path, 'r') as fh:
                     word_json = json.load(fh)
-                    word_obj = duden.DudenWord(word_json['urlname'])
+                    word_obj = duden.get(word_json['urlname'])
 
                     cls.samples.append((word_json, word_obj))
 
@@ -76,6 +79,22 @@ class TestDudenJsons(unittest.TestCase):
 
         self._all_words_test('grammar_raw',
                              transorm_test_data=grammar_data_change)
+
+
+class TestDuden(unittest.TestCase):
+
+    def test_get(self):
+        word = 'laufen'
+        dword = duden.get('laufen')
+        self.assertEqual(word, dword.title)
+
+    def test_load_soup(self):
+        word = 'laufen'
+        url = duden.URL_FORM.format(word=word)
+        r = requests.get(url)
+        soup = bs4.BeautifulSoup(r.text, 'html.parser')
+        dword = duden.load_soup(soup)
+        self.assertEqual(word, dword.title)
 
 
 if __name__ == '__main__':
