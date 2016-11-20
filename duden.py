@@ -25,6 +25,7 @@ from common import recursively_extract, print_tree_of_strings, clear_text
 
 
 URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
+SEARCH_URL_FORM = 'http://www.duden.de/suchen/dudenonline/{word}'
 
 # grammar forms constants
 SINGULAR = 'Singular'
@@ -383,6 +384,19 @@ def get(word):
 
 def load_soup(soup):
     return DudenWord(soup)
+
+
+def search(word):
+    url = SEARCH_URL_FORM.format(word=word)
+    response = requests.get(url)
+    soup = bs4.BeautifulSoup(response.text, 'html.parser')
+    main_sec = soup.find('section', id='block-duden-tiles-0')
+    a_tags = [h2.a for h2 in main_sec.find_all('h2')]
+
+    urlnames = [a['href'].split('/')[-1]
+                for a in a_tags
+                if clear_text(a.text) == word]
+    return [get(urlname) for urlname in urlnames]
 
 
 def main():
