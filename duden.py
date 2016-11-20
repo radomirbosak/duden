@@ -381,7 +381,7 @@ def load_soup(soup):
     return DudenWord(soup)
 
 
-def search(word, exact=True):
+def search(word, exact=True, return_words=True):
     url = SEARCH_URL_FORM.format(word=word)
     response = requests.get(url)
     soup = bs4.BeautifulSoup(response.text, 'html.parser')
@@ -391,7 +391,10 @@ def search(word, exact=True):
     urlnames = [a['href'].split('/')[-1]
                 for a in a_tags
                 if (not exact) or clear_text(a.text) == word]
-    return [get(urlname) for urlname in urlnames]
+    if return_words:
+        return [get(urlname) for urlname in urlnames]
+    else:
+        return urlnames
 
 
 def main():
