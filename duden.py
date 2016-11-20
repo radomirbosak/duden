@@ -55,15 +55,7 @@ class DudenWord():
     def __init__(self, soup):
         self.soup = soup
 
-    @property
-    def exists(self):
-        return self._exists
-
     def describe(self):
-        if not self.exists:
-            print('\'{}\' not found'.format(self.query))
-            return
-
         print(self.title)
         print('=' * len(self.title))
 
