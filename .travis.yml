@@ -1,0 +1,13 @@
+language: python
+python:
+  - "3.3"
+  - "3.4"
+install:
+  - "pip install -q beautifulsoup4"
+  - "pip install -q autopep8"
+  - "pip install -q requests"
+# command to run tests
+script:
+ - python --version
+ - python -m unittest discover tests/ -v
+ - autopep8 -r . --diff
