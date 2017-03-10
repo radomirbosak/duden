@@ -10,8 +10,10 @@ install:
   - "pip install -q beautifulsoup4"
   - "pip install -q autopep8"
   - "pip install -q requests"
+  - "pip install -q pep8"
 # command to run tests
 script:
  - python --version
  - python -m unittest discover tests/ -v
  - autopep8 -r . --diff
+ - find -name '*.py' | xargs pep8
