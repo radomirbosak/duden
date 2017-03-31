@@ -15,6 +15,6 @@ install:
 
 script:
  - python --version
- - green tests/ --quiet-stdout
+ - env PYTHONPATH=duden green tests/ --quiet-stdout
  - autopep8 -r . --diff | colordiff
  - find -name '*.py' | xargs flake8
