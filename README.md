@@ -6,7 +6,7 @@ The program uses `beautifulsoup` package to parse and traverse the HTML structur
 
 ## Installation
 ```console
-pip install dudendown
+pip install duden
 ```
 
 ## Usage
