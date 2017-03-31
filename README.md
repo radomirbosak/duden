@@ -1,5 +1,4 @@
-Duden down
-==========
+# Duden down [![Build Status](https://travis-ci.org/radomirbosak/duden-down.svg?branch=master)](https://travis-ci.org/radomirbosak/duden-down)
 
 _dudendown_ is a CLI-based program, which prints out the information about a given german word. The printed data are parsed from german site [duden.de](duden.de).
 
@@ -7,20 +6,19 @@ The program uses `BeautifulSoup` package to parse and traverse the HTML structur
 
 ![Screenshot](screenshot.png)
 
-Usage
------
+## Usage
+
 ```console
 python3 duden/duden.py Loeffel
 ```
 
-Dependencies
-------------
+## Dependencies
+
 Python modules:
 * beautifulsoup4
 * requests
 
-Testing
--------
+## Testing
 
 ```console
 make test
