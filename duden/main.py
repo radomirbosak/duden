@@ -16,12 +16,13 @@ transliteration:
 
 import sys
 import copy
+import argparse
 from itertools import cycle
 
 import bs4
 import requests
 
-from .common import recursively_extract, print_tree_of_strings, clear_text
+from duden.common import recursively_extract, print_tree_of_strings, clear_text
 
 
 URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
@@ -397,13 +398,24 @@ def search(word, exact=True, return_words=True):
         return urlnames
 
 
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('word')
+    return parser.parse_args()
+
+
 def main():
-    if len(sys.argv) < 2:
-        print('Usage:')
-        print('python3 duden.py <WORD>')
+    args = parse_args()
+
+    # load and parse the word
+    word = get(args.word)
+
+    # exit if the word wasn't found
+    if word is None:
+        print("Word '{}' not found".format(args.word))
         sys.exit(1)
 
-    word = get(sys.argv[1])
+    # print the description
     word.describe()
 
 
