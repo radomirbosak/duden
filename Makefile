@@ -15,4 +15,4 @@ testloop:
 	done
 
 clean:
-	rm -rf __pycache__ tests/__pycache__
+	rm -rf duden/__pycache__ tests/__pycache__
