@@ -41,6 +41,7 @@ Ohr; [Ge]hörorgan; (salopp) Horcher, Horchlappen, Lauscher; (Jägersprache) Los
 >>> w.synonyms
 'Ohr; [Ge]hörorgan; (salopp) Horcher, Horchlappen, Lauscher; (Jägersprache) Loser, Teller'
 ```
+For more examples see [usage documentation](docs/usage.md).
 
 ## Dependencies
 
