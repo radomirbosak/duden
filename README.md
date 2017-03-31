@@ -14,6 +14,19 @@ pip install dudendown
 ### CLI
 ```console
 $ duden Loeffel
+Löffel, der
+===========
+Word type: Substantiv, maskulin
+Commonness: 2/5
+Separation: Löf|fel
+Meaning overview:
+ 0.  a. [metallenes] [Ess]gerät, an dessen unterem Stielende eine schalenartige Vertiefung sitzt und das zur Aufnahme von Suppe, Flüssigkeiten, zur Zubereitung von Speisen o. Ä. verwendet wird
+     b. (Medizin) Kürette
+
+ 1. (Jägersprache) Ohr von Hase und Kaninchen
+
+Synonyms:
+Ohr; [Ge]hörorgan; (salopp) Horcher, Horchlappen, Lauscher; (Jägersprache) Loser, Teller
 ```
 
 ### Module usage
