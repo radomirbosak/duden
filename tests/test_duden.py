@@ -18,6 +18,9 @@ class TestDudenJsons(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        """
+        Load json data used for testing
+        """
         cls.samples = []
 
         for filename in os.listdir(JSON_DIR):
@@ -30,6 +33,10 @@ class TestDudenJsons(unittest.TestCase):
                     cls.samples.append((word_json, word_obj))
 
     def _all_words_test(self, attribute_name, transorm_test_data=None):
+        """
+        Test if attribute extracted by the DudenWord class matches from one
+        loaded from test data
+        """
         for word_json, word_obj in self.__class__.samples:
             with self.subTest(word=word_json['name']):
                 real_value = getattr(word_obj, attribute_name)
@@ -84,11 +91,17 @@ class TestDudenJsons(unittest.TestCase):
 class TestDuden(unittest.TestCase):
 
     def test_get(self):
+        """
+        Test if the word laufen can be parsed
+        """
         word = 'laufen'
         dword = duden.get('laufen')
         self.assertEqual(word, dword.title)
 
     def test_load_soup(self):
+        """
+        Test if the load_soup function works correctly
+        """
         word = 'laufen'
         url = duden.URL_FORM.format(word=word)
         r = requests.get(url)

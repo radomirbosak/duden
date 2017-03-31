@@ -60,6 +60,9 @@ class DudenWord():
         return '{} ({})'.format(self.title, self.part_of_speech)
 
     def describe(self):
+        """
+        Print overall word description
+        """
         print(self.title)
         print('=' * len(self.title))
 
@@ -85,10 +88,16 @@ class DudenWord():
 
     @property
     def title(self):
+        """
+        The word string
+        """
         return self.soup.h1.get_text().replace('\xad', '')
 
     @property
     def name(self):
+        """
+        Word together with its article
+        """
         if ', ' not in self.title:
             return self.title
         else:
@@ -97,6 +106,9 @@ class DudenWord():
 
     @property
     def article(self):
+        """
+        Word article
+        """
         if ', ' not in self.title:
             return None
         else:
@@ -105,7 +117,7 @@ class DudenWord():
 
     def _section_main_get_node(self, name, use_label=True):
         """
-        Return the div in main section which contains the text <name> as label
+        Return the div in main section which contains the text `name` as label
         """
         section = self.soup.find('section', id='block-system-main')
         entry = section.find('div', class_='entry')
@@ -129,6 +141,9 @@ class DudenWord():
 
     @property
     def part_of_speech(self):
+        """
+        Return the part of speech
+        """
         try:
             pos_div = self._section_main_get_node('Wortart:')
             return pos_div.strong.text
@@ -137,6 +152,12 @@ class DudenWord():
 
     @property
     def frequency(self):
+        """
+        Return word frequency:
+
+        0 - least frequent
+        5 - most frequent
+        """
         try:
             pos_div = self._section_main_get_node(
                 'Häufigkeit:', use_label=False)
@@ -146,6 +167,9 @@ class DudenWord():
 
     @property
     def usage(self):
+        """
+        Return usage context
+        """
         try:
             pos_div = self._section_main_get_node('Gebrauch:')
             return pos_div.strong.text
@@ -153,6 +177,14 @@ class DudenWord():
             return None
 
     def _find_section(self, name, approximate=False):
+        """
+        Return the section which has <h2> tag with title `name`
+
+        If approximate is True, it is sufficient that `name` is a substring of
+        the <h2> title's string.
+
+        If no matching section is found, None is returned.
+        """
         for section in self.soup.find_all('section'):
             if section.h2:
                 if name == section.h2.text:
@@ -164,6 +196,9 @@ class DudenWord():
 
     @property
     def word_separation(self):
+        """
+        Return the word separated in a form of a list
+        """
         try:
             section = self._find_section('Rechtschreibung')
             div = self._section_other_get_div('Worttrennung:', section,
@@ -185,6 +220,9 @@ class DudenWord():
 
     @property
     def meaning_overview(self):
+        """
+        Return the meaning structure, which can be string, list or a dict
+        """
         try:
             section = self._find_section('Bedeutungsübersicht')
         except AttributeError:
@@ -212,6 +250,9 @@ class DudenWord():
 
     @property
     def synonyms(self):
+        """
+        Return the structure with word synonyms
+        """
         try:
             section = self._find_section('Synonyme zu', approximate=True)
             section = copy.copy(section)
@@ -224,6 +265,9 @@ class DudenWord():
 
     @property
     def origin(self):
+        """
+        Return the word origin
+        """
         section = self._find_section('Herkunft')
         if section is None:
             return None
@@ -235,6 +279,9 @@ class DudenWord():
 
     @property
     def compounds(self):
+        """
+        Return the typical word compounds
+        """
         section = self._find_section('Typische Verbindungen', approximate=True)
         if not section:
             return None
@@ -250,6 +297,8 @@ class DudenWord():
 
     def grammar(self, *target_tags):
         """
+        Return the information from grammar section
+
         Example:
         >>> word_laufen.grammar(duden.SINGULAR, duden.PRASENS, \
                                 duden.INDIKATIV, duden.PERSON_3)
@@ -362,6 +411,9 @@ class DudenWord():
 
 
 def get(word):
+    """
+    Load the word 'word' and return the DudenWord instance
+    """
     url = URL_FORM.format(word=word)
     response = requests.get(url)
 
@@ -379,10 +431,16 @@ def get(word):
 
 
 def load_soup(soup):
+    """
+    Load the DudenWord instance using a BeautifulSoup object
+    """
     return DudenWord(soup)
 
 
 def search(word, exact=True, return_words=True):
+    """
+    Search for a word 'word' in duden
+    """
     url = SEARCH_URL_FORM.format(word=word)
     response = requests.get(url)
     soup = bs4.BeautifulSoup(response.text, 'html.parser')
@@ -399,12 +457,18 @@ def search(word, exact=True, return_words=True):
 
 
 def parse_args():
+    """
+    Parse CLI arguments
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument('word')
     return parser.parse_args()
 
 
 def main():
+    """
+    Take the first CLI argument and describe the corresponding word
+    """
     args = parse_args()
 
     # load and parse the word
