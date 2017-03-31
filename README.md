@@ -1,4 +1,4 @@
-# Duden down [![Build Status](https://travis-ci.org/radomirbosak/duden-down.svg?branch=master)](https://travis-ci.org/radomirbosak/duden-down)
+# Duden down [![Build Status](https://travis-ci.org/radomirbosak/duden-down.svg?branch=master)](https://travis-ci.org/radomirbosak/duden-down) [![Version](http://img.shields.io/pypi/v/duden.svg?style=flat)](https://pypi.python.org/pypi/duden/)
 
 _dudendown_ is a CLI-based program, which prints out the information about a given german word. The printed data are parsed from german site [duden.de](duden.de).
 
