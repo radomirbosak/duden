@@ -34,6 +34,8 @@ Ohr; [Ge]hörorgan; (salopp) Horcher, Horchlappen, Lauscher; (Jägersprache) Los
 ```python
 >>> import duden
 >>> w = duden.get('Loeffel')
+>>> w.name
+'Löffel'
 >>> w.word_separation
 ['Löf', 'fel']
 >>> w.synonyms
