@@ -8,6 +8,6 @@ install:
 # command to run tests
 script:
  - python --version
- - python -m unittest discover tests/ -v
+ - green tests/ --quiet-stdout
  - autopep8 -r . --diff
  - find -name '*.py' | xargs flake8
