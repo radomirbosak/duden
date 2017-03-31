@@ -2,7 +2,7 @@
 
 This example showcases the most useful functions of the `DudenWord` class.
 
-```
+```python
 > import duden
 > w = duden.get('Barmherzigkeit')
 > w.title
