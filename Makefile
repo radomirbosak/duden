@@ -13,3 +13,6 @@ testloop:
 	while inotifywait -q -r -e modify --exclude .git .; do \
 		clear; make test; \
 	done
+
+clean:
+	rm -rf __pycache__ tests/__pycache__
