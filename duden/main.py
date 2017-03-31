@@ -21,7 +21,7 @@ from itertools import cycle
 import bs4
 import requests
 
-from common import recursively_extract, print_tree_of_strings, clear_text
+from .common import recursively_extract, print_tree_of_strings, clear_text
 
 
 URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'

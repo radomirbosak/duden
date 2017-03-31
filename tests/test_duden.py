@@ -8,7 +8,7 @@ import unittest
 import bs4
 import requests
 
-import duden
+import duden.main as duden
 
 
 JSON_DIR = 'tests/test_data'
