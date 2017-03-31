@@ -2,14 +2,29 @@
 
 _dudendown_ is a CLI-based program, which prints out the information about a given german word. The printed data are parsed from german site [duden.de](duden.de).
 
-The program uses `BeautifulSoup` package to parse and traverse the HTML structure.
+The program uses `beautifulsoup` package to parse and traverse the HTML structure.
 
-![Screenshot](screenshot.png)
+## Installation
+```console
+pip install dudendown
+```
 
 ## Usage
 
+### CLI
 ```console
-python3 duden/duden.py Loeffel
+$ duden Loeffel
+```
+
+### Module usage
+
+```python
+>>> import duden
+>>> w = duden.get('Loeffel')
+>>> w.word_separation
+['Löf', 'fel']
+>>> w.synonyms
+'Ohr; [Ge]hörorgan; (salopp) Horcher, Horchlappen, Lauscher; (Jägersprache) Loser, Teller'
 ```
 
 ## Dependencies
