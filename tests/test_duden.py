@@ -11,7 +11,7 @@ import requests
 import duden
 
 
-JSON_DIR = 'test_data'
+JSON_DIR = 'tests/test_data'
 
 
 class TestDudenJsons(unittest.TestCase):
