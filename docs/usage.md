@@ -5,6 +5,7 @@ This example showcases the most useful functions of the `DudenWord` class.
 ```python
 > import duden
 > w = duden.get('Barmherzigkeit')
+
 > w.title
 'Barmherzigkeit, die'
 
@@ -15,7 +16,7 @@ This example showcases the most useful functions of the `DudenWord` class.
 'die'
 
 > w.part_of_speech
-Substantiv, feminin
+'Substantiv, feminin'
 
 > w.frequency
 2
