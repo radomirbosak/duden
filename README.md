@@ -1,8 +1,6 @@
-# Duden down [![Build Status](https://travis-ci.org/radomirbosak/duden-down.svg?branch=master)](https://travis-ci.org/radomirbosak/duden-down) [![Version](http://img.shields.io/pypi/v/duden.svg?style=flat)](https://pypi.python.org/pypi/duden/)
+# Duden [![Build Status](https://travis-ci.org/radomirbosak/duden.svg?branch=master)](https://travis-ci.org/radomirbosak/duden) [![Version](http://img.shields.io/pypi/v/duden.svg?style=flat)](https://pypi.python.org/pypi/duden/)
 
-_dudendown_ is a CLI-based program, which prints out the information about a given german word. The printed data are parsed from german site [duden.de](duden.de).
-
-The program uses `beautifulsoup` package to parse and traverse the HTML structure.
+**duden** is a CLI-based program and python module, which can provide various information about given german word. The provided data are parsed from german dictionary [duden.de](http://duden.de).
 
 ## Installation
 ```console
@@ -14,6 +12,7 @@ pip install duden
 ### CLI
 ```console
 $ duden Loeffel
+
 Löffel, der
 ===========
 Word type: Substantiv, maskulin
