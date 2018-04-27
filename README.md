@@ -4,7 +4,7 @@
 
 ## Installation
 ```console
-pip install duden
+pip3 install duden
 ```
 
 ## Usage
@@ -53,3 +53,7 @@ Python modules:
 ```console
 make test
 ```
+
+## Supported versions of Python
+
+* Python 3
