@@ -10,12 +10,14 @@ addons:
     packages:
     - colordiff
 
+env:
+  global:
+    - PIPENV_VENV_IN_PROJECT=1
+    - PIPENV_IGNORE_VIRTUALENVS=1
+
 install:
-  - "pip install -r requirements.txt"
+  - "pip install pipenv"
+  - "pipenv install --dev"
 
 script:
- - python --version
- - env PYTHONPATH=duden green tests/ --quiet-stdout
- - autopep8 -r duden/ --diff | colordiff
- - autopep8 -r tests/ --diff | colordiff
- - find -name '*.py' | xargs flake8
+ - pipenv run make test
