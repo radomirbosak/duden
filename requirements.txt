@@ -1,6 +1,0 @@
-beautifulsoup4
-requests
-green
-autopep8
-flake8
-flake8-colors
