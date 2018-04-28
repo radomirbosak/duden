@@ -415,7 +415,11 @@ def get(word):
     Load the word 'word' and return the DudenWord instance
     """
     url = URL_FORM.format(word=word)
-    response = requests.get(url)
+    try:
+        response = requests.get(url)
+    except requests.exceptions.ConnectionError:
+        print("Connection could not be established. Check your internet connection.")
+        sys.exit(1)
 
     code = response.status_code
     if code == 200:
