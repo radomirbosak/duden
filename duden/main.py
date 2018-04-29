@@ -48,6 +48,11 @@ PERSON_1 = 'Person I'
 PERSON_2 = 'Person II'
 PERSON_3 = 'Person III'
 
+NOMINATIV = 'Nominativ'
+GENITIV = 'Genitiv'
+DATIV = 'Dativ'
+AKKUSATIV = 'Akkusativ'
+
 
 class DudenWord():
 
@@ -304,7 +309,7 @@ class DudenWord():
                                 duden.INDIKATIV, duden.PERSON_3)
         ['er/sie/es läuft']
         """
-        tagged_strings = self.grammar_raw()
+        tagged_strings = self.grammar_raw
         target_tags = set(target_tags)
         return [string
                 for tags, string in tagged_strings
