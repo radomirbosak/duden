@@ -8,7 +8,7 @@ name = "pypi"
 requests = "*"
 
 [dev-packages]
-green = "*"
 "autopep8" = "*"
 "flake8" = "*"
 "flake8-colors" = "*"
+pytest = "*"

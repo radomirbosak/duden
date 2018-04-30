@@ -5,7 +5,7 @@ all:
 
 test:
 	python --version
-	env PYTHONPATH=duden green tests/ --quiet-stdout
+	python -m pytest tests/
 	autopep8 --diff -r duden/ | colordiff
 	autopep8 --diff -r tests/ | colordiff
 	flake8 duden/
