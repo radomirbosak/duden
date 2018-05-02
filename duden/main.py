@@ -22,7 +22,8 @@ from itertools import cycle
 import bs4
 import requests
 
-from duden.common import recursively_extract, print_tree_of_strings, clear_text
+from duden.common import (recursively_extract, print_tree_of_strings,
+                          clear_text, print_string_or_list)
 
 
 URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
@@ -472,7 +473,74 @@ def parse_args():
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('word')
+    parser.add_argument('--title', action='store_true',
+                        help='Display word and its article')
+    parser.add_argument('--name', action='store_true',
+                        help='Display the word itself')
+    parser.add_argument('--article', action='store_true',
+                        help='Display word article')
+    parser.add_argument('--part-of-speech', action='store_true',
+                        help='Display word\'s part of speech')
+    parser.add_argument('--frequency', action='store_true',
+                        help='Display commonness of the word, on scale 1 to 5')
+    parser.add_argument('--usage', action='store_true',
+                        help='Display the context in which the word is used')
+    parser.add_argument('--word-separation', action='store_true',
+                        help='Display proper word separation, each part on a '
+                             'separate line.')
+    parser.add_argument('--meaning-overview', action='store_true',
+                        help='Display word meaning overview')
+    parser.add_argument('--synonyms', action='store_true',
+                        help='List word synonyms, each on a separate line')
+    parser.add_argument('--origin', action='store_true',
+                        help='Display word origin')
+    parser.add_argument('--compounds', nargs='?', const='ALL',
+                        help='List common word compounds')
     return parser.parse_args()
+
+
+def display_word(word, args):
+    if args.title:
+        print(word.title)
+    elif args.name:
+        print(word.name)
+    elif args.article:
+        if word.article:
+            print(word.article)
+    elif args.part_of_speech:
+        if word.part_of_speech:
+            print(word.part_of_speech)
+    elif args.frequency:
+        if word.frequency:
+            print(word.frequency)
+    elif args.usage:
+        if word.usage:
+            print(word.usage)
+    elif args.word_separation:
+        for part in word.word_separation:
+            print(part)
+    elif args.meaning_overview:
+        if word.meaning_overview:
+            print_tree_of_strings(word.meaning_overview)
+    elif args.synonyms:
+        synonyms = word.synonyms
+        if synonyms:
+            print_string_or_list(synonyms)
+    elif args.origin:
+        if word.origin:
+            print(word.origin)
+    elif args.compounds:
+        if word.compounds:
+            if args.compounds == 'ALL':
+                for part_of_speech, compounds in word.compounds.items():
+                    print('# ' + part_of_speech.capitalize())
+                    print_string_or_list(compounds)
+                    print()
+            else:
+                print_string_or_list(word.compounds[args.compounds])
+    else:
+        # print the description
+        word.describe()
 
 
 def main():
@@ -493,8 +561,7 @@ def main():
         print("Word '{}' not found".format(args.word))
         sys.exit(1)
 
-    # print the description
-    word.describe()
+    display_word(word, args)
 
 
 if __name__ == '__main__':

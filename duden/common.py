@@ -74,5 +74,13 @@ def print_tree_of_strings(tree):
         print()
 
 
+def print_string_or_list(obj):
+    if isinstance(obj, list):
+        for elem in obj:
+            print(elem)
+    else:
+        print(obj)
+
+
 def clear_text(text):
     return text.replace('\xad', '').strip()
