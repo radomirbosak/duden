@@ -496,6 +496,9 @@ def parse_args():
                         help='Display word origin')
     parser.add_argument('--compounds', nargs='?', const='ALL',
                         help='List common word compounds')
+    parser.add_argument('-g', '--grammar', nargs='?', const='ALL',
+                        help='List grammar forms')
+
     return parser.parse_args()
 
 
@@ -538,9 +541,46 @@ def display_word(word, args):
                     print()
             else:
                 print_string_or_list(word.compounds[args.compounds])
+    elif args.grammar:
+        display_grammar(word, args.grammar)
     else:
         # print the description
         word.describe()
+
+
+def display_grammar(word, grammar_args):
+    grammar_struct = word.grammar_raw
+    if grammar_struct is None:
+        return
+
+    grammar_tokens = [token.lower() for token in grammar_args.split(',')]
+
+    table = []
+    for keys, value in word.grammar_raw:
+        lkeys = {key.lower() for key in keys}
+
+        if not (grammar_args == 'ALL' or lkeys.issuperset(grammar_tokens)):
+            continue
+
+        reduced_keys = lkeys.difference(grammar_tokens)
+        keystring = ' '.join(reduced_keys)
+
+        if keystring:
+            row = list(reduced_keys) + ["|", value]
+        else:
+            row = [value]
+        table.append(row)
+    display_table(table)
+
+
+def display_table(table, cell_spacing=' '):
+    cols = list(zip(*table))
+    collens = [max(len(word) for word in col) for col in cols]
+
+    for row in table:
+        for elem, collen in zip(row, collens):
+            print(elem.ljust(collen), end=cell_spacing)
+        print()
 
 
 def main():
