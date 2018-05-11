@@ -10,14 +10,12 @@ addons:
     packages:
     - colordiff
 
-env:
-  global:
-    - PIPENV_VENV_IN_PROJECT=1
-    - PIPENV_IGNORE_VIRTUALENVS=1
-
 install:
-  - "pip install pipenv"
-  - "pipenv install --dev"
+  - "pip install autopep8 flake8 flake8-colors pytest beautifulsoup4 requests
+  - "pip install -e ."
 
 script:
- - pipenv run make test
+ - make test
+
+notifications:
+  email: false

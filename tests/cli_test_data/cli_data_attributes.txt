@@ -1,0 +1,34 @@
+$ duden Barmherzigkeit --title
+Barmherzigkeit, die
+
+$ duden Barmherzigkeit --name
+Barmherzigkeit
+
+$ duden Barmherzigkeit --article
+die
+
+$ duden Barmherzigkeit --pos
+Substantiv, feminin
+
+$ duden Barmherzigkeit --frequency
+2
+
+$ duden Barmherzigkeit --usage
+gehoben
+
+$ duden Barmherzigkeit --word-separation
+Barm
+her
+zig
+keit
+
+$ duden Barmherzigkeit --meaning-overview
+barmherziges Wesen, Verhalten
+
+$ duden Barmherzigkeit --synonyms
+[Engels]güte, Milde, Nachsicht, Nachsichtigkeit; (gehoben) Herzensgüte, Mildtätigkeit, Seelengüte; (bildungssprachlich) Humanität, Indulgenz; (veraltend) Wohltätigkeit; (Religion) Gnade
+
+$ duden Barmherzigkeit --origin
+mittelhochdeutsch barmherzekeit, barmherze, althochdeutsch armherzi, nach (kirchen)lateinisch misericordia
+
+$ duden Barmherzigkeit --compounds

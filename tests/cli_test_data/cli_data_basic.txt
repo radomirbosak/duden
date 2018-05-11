@@ -1,0 +1,14 @@
+$ ./duden/main.py tuscheln
+tuscheln
+========
+Word type: schwaches Verb
+Usage: oft abwertend
+Commonness: 2/5
+Separation: tu|scheln
+Meaning overview:
+ 0. in flüsterndem Ton [und darauf bedacht, dass niemand mithört] zu jemandem hingewendet sprechen
+
+ 1. tuschelnd sagen
+
+Synonyms:
+flüstern, hauchen, leise sprechen, murmeln, zischeln; (gehoben) raunen; (ironisch) säuseln; (landschaftlich) pispern; (landschaftlich, sonst veraltet) fispern
