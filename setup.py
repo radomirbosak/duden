@@ -11,6 +11,7 @@ setup(
     download_url='https://github.com/radomirbosak/duden/archive/'
                  '0.10.0.tar.gz',
     keywords=['duden', 'duden.de', 'dictionary', 'cli', 'word'],
+    license='MIT',
     entry_points={
         'console_scripts': [
             'duden = duden.main:main'
