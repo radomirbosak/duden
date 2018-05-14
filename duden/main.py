@@ -58,6 +58,7 @@ AKKUSATIV = 'Akkusativ'
 
 gettext.install('duden', os.path.join(os.path.dirname(__file__), 'locale'))
 
+
 class DudenWord():
 
     wordcloud_parts_of_speech = ['substantive', 'verben', 'adjektive']
