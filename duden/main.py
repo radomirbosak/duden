@@ -14,10 +14,11 @@ transliteration:
 * ß -> sz
 """
 
-import sys
-import copy
 import argparse
+import copy
 import gettext
+import os
+import sys
 from itertools import cycle
 
 import bs4
@@ -55,6 +56,7 @@ GENITIV = 'Genitiv'
 DATIV = 'Dativ'
 AKKUSATIV = 'Akkusativ'
 
+gettext.install('duden', os.path.join(os.path.dirname(__file__), 'locale'))
 
 class DudenWord():
 
@@ -608,5 +610,4 @@ def main():
 
 
 if __name__ == '__main__':
-    gettext.install('duden', 'locale')
     main()
