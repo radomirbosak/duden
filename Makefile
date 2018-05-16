@@ -1,3 +1,5 @@
+.PHONY: all test testloop clean localization package
+
 all:
 	@echo "Available:"
 	@echo "make test"
@@ -17,3 +19,9 @@ testloop:
 
 clean:
 	rm -rf duden/__pycache__ tests/__pycache__
+
+localization:
+	./duden/locale/build.sh
+
+package: localization
+	python setup.py sdist
