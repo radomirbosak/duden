@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-05-12 03:36+0200\n"
-"PO-Revision-Date: 2018-05-12 03:40+0200\n"
+"PO-Revision-Date: 2018-05-16 21:55+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: main.py:76
 msgid "Word type: "
-msgstr "Tipo de palabra:"
+msgstr "Tipo de palabra: "
 
 #: main.py:78
 msgid "Usage: "
-msgstr "Uso:"
+msgstr "Uso: "
 
 #: main.py:79
 msgid "Commonness: {}/5"
@@ -31,7 +31,7 @@ msgstr "Frecuencia: {}/5"
 
 #: main.py:81
 msgid "Separation: "
-msgstr "Separación:"
+msgstr "Separación: "
 
 #: main.py:84
 msgid "Meaning overview:"
