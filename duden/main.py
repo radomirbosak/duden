@@ -428,9 +428,8 @@ def get(word):
     try:
         response = requests.get(url)
     except requests.exceptions.ConnectionError:
-        raise Exception(
-            _("Connection could not be established.")
-            + _(" Check your internet connection."))
+        raise Exception(_("Connection could not be established. "
+                          "Check your internet connection."))
 
     code = response.status_code
     if code == 200:

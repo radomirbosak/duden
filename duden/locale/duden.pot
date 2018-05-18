@@ -5,105 +5,101 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-05-12 03:35+0200\n"
+"POT-Creation-Date: 2018-05-18 11:11+CEST\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
 "Generated-By: pygettext.py 1.5\n"
 
 
-#: main.py:76
+#: main.py:79
 msgid "Word type: "
 msgstr ""
 
-#: main.py:78
+#: main.py:81
 msgid "Usage: "
 msgstr ""
 
-#: main.py:79
+#: main.py:82
 msgid "Commonness: {}/5"
 msgstr ""
 
-#: main.py:81
+#: main.py:84
 msgid "Separation: "
 msgstr ""
 
-#: main.py:84
+#: main.py:87
 msgid "Meaning overview:"
 msgstr ""
 
-#: main.py:88
+#: main.py:91
 msgid "Synonyms:"
 msgstr ""
 
-#: main.py:92
+#: main.py:95
 msgid "Typical compounds:"
 msgstr ""
 
-#: main.py:429
-msgid "Connection could not be established."
+#: main.py:431
+msgid "Connection could not be established. Check your internet connection."
 msgstr ""
 
-#: main.py:430
-msgid " Check your internet connection."
-msgstr ""
-
-#: main.py:440
+#: main.py:442
 msgid "Unexpected HTTP response status code {}"
 msgstr ""
 
-#: main.py:478
+#: main.py:480
 msgid "Display word and its article"
 msgstr ""
 
-#: main.py:480
+#: main.py:482
 msgid "Display the word itself"
 msgstr ""
 
-#: main.py:482
+#: main.py:484
 msgid "Display word article"
 msgstr ""
 
-#: main.py:484
+#: main.py:486
 msgid "Display word's part of speech"
 msgstr ""
 
-#: main.py:486
+#: main.py:488
 msgid "Display commonness of the word, on scale 1 to 5"
 msgstr ""
 
-#: main.py:489
+#: main.py:491
 msgid "Display the context in which the word is used"
 msgstr ""
 
-#: main.py:492
+#: main.py:494
 msgid "Display proper word separation, each part on a separate line."
 msgstr ""
 
-#: main.py:495
+#: main.py:497
 msgid "Display word meaning overview"
 msgstr ""
 
-#: main.py:497
+#: main.py:499
 msgid "List word synonyms, each on a separate line"
 msgstr ""
 
-#: main.py:499
+#: main.py:501
 msgid "Display word origin"
 msgstr ""
 
-#: main.py:501
+#: main.py:503
 msgid "List common word compounds"
 msgstr ""
 
-#: main.py:503
+#: main.py:505
 msgid "List grammar forms"
 msgstr ""
 
-#: main.py:604
+#: main.py:606
 msgid "Word '{}' not found"
 msgstr ""
 
