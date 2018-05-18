@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-05-18 11:12+0200\n"
-"PO-Revision-Date: 2018-05-18 12:45+0200\n"
+"PO-Revision-Date: 2018-05-18 12:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -47,7 +47,7 @@ msgstr "Typische Wortverbindungen:"
 
 #: main.py:431
 msgid "Connection could not be established. Check your internet connection."
-msgstr "Verbindung konnte nicht hergestellt werden. Prüfen Ihrer Internetverbindung."
+msgstr "Verbindung konnte nicht hergestellt werden. Prüfen Sie Ihrer Internetverbindung."
 
 #: main.py:442
 msgid "Unexpected HTTP response status code {}"
