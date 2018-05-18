@@ -14,9 +14,11 @@ transliteration:
 * ß -> sz
 """
 
-import sys
-import copy
 import argparse
+import copy
+import gettext
+import os
+import sys
 from itertools import cycle
 
 import bs4
@@ -54,6 +56,8 @@ GENITIV = 'Genitiv'
 DATIV = 'Dativ'
 AKKUSATIV = 'Akkusativ'
 
+gettext.install('duden', os.path.join(os.path.dirname(__file__), 'locale'))
+
 
 class DudenWord():
 
@@ -72,23 +76,23 @@ class DudenWord():
         print(self.title)
         print('=' * len(self.title))
 
-        print('Word type: ' + self.part_of_speech)
+        print(_('Word type: ') + self.part_of_speech)
         if self.usage:
-            print('Usage: ' + self.usage)
-        print('Commonness: {}/5'.format(self.frequency))
+            print(_('Usage: ') + self.usage)
+        print(_('Commonness: {}/5').format(self.frequency))
         if self.word_separation:
-            print('Separation: ' + '|'.join(self.word_separation))
+            print(_('Separation: ') + '|'.join(self.word_separation))
 
         if self.meaning_overview:
-            print('Meaning overview:')
+            print(_('Meaning overview:'))
             print_tree_of_strings(self.meaning_overview)
 
         if self.synonyms:
-            print('Synonyms:')
+            print(_('Synonyms:'))
             print_tree_of_strings(self.synonyms)
 
         if self.compounds:
-            print('Typical compounds:')
+            print(_('Typical compounds:'))
             for part_of_speech, words in self.compounds.items():
                 print(' - {}: {}'.format(part_of_speech, ', '.join(words)))
 
@@ -425,8 +429,8 @@ def get(word):
         response = requests.get(url)
     except requests.exceptions.ConnectionError:
         raise Exception(
-            "Connection could not be established."
-            + " Check your internet connection.")
+            _("Connection could not be established.")
+            + _(" Check your internet connection."))
 
     code = response.status_code
     if code == 200:
@@ -436,7 +440,7 @@ def get(word):
         return None
     else:
         raise Exception(
-            "Unexpected HTTP response status code {}".format(code))
+            _("Unexpected HTTP response status code {}").format(code))
 
     return load_soup(soup)
 
@@ -474,30 +478,32 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('word')
     parser.add_argument('--title', action='store_true',
-                        help='Display word and its article')
+                        help=_('Display word and its article'))
     parser.add_argument('--name', action='store_true',
-                        help='Display the word itself')
+                        help=_('Display the word itself'))
     parser.add_argument('--article', action='store_true',
-                        help='Display word article')
+                        help=_('Display word article'))
     parser.add_argument('--part-of-speech', action='store_true',
-                        help='Display word\'s part of speech')
+                        help=_('Display word\'s part of speech'))
     parser.add_argument('--frequency', action='store_true',
-                        help='Display commonness of the word, on scale 1 to 5')
+                        help=_('Display commonness of the word, '
+                               'on scale 1 to 5'))
     parser.add_argument('--usage', action='store_true',
-                        help='Display the context in which the word is used')
+                        help=_('Display the context in '
+                               'which the word is used'))
     parser.add_argument('--word-separation', action='store_true',
-                        help='Display proper word separation, each part on a '
-                             'separate line.')
+                        help=_('Display proper word separation, each part on '
+                               'a separate line.'))
     parser.add_argument('--meaning-overview', action='store_true',
-                        help='Display word meaning overview')
+                        help=_('Display word meaning overview'))
     parser.add_argument('--synonyms', action='store_true',
-                        help='List word synonyms, each on a separate line')
+                        help=_('List word synonyms, each on a separate line'))
     parser.add_argument('--origin', action='store_true',
-                        help='Display word origin')
+                        help=_('Display word origin'))
     parser.add_argument('--compounds', nargs='?', const='ALL',
-                        help='List common word compounds')
+                        help=_('List common word compounds'))
     parser.add_argument('-g', '--grammar', nargs='?', const='ALL',
-                        help='List grammar forms')
+                        help=_('List grammar forms'))
 
     return parser.parse_args()
 
@@ -598,7 +604,7 @@ def main():
 
     # exit if the word wasn't found
     if word is None:
-        print("Word '{}' not found".format(args.word))
+        print(_("Word '{}' not found").format(args.word))
         sys.exit(1)
 
     display_word(word, args)
