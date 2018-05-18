@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-05-18 11:12+0200\n"
-"PO-Revision-Date: 2018-05-18 12:53+0200\n"
+"PO-Revision-Date: 2018-05-18 12:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -55,51 +55,51 @@ msgstr "Unvorhersehbare HTTP-Response-Status-Code {}"
 
 #: main.py:480
 msgid "Display word and its article"
-msgstr "Anzeige Wort und sein Artikel"
+msgstr "Anzeigen Wort und sein Artikel"
 
 #: main.py:482
 msgid "Display the word itself"
-msgstr "Anzeige das Wort selbst"
+msgstr "Anzeigen das Wort selbst"
 
 #: main.py:484
 msgid "Display word article"
-msgstr "Anzeige Wort Artikel"
+msgstr "Anzeigen Wort Artikel"
 
 #: main.py:486
 msgid "Display word's part of speech"
-msgstr "Anzeige Wortaussprache"
+msgstr "Anzeigen Wortaussprache"
 
 #: main.py:488
 msgid "Display commonness of the word, on scale 1 to 5"
-msgstr "Anzeige Häufigkeit des Worts, auf einer Skala von 1 bis 5"
+msgstr "Anzeigen Häufigkeit des Worts, auf einer Skala von 1 bis 5"
 
 #: main.py:491
 msgid "Display the context in which the word is used"
-msgstr "Anzeige den Zusammenhang in dem das Wort benutzt wird"
+msgstr "Anzeigen den Zusammenhang in dem das Wort benutzt wird"
 
 #: main.py:494
 msgid "Display proper word separation, each part on a separate line."
-msgstr "Anzeige richtige Worttrennung, jeden Teil in einer eigenen Zeile."
+msgstr "Anzeigen richtige Worttrennung, jeden Teil in einer eigenen Zeile."
 
 #: main.py:497
 msgid "Display word meaning overview"
-msgstr "Anzeige Wortbedeutungsübersicht"
+msgstr "Anzeigen Wortbedeutungsübersicht"
 
 #: main.py:499
 msgid "List word synonyms, each on a separate line"
-msgstr "Liste Wort Synonyme, jede in einer eigenen Zeile"
+msgstr "Listen Wort Synonyme, jede in einer eigenen Zeile"
 
 #: main.py:501
 msgid "Display word origin"
-msgstr "Anzeige Wortherkunft"
+msgstr "Anzeigen Wortherkunft"
 
 #: main.py:503
 msgid "List common word compounds"
-msgstr "Liste typische Wortverbindungen"
+msgstr "Listen typische Wortverbindungen"
 
 #: main.py:505
 msgid "List grammar forms"
-msgstr "Liste Grammatikformen"
+msgstr "Listen Grammatikformen"
 
 #: main.py:606
 msgid "Word '{}' not found"
