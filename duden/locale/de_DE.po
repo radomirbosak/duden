@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-05-18 11:12+0200\n"
-"PO-Revision-Date: 2018-05-18 13:39+0200\n"
+"PO-Revision-Date: 2018-05-20 13:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -23,7 +23,7 @@ msgstr "Wortart: "
 
 #: main.py:81
 msgid "Usage: "
-msgstr "Nutzung: "
+msgstr "Gebrauch: "
 
 #: main.py:82
 msgid "Commonness: {}/5"
@@ -43,15 +43,15 @@ msgstr "Synonyme:"
 
 #: main.py:95
 msgid "Typical compounds:"
-msgstr "Typische Wortverbindungen:"
+msgstr "Typische Verbindungen:"
 
 #: main.py:431
 msgid "Connection could not be established. Check your internet connection."
-msgstr "Verbindung konnte nicht hergestellt werden. Prüfen Sie Ihrer Internetverbindung."
+msgstr "Verbindung konnte nicht hergestellt werden. Prüfen Sie Ihre Internetverbindung."
 
 #: main.py:442
 msgid "Unexpected HTTP response status code {}"
-msgstr "Unvorhersehbare HTTP-Response-Status-Code {}"
+msgstr "Unerwarteter HTTP-Statuscode {}"
 
 #: main.py:480
 msgid "Display word and its article"
@@ -63,11 +63,11 @@ msgstr "Das Wort selbst anzeigen"
 
 #: main.py:484
 msgid "Display word article"
-msgstr "Wort Artikel anzeigen"
+msgstr "Artikel anzeigen"
 
 #: main.py:486
 msgid "Display word's part of speech"
-msgstr "Wortaussprache anzeigen"
+msgstr "Wortart anzeigen"
 
 #: main.py:488
 msgid "Display commonness of the word, on scale 1 to 5"
@@ -87,7 +87,7 @@ msgstr "Wortbedeutungsübersicht anzeigen"
 
 #: main.py:499
 msgid "List word synonyms, each on a separate line"
-msgstr "Wort Synonyme, jede in einer eigenen Zeile, listen"
+msgstr "Synonyme, jedes in einer eigenen Zeile, auflisten"
 
 #: main.py:501
 msgid "Display word origin"
@@ -95,18 +95,12 @@ msgstr "Wortherkunft anzeigen"
 
 #: main.py:503
 msgid "List common word compounds"
-msgstr "Typische Wortverbindungen listen"
+msgstr "Typische Verbindungen auflisten"
 
 #: main.py:505
 msgid "List grammar forms"
-msgstr "Grammatikformen listen"
+msgstr "Grammatikformen auflisten"
 
 #: main.py:606
 msgid "Word '{}' not found"
 msgstr "Wort '{}' nicht gefunden"
-
-#~ msgid "Connection could not be established."
-#~ msgstr "Verbindung konnte nicht festgestellt werden."
-
-#~ msgid " Check your internet connection."
-#~ msgstr " Prüfen Ihren Internetverbindung."
