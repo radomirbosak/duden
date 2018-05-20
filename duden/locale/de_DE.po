@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-05-18 11:12+0200\n"
-"PO-Revision-Date: 2018-05-20 13:40+0200\n"
+"POT-Creation-Date: 2018-05-20 14:02+0200\n"
+"PO-Revision-Date: 2018-05-20 14:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: main.py:79
-msgid "Word type: "
-msgstr "Wortart: "
+msgid "Word type:"
+msgstr "Wortart:"
 
 #: main.py:81
-msgid "Usage: "
-msgstr "Gebrauch: "
+msgid "Usage:"
+msgstr "Gebrauch:"
 
 #: main.py:82
 msgid "Commonness: {}/5"
@@ -47,7 +47,9 @@ msgstr "Typische Verbindungen:"
 
 #: main.py:431
 msgid "Connection could not be established. Check your internet connection."
-msgstr "Verbindung konnte nicht hergestellt werden. Prüfen Sie Ihre Internetverbindung."
+msgstr ""
+"Verbindung konnte nicht hergestellt werden. Prüfen Sie Ihre "
+"Internetverbindung."
 
 #: main.py:442
 msgid "Unexpected HTTP response status code {}"
