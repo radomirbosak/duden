@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-05-18 11:11+0200\n"
-"PO-Revision-Date: 2018-05-18 11:11+0200\n"
+"POT-Creation-Date: 2018-05-20 14:00+0200\n"
+"PO-Revision-Date: 2018-05-20 14:00+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: main.py:79
-msgid "Word type: "
-msgstr "Tipo de palabra: "
+msgid "Word type:"
+msgstr "Tipo de palabra:"
 
 #: main.py:81
-msgid "Usage: "
-msgstr "Uso: "
+msgid "Usage:"
+msgstr "Uso:"
 
 #: main.py:82
 msgid "Commonness: {}/5"
@@ -104,12 +104,3 @@ msgstr "Lista formas gramaticales"
 #: main.py:606
 msgid "Word '{}' not found"
 msgstr "Palabra «{}» no encontrada"
-
-#~ msgid "Connection could not be established. Check yourinternet connection."
-#~ msgstr "No se pudo establecer la conexión. Comprueba tu conexión a Internet."
-
-#~ msgid "Connection could not be established."
-#~ msgstr "No se pudo establecer la conexión."
-
-#~ msgid " Check your internet connection."
-#~ msgstr " Comprueba tu conexión a Internet"
