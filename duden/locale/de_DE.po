@@ -4,102 +4,105 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-05-20 14:00+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-05-20 14:02+0200\n"
+"PO-Revision-Date: 2018-05-20 15:05+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: main.py:79
 msgid "Word type:"
-msgstr ""
+msgstr "Wortart:"
 
 #: main.py:81
 msgid "Usage:"
-msgstr ""
+msgstr "Gebrauch:"
 
 #: main.py:82
 msgid "Commonness: {}/5"
-msgstr ""
+msgstr "Häufigkeit: {}/5"
 
 #: main.py:84
 msgid "Separation: "
-msgstr ""
+msgstr "Worttrennung: "
 
 #: main.py:87
 msgid "Meaning overview:"
-msgstr ""
+msgstr "Bedeutungsübersicht:"
 
 #: main.py:91
 msgid "Synonyms:"
-msgstr ""
+msgstr "Synonyme:"
 
 #: main.py:95
 msgid "Typical compounds:"
-msgstr ""
+msgstr "Typische Verbindungen:"
 
 #: main.py:431
 msgid "Connection could not be established. Check your internet connection."
 msgstr ""
+"Verbindung konnte nicht hergestellt werden. Prüfen Sie Ihre "
+"Internetverbindung."
 
 #: main.py:442
 msgid "Unexpected HTTP response status code {}"
-msgstr ""
+msgstr "Unerwarteter HTTP-Statuscode {}"
 
 #: main.py:480
 msgid "Display word and its article"
-msgstr ""
+msgstr "Wort und sein Artikel anzeigen"
 
 #: main.py:482
 msgid "Display the word itself"
-msgstr ""
+msgstr "Das Wort selbst anzeigen"
 
 #: main.py:484
 msgid "Display word article"
-msgstr ""
+msgstr "Artikel anzeigen"
 
 #: main.py:486
 msgid "Display word's part of speech"
-msgstr ""
+msgstr "Wortart anzeigen"
 
 #: main.py:488
 msgid "Display commonness of the word, on scale 1 to 5"
-msgstr ""
+msgstr "Häufigkeit des Worts, auf einer Skala von 1 bis 5, anzeigen"
 
 #: main.py:491
 msgid "Display the context in which the word is used"
-msgstr ""
+msgstr "Den Zusammenhang, in dem das Wort benutzt wird, anzeigen"
 
 #: main.py:494
 msgid "Display proper word separation, each part on a separate line."
-msgstr ""
+msgstr "Richtige Worttrennung, jeden Teil in einer eigenen Zeile, anzeigen."
 
 #: main.py:497
 msgid "Display word meaning overview"
-msgstr ""
+msgstr "Bedeutungsübersicht anzeigen"
 
 #: main.py:499
 msgid "List word synonyms, each on a separate line"
-msgstr ""
+msgstr "Synonyme, jedes in einer eigenen Zeile, auflisten"
 
 #: main.py:501
 msgid "Display word origin"
-msgstr ""
+msgstr "Wortherkunft anzeigen"
 
 #: main.py:503
 msgid "List common word compounds"
-msgstr ""
+msgstr "Typische Verbindungen auflisten"
 
 #: main.py:505
 msgid "List grammar forms"
-msgstr ""
+msgstr "Grammatik anzeigen"
 
 #: main.py:606
 msgid "Word '{}' not found"
-msgstr ""
-
+msgstr "Wort '{}' nicht gefunden"

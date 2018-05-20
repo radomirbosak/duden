@@ -76,9 +76,9 @@ class DudenWord():
         print(self.title)
         print('=' * len(self.title))
 
-        print(_('Word type: ') + self.part_of_speech)
+        print(_('Word type:'), self.part_of_speech)
         if self.usage:
-            print(_('Usage: ') + self.usage)
+            print(_('Usage:'), self.usage)
         print(_('Commonness: {}/5').format(self.frequency))
         if self.word_separation:
             print(_('Separation: ') + '|'.join(self.word_separation))
@@ -428,9 +428,8 @@ def get(word):
     try:
         response = requests.get(url)
     except requests.exceptions.ConnectionError:
-        raise Exception(
-            _("Connection could not be established.")
-            + _(" Check your internet connection."))
+        raise Exception(_("Connection could not be established. "
+                          "Check your internet connection."))
 
     code = response.status_code
     if code == 200:
