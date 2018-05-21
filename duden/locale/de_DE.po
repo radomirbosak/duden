@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-05-20 14:02+0200\n"
-"PO-Revision-Date: 2018-05-20 14:02+0200\n"
+"POT-Creation-Date: 2018-05-21 21:51+0200\n"
+"PO-Revision-Date: 2018-05-21 21:51+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -55,60 +55,75 @@ msgstr ""
 msgid "Unexpected HTTP response status code {}"
 msgstr "Unerwarteter HTTP-Statuscode {}"
 
-#: main.py:480
+#: main.py:484
 msgid "Display word and its article"
 msgstr "Wort und sein Artikel anzeigen"
 
-#: main.py:482
+#: main.py:486
 msgid "Display the word itself"
 msgstr "Das Wort selbst anzeigen"
 
-#: main.py:484
+#: main.py:488
 msgid "Display word article"
 msgstr "Artikel anzeigen"
 
-#: main.py:486
+#: main.py:490
 msgid "Display word's part of speech"
 msgstr "Wortart anzeigen"
 
-#: main.py:488
+#: main.py:492
 msgid "Display commonness of the word, on scale 1 to 5"
 msgstr "Häufigkeit des Worts, auf einer Skala von 1 bis 5, anzeigen"
 
-#: main.py:491
+#: main.py:495
 msgid "Display the context in which the word is used"
 msgstr "Den Zusammenhang, in dem das Wort benutzt wird, anzeigen"
 
-#: main.py:494
+#: main.py:498
 msgid "Display proper word separation, each part on a separate line."
 msgstr "Richtige Worttrennung, jeden Teil in einer eigenen Zeile, anzeigen."
 
-#: main.py:497
+#: main.py:501
 msgid "Display word meaning overview"
 msgstr "Bedeutungsübersicht anzeigen"
 
-#: main.py:499
+#: main.py:503
 msgid "List word synonyms, each on a separate line"
 msgstr "Synonyme, jedes in einer eigenen Zeile, auflisten"
 
-#: main.py:501
+#: main.py:505
 msgid "Display word origin"
 msgstr "Wortherkunft anzeigen"
 
-#: main.py:503
+#: main.py:507
 msgid "List common word compounds"
 msgstr "Typische Verbindungen auflisten"
 
-#: main.py:505
+#: main.py:509
 msgid "List grammar forms"
 msgstr "Grammatik anzeigen"
 
-#: main.py:606
+#: main.py:512
+msgid ""
+"Display n-th result in case of multple words matching the input. Starts at 1."
+msgstr ""
+
+#: main.py:515
+msgid "Enable fuzzy word matching."
+msgstr ""
+
+#: main.py:612
 msgid "Word '{}' not found"
 msgstr "Wort '{}' nicht gefunden"
 
-msgid "Found {} matching words. Use the -r/--result argument to specify which one to display."
-msgstr "{} passende Wörter genfunden. Benutze die Option -r/--result um das korrekte Ergebnis anzuzeigen."
+#: main.py:617
+msgid ""
+"Found {} matching words. Use the -r/--result argument to specify which one "
+"to display."
+msgstr ""
+"{} passende Wörter genfunden. Benutze die Option -r/--result um das korrekte "
+"Ergebnis anzuzeigen."
 
+#: main.py:629
 msgid "No result with number {}."
 msgstr "Kein Ergebnis Nummer {}."
