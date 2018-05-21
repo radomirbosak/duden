@@ -459,6 +459,10 @@ def search(word, exact=True, return_words=True):
     response = requests.get(url)
     soup = bs4.BeautifulSoup(response.text, 'html.parser')
     main_sec = soup.find('section', id='block-duden-tiles-0')
+
+    if main_sec is None:
+        return []
+
     a_tags = [h2.a for h2 in main_sec.find_all('h2')]
 
     urlnames = [a['href'].split('/')[-1]
@@ -503,6 +507,12 @@ def parse_args():
                         help=_('List common word compounds'))
     parser.add_argument('-g', '--grammar', nargs='?', const='ALL',
                         help=_('List grammar forms'))
+
+    parser.add_argument('-r', '--result', type=int,
+                        help=_('Display n-th result in case of multple words '
+                               'matching the input. Starts at 1.'))
+    parser.add_argument('--fuzzy', action='store_true',
+                        help=_('Enable fuzzy word matching.'))
 
     return parser.parse_args()
 
@@ -594,16 +604,36 @@ def main():
     """
     args = parse_args()
 
-    # load and parse the word
-    try:
-        word = get(args.word)
-    except Exception as exception:
-        print(exception)
-        sys.exit(1)
+    # search all words matching the string
+    words = search(args.word, return_words=False, exact=not args.fuzzy)
 
     # exit if the word wasn't found
-    if word is None:
+    if not words:
         print(_("Word '{}' not found").format(args.word))
+        sys.exit(1)
+
+    # list the options when there is more than one matching word
+    if len(words) > 1 and args.result is None:
+        print(_('Found {} matching words. Use the -r/--result argument to '
+                'specify which one to display.').format(len(words)))
+        for i, word in enumerate(words, 1):
+            print('{}) {}'.format(i, word))
+        sys.exit(1)
+
+    result_index = args.result if args.result is not None else 1
+
+    # choose the correct result
+    try:
+        word_url_suffix = words[result_index - 1]
+    except IndexError:
+        print(_("No result with number {}.").format(result_index))
+        sys.exit(1)
+
+    # fetch and parse the word
+    try:
+        word = get(word_url_suffix)
+    except Exception as exception:
+        print(exception)
         sys.exit(1)
 
     display_word(word, args)
