@@ -106,3 +106,9 @@ msgstr "Grammatik anzeigen"
 #: main.py:606
 msgid "Word '{}' not found"
 msgstr "Wort '{}' nicht gefunden"
+
+msgid "Found {} matching words. Use the -r/--result argument to specify which one to display."
+msgstr "{} passende Wörter genfunden. Benutze die Option -r/--result um das korrekte Ergebnis anzuzeigen."
+
+msgid "No result with number {}."
+msgstr "Kein Ergebnis Nummer {}."

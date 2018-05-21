@@ -103,3 +103,8 @@ msgstr ""
 msgid "Word '{}' not found"
 msgstr ""
 
+msgid "Found {} matching words. Use the -r/--result argument to specify which one to display."
+msgstr ""
+
+msgid "No result with number {}."
+msgstr ""
