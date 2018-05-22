@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-05-21 21:53+0200\n"
-"PO-Revision-Date: 2018-05-21 21:53+0200\n"
+"PO-Revision-Date: 2018-05-22 09:05+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -55,7 +55,7 @@ msgstr "Código de estado de respuesta HTTP inesperado {}"
 
 #: main.py:484
 msgid "Display word and its article"
-msgstr "Mostrar palabra y su artículo"
+msgstr "Muestra palabra y su artículo"
 
 #: main.py:486
 msgid "Display the word itself"
@@ -106,10 +106,12 @@ msgstr "Lista formas gramaticales"
 msgid ""
 "Display n-th result in case of multple words matching the input. Starts at 1."
 msgstr ""
+"Muestra el resultado número n en caso de que varias palabras coincidan con "
+"la entrada. Empieza por 1."
 
 #: main.py:515
 msgid "Enable fuzzy word matching."
-msgstr ""
+msgstr "Habilita coincidencia de palabra parcial."
 
 #: main.py:612
 msgid "Word '{}' not found"
@@ -120,7 +122,9 @@ msgid ""
 "Found {} matching words. Use the -r/--result argument to specify which one "
 "to display."
 msgstr ""
+"Encontradas {} palabras coincidentes. Usa el argumento -r/--result para "
+"especificar cuál mostrar."
 
 #: main.py:629
 msgid "No result with number {}."
-msgstr ""
+msgstr "Ningún resultado con número {}."
