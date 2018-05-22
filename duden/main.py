@@ -76,7 +76,8 @@ class DudenWord():
         print(self.title)
         print('=' * len(self.title))
 
-        print(_('Word type:'), self.part_of_speech)
+        if self.part_of_speech:
+            print(_('Word type:'), self.part_of_speech)
         if self.usage:
             print(_('Usage:'), self.usage)
         print(_('Commonness: {}/5').format(self.frequency))
