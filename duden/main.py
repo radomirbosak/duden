@@ -80,7 +80,8 @@ class DudenWord():
             print(_('Word type:'), self.part_of_speech)
         if self.usage:
             print(_('Usage:'), self.usage)
-        print(_('Commonness: {}/5').format(self.frequency))
+        if self.frequency:
+            print(_('Commonness: {}/5').format(self.frequency))
         if self.word_separation:
             print(_('Separation: ') + '|'.join(self.word_separation))
 
