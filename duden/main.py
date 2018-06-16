@@ -24,8 +24,8 @@ from itertools import cycle
 import bs4
 import requests
 
-from duden.common import (recursively_extract, print_tree_of_strings,
-                          clear_text, print_string_or_list)
+from .common import (recursively_extract, print_tree_of_strings,
+                     clear_text, print_string_or_list)
 
 
 URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
