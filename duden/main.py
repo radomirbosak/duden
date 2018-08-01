@@ -250,7 +250,8 @@ class DudenWord():
             node.header.extract()
 
         # remove examples
-        if node.section and node.section.h3.text == 'Beispiele':
+        if node.section and (node.section.h3.text == 'Beispiel' or
+                             node.section.h3.text == 'Beispiele'):
             node.section.extract()
 
         # remove figures
