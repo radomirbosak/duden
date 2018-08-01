@@ -483,38 +483,35 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('word')
     parser.add_argument('--title', action='store_true',
-                        help=_('Display word and its article'))
+                        help=_('display word and article'))
     parser.add_argument('--name', action='store_true',
-                        help=_('Display the word itself'))
+                        help=_('display the word itself'))
     parser.add_argument('--article', action='store_true',
-                        help=_('Display word article'))
+                        help=_('display article'))
     parser.add_argument('--part-of-speech', action='store_true',
-                        help=_('Display word\'s part of speech'))
+                        help=_('display part of speech'))
     parser.add_argument('--frequency', action='store_true',
-                        help=_('Display commonness of the word, '
-                               'on scale 1 to 5'))
+                        help=_('display commonness (1 to 5)'))
     parser.add_argument('--usage', action='store_true',
-                        help=_('Display the context in '
-                               'which the word is used'))
+                        help=_('display context of use'))
     parser.add_argument('--word-separation', action='store_true',
-                        help=_('Display proper word separation, each part on '
-                               'a separate line.'))
+                        help=_('display proper separation (line separated)'))
     parser.add_argument('--meaning-overview', action='store_true',
-                        help=_('Display word meaning overview'))
+                        help=_('display meaning overview'))
     parser.add_argument('--synonyms', action='store_true',
-                        help=_('List word synonyms, each on a separate line'))
+                        help=_('list synonyms (line separated)'))
     parser.add_argument('--origin', action='store_true',
-                        help=_('Display word origin'))
+                        help=_('display origin'))
     parser.add_argument('--compounds', nargs='?', const='ALL',
-                        help=_('List common word compounds'))
+                        help=_('list common compounds'))
     parser.add_argument('-g', '--grammar', nargs='?', const='ALL',
-                        help=_('List grammar forms'))
+                        help=_('list grammar forms'))
 
     parser.add_argument('-r', '--result', type=int,
-                        help=_('Display n-th result in case of multple words '
-                               'matching the input. Starts at 1.'))
+                        help=_('display n-th (starting from 1) result in case '
+                               'of multiple words matching the input'))
     parser.add_argument('--fuzzy', action='store_true',
-                        help=_('Enable fuzzy word matching.'))
+                        help=_('enable fuzzy word matching'))
 
     return parser.parse_args()
 
