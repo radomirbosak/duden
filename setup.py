@@ -22,7 +22,7 @@ setup(
     ],
     description='CLI-based german dictionary',
     download_url='https://github.com/radomirbosak/duden/archive/'
-                 '0.10.0.tar.gz',
+                 '0.11.1.tar.gz',
     entry_points={
         'console_scripts': [
             'duden = duden.main:main'
@@ -38,5 +38,5 @@ setup(
     name='duden',
     packages=['duden'],
     url='https://github.com/radomirbosak/duden',
-    version='0.10.0',
+    version='0.11.1',
 )
