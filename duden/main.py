@@ -454,6 +454,15 @@ def load_soup(soup):
     return DudenWord(soup)
 
 
+def get_search_link_variants(link_text):
+    """
+    Lists possible interpretations of link text on search page.
+
+    Used for determining whether a search page entry matches the search term.
+    """
+    return clear_text(link_text).split(', ')
+
+
 def search(word, exact=True, return_words=True):
     """
     Search for a word 'word' in duden
@@ -470,7 +479,7 @@ def search(word, exact=True, return_words=True):
 
     urlnames = [a['href'].split('/')[-1]
                 for a in a_tags
-                if (not exact) or clear_text(a.text) == word]
+                if (not exact) or word in get_search_link_variants(a.text)]
     if return_words:
         return [get(urlname) for urlname in urlnames]
     else:
