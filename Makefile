@@ -18,10 +18,16 @@ testloop:
 	done
 
 clean:
-	rm -rf duden/__pycache__ tests/__pycache__
+	rm -rf duden/__pycache__ tests/__pycache__ dist/ duden.egg-info/ build/
 
 localization:
 	./duden/locale/build.sh
 
 package: localization
-	python setup.py sdist
+	python setup.py sdist bdist_wheel
+
+pypi-upload-test:
+	python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+
+pypi-upload:
+	python3 -m twine upload dist/*
