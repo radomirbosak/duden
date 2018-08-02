@@ -4,7 +4,7 @@ setup(
     author='Radomír Bosák',
     author_email='radomir.bosak@gmail.com',
     classifiers=[
-        'Environment :: Console'
+        'Environment :: Console',
         'Intended Audience :: Education',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
