@@ -28,7 +28,7 @@ msgid "Commonness: {}/5"
 msgstr ""
 
 #: main.py:84
-msgid "Separation: "
+msgid "Separation:"
 msgstr ""
 
 #: main.py:87
@@ -52,59 +52,59 @@ msgid "Unexpected HTTP response status code {}"
 msgstr ""
 
 #: main.py:484
-msgid "Display word and its article"
+msgid "display word and article"
 msgstr ""
 
 #: main.py:486
-msgid "Display the word itself"
+msgid "display the word itself"
 msgstr ""
 
 #: main.py:488
-msgid "Display word article"
+msgid "display article"
 msgstr ""
 
 #: main.py:490
-msgid "Display word's part of speech"
+msgid "display part of speech"
 msgstr ""
 
 #: main.py:492
-msgid "Display commonness of the word, on scale 1 to 5"
+msgid "display commonness (1 to 5)"
 msgstr ""
 
 #: main.py:495
-msgid "Display the context in which the word is used"
+msgid "display context of use"
 msgstr ""
 
 #: main.py:498
-msgid "Display proper word separation, each part on a separate line."
+msgid "display proper separation (line separated)"
 msgstr ""
 
 #: main.py:501
-msgid "Display word meaning overview"
+msgid "display meaning overview"
 msgstr ""
 
 #: main.py:503
-msgid "List word synonyms, each on a separate line"
+msgid "list synonyms (line separated)"
 msgstr ""
 
 #: main.py:505
-msgid "Display word origin"
+msgid "display origin"
 msgstr ""
 
 #: main.py:507
-msgid "List common word compounds"
+msgid "list common compounds"
 msgstr ""
 
 #: main.py:509
-msgid "List grammar forms"
+msgid "list grammar forms"
 msgstr ""
 
 #: main.py:512
-msgid "Display n-th result in case of multple words matching the input. Starts at 1."
+msgid "display n-th (starting from 1) result in case of multiple words matching the input"
 msgstr ""
 
 #: main.py:515
-msgid "Enable fuzzy word matching."
+msgid "enable fuzzy word matching"
 msgstr ""
 
 #: main.py:612
