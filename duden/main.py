@@ -83,7 +83,7 @@ class DudenWord():
         if self.frequency:
             print(_('Commonness: {}/5').format(self.frequency))
         if self.word_separation:
-            print(_('Separation: ') + '|'.join(self.word_separation))
+            print(_('Separation:'), '|'.join(self.word_separation))
 
         if self.meaning_overview:
             print(_('Meaning overview:'))

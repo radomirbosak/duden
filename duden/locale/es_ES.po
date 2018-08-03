@@ -54,63 +54,60 @@ msgid "Unexpected HTTP response status code {}"
 msgstr "Código de estado de respuesta HTTP inesperado {}"
 
 #: main.py:484
-msgid "Display word and its article"
+msgid "display word and article"
 msgstr "Muestra palabra y su artículo"
 
 #: main.py:486
-msgid "Display the word itself"
+msgid "display the word itself"
 msgstr "Muestra la propia palabra"
 
 #: main.py:488
-msgid "Display word article"
+msgid "display article"
 msgstr "Muestra el artículo de palabra"
 
 #: main.py:490
-msgid "Display word's part of speech"
+msgid "display part of speech"
 msgstr "Muestra la parte del habla de la palabra"
 
 #: main.py:492
-msgid "Display commonness of the word, on scale 1 to 5"
+msgid "display commonness (1 to 5)"
 msgstr "Muestra la frecuencia de la palabra, del 1 al 5"
 
 #: main.py:495
-msgid "Display the context in which the word is used"
+msgid "display context of use"
 msgstr "Muestra el contexto en que se usa la palabra"
 
 #: main.py:498
-msgid "Display proper word separation, each part on a separate line."
+msgid "display proper separation (line separated)"
 msgstr ""
 "Muestra la adecuada separación de palabra, cada parte en una línea separada."
 
 #: main.py:501
-msgid "Display word meaning overview"
+msgid "display meaning overview"
 msgstr "Muestra el resumen del significado de la palabra"
 
 #: main.py:503
-msgid "List word synonyms, each on a separate line"
+msgid "list synonyms (line separated)"
 msgstr "Lista sinónimos de palabra, cada uno en una línea separada"
 
 #: main.py:505
-msgid "Display word origin"
+msgid "display origin"
 msgstr "Muestra origen de palabra"
 
 #: main.py:507
-msgid "List common word compounds"
+msgid "list common compounds"
 msgstr "Lista palabras compuestas comunes"
 
 #: main.py:509
-msgid "List grammar forms"
+msgid "list grammar forms"
 msgstr "Lista formas gramaticales"
 
 #: main.py:512
-msgid ""
-"Display n-th result in case of multple words matching the input. Starts at 1."
-msgstr ""
-"Muestra el resultado número n en caso de que varias palabras coincidan con "
-"la entrada. Empieza por 1."
+msgid "display n-th (starting from 1) result in case of multiple words matching the input"
+msgstr "Muestra el resultado número n en caso de que varias palabras coincidan con la entrada. Empieza por 1."
 
 #: main.py:515
-msgid "Enable fuzzy word matching."
+msgid "enable fuzzy word matching"
 msgstr "Habilita coincidencia de palabra parcial."
 
 #: main.py:612

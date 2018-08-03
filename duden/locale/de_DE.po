@@ -30,7 +30,7 @@ msgid "Commonness: {}/5"
 msgstr "Häufigkeit: {}/5"
 
 #: main.py:84
-msgid "Separation: "
+msgid "Separation:"
 msgstr "Worttrennung: "
 
 #: main.py:87
@@ -47,82 +47,75 @@ msgstr "Typische Verbindungen:"
 
 #: main.py:431
 msgid "Connection could not be established. Check your internet connection."
-msgstr ""
-"Verbindung konnte nicht hergestellt werden. Prüfen Sie Ihre "
-"Internetverbindung."
+msgstr "Verbindung konnte nicht hergestellt werden. Prüfen Sie Ihre Internetverbindung."
 
 #: main.py:442
 msgid "Unexpected HTTP response status code {}"
 msgstr "Unerwarteter HTTP-Statuscode {}"
 
 #: main.py:484
-msgid "Display word and its article"
+msgid "display word and article"
 msgstr "Wort und sein Artikel anzeigen"
 
 #: main.py:486
-msgid "Display the word itself"
-msgstr "Das Wort selbst anzeigen"
+msgid "display the word itself"
+msgstr "das Wort selbst anzeigen"
 
 #: main.py:488
-msgid "Display word article"
+msgid "display article"
 msgstr "Artikel anzeigen"
 
 #: main.py:490
-msgid "Display word's part of speech"
+msgid "display part of speech"
 msgstr "Wortart anzeigen"
 
 #: main.py:492
-msgid "Display commonness of the word, on scale 1 to 5"
-msgstr "Häufigkeit des Worts, auf einer Skala von 1 bis 5, anzeigen"
+msgid "display commonness (1 to 5)"
+msgstr "Häufigkeit (1 bis 5) anzeigen"
 
 #: main.py:495
-msgid "Display the context in which the word is used"
-msgstr "Den Zusammenhang, in dem das Wort benutzt wird, anzeigen"
+msgid "display context of use"
+msgstr "Verwendungskontext anzeigen"
 
 #: main.py:498
-msgid "Display proper word separation, each part on a separate line."
-msgstr "Richtige Worttrennung, jeden Teil in einer eigenen Zeile, anzeigen."
+msgid "display proper separation (line separated)"
+msgstr "Worttrennung zeilenweise anzeigen"
 
 #: main.py:501
-msgid "Display word meaning overview"
+msgid "display meaning overview"
 msgstr "Bedeutungsübersicht anzeigen"
 
 #: main.py:503
-msgid "List word synonyms, each on a separate line"
-msgstr "Synonyme, jedes in einer eigenen Zeile, auflisten"
+msgid "list synonyms (line separated)"
+msgstr "Synonyme zeilenweise auflisten"
 
 #: main.py:505
-msgid "Display word origin"
+msgid "display origin"
 msgstr "Wortherkunft anzeigen"
 
 #: main.py:507
-msgid "List common word compounds"
-msgstr "Typische Verbindungen auflisten"
+msgid "list common compounds"
+msgstr "typische Verbindungen auflisten"
 
 #: main.py:509
-msgid "List grammar forms"
+msgid "list grammar forms"
 msgstr "Grammatik anzeigen"
 
 #: main.py:512
-msgid ""
-"Display n-th result in case of multple words matching the input. Starts at 1."
-msgstr ""
+msgid "display n-th (starting from 1) result in case of multiple words matching the input"
+msgstr "wähle das n-te (beginnend bei 1) Ergebnis, falls mehrere gefunden wurden"
 
 #: main.py:515
-msgid "Enable fuzzy word matching."
-msgstr ""
+msgid "enable fuzzy word matching"
+msgstr "aktiviere unscharfe Suche"
 
 #: main.py:612
 msgid "Word '{}' not found"
 msgstr "Wort '{}' nicht gefunden"
 
 #: main.py:617
-msgid ""
-"Found {} matching words. Use the -r/--result argument to specify which one "
-"to display."
-msgstr ""
-"{} passende Wörter genfunden. Benutze die Option -r/--result um das korrekte "
-"Ergebnis anzuzeigen."
+msgid "Found {} matching words. Use the -r/--result argument to specify which one to display."
+msgstr "{} passende Wörter gefunden. Benutze die Option -r/--result um ein Ergebnis auszuwählen."
 
 #: main.py:629
 msgid "No result with number {}."
