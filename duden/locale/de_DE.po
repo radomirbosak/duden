@@ -55,7 +55,7 @@ msgstr "Unerwarteter HTTP-Statuscode {}"
 
 #: main.py:484
 msgid "display word and article"
-msgstr "Wort und sein Artikel anzeigen"
+msgstr "Wort und Artikel anzeigen"
 
 #: main.py:486
 msgid "display the word itself"
@@ -119,4 +119,4 @@ msgstr "{} passende Wörter gefunden. Benutze die Option -r/--result um ein Erge
 
 #: main.py:629
 msgid "No result with number {}."
-msgstr "Kein Ergebnis Nummer {}."
+msgstr "Kein Ergebnis mit der Nummer {}."
