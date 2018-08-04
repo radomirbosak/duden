@@ -16,6 +16,7 @@ transliteration:
 
 import argparse
 import copy
+from crayons import blue, red, yellow, white
 import gettext
 import os
 import sys
@@ -73,30 +74,42 @@ class DudenWord():
         """
         Print overall word description
         """
-        print(self.title)
-        print('=' * len(self.title))
+        print(yellow(self.title, bold=True))
+        print(yellow('=' * len(self.title)))
 
         if self.part_of_speech:
-            print(_('Word type:'), self.part_of_speech)
+            print(white(_('Word type:'), bold=True), self.part_of_speech)
         if self.usage:
-            print(_('Usage:'), self.usage)
+            print(white(_('Usage:'), bold=True), self.usage)
         if self.frequency:
-            print(_('Commonness: {}/5').format(self.frequency))
+            commonness = _('Commonness: {}/5').format(self.frequency)
+            print(white(commonness[:-4], bold=True),  # "Commonness:"
+                  commonness[-4:-2],  # " {}"
+                  blue(commonness[-2:-1]),  # "/"
+                  commonness[-1:],  # "5"
+                  sep='')
         if self.word_separation:
-            print(_('Separation: ') + '|'.join(self.word_separation))
+            print(white(_('Separation: '), bold=True), end='')
+            if len(self.word_separation) > 1:
+                for part in self.word_separation[:-1]:
+                    print(part, blue('|'), sep='', end='')
+                print(self.word_separation[-1])
+            else:
+                print(self.word_separation[0])
 
         if self.meaning_overview:
-            print(_('Meaning overview:'))
+            print(white(_('Meaning overview:'), bold=True))
             print_tree_of_strings(self.meaning_overview)
 
         if self.synonyms:
-            print(_('Synonyms:'))
+            print(white(_('Synonyms:'), bold=True))
             print_tree_of_strings(self.synonyms)
 
         if self.compounds:
-            print(_('Typical compounds:'))
+            print(white(_('Typical compounds:'), bold=True))
             for part_of_speech, words in self.compounds.items():
-                print(' - {}: {}'.format(part_of_speech, ', '.join(words)))
+                print(blue(' - {}:'.format(part_of_speech.capitalize())),
+                      ', '.join(words))
 
     @property
     def title(self):
@@ -563,7 +576,7 @@ def display_word(word, args):
         if word.compounds:
             if args.compounds == 'ALL':
                 for part_of_speech, compounds in word.compounds.items():
-                    print('# ' + part_of_speech.capitalize())
+                    print(white('# ' + part_of_speech.capitalize(), bold=True))
                     print_string_or_list(compounds)
                     print()
             else:
@@ -593,7 +606,7 @@ def display_grammar(word, grammar_args):
         keystring = ' '.join(reduced_keys)
 
         if keystring:
-            row = list(reduced_keys) + ["|", value]
+            row = list(reduced_keys) + [blue("|"), value]
         else:
             row = [value]
         table.append(row)
@@ -621,15 +634,16 @@ def main():
 
     # exit if the word wasn't found
     if not words:
-        print(_("Word '{}' not found").format(args.word))
+        print(red(_("Word '{}' not found")).format(args.word))
         sys.exit(1)
 
     # list the options when there is more than one matching word
     if len(words) > 1 and args.result is None:
         print(_('Found {} matching words. Use the -r/--result argument to '
-                'specify which one to display.').format(len(words)))
+                'specify which one to display.').format(white(len(words),
+                                                              bold=True)))
         for i, word in enumerate(words, 1):
-            print('{}) {}'.format(i, word))
+            print('{} {}'.format(blue('{})'.format(i)), word))
         sys.exit(1)
 
     result_index = args.result if args.result is not None else 1
@@ -638,14 +652,14 @@ def main():
     try:
         word_url_suffix = words[result_index - 1]
     except IndexError:
-        print(_("No result with number {}.").format(result_index))
+        print(red(_("No result with number {}.")).format(result_index))
         sys.exit(1)
 
     # fetch and parse the word
     try:
         word = get(word_url_suffix)
     except Exception as exception:
-        print(exception)
+        print(red(exception))
         sys.exit(1)
 
     display_word(word, args)
