@@ -27,6 +27,7 @@ from crayons import blue, red, yellow, white
 
 from .common import (recursively_extract, print_tree_of_strings,
                      clear_text, print_string_or_list)
+from .__version__ import __version__
 
 
 URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
@@ -531,6 +532,9 @@ def parse_args():
     parser.add_argument('--fuzzy', action='store_true',
                         help=_('enable fuzzy word matching'))
 
+    parser.add_argument('-V', '--version', action='store_true',
+                        help=_('print program version'))
+
     return parser.parse_args()
 
 
@@ -619,6 +623,13 @@ def main():
     """
     Take the first CLI argument and describe the corresponding word
     """
+
+    # handle the --version switch
+    if '--version' in sys.argv:
+        print('duden ' + __version__)
+        sys.exit(0)
+
+    # parse normal arguments
     args = parse_args()
 
     # search all words matching the string
