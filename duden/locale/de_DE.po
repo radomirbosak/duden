@@ -26,12 +26,12 @@ msgid "Usage:"
 msgstr "Gebrauch:"
 
 #: main.py:82
-msgid "Commonness: {}/5"
-msgstr "Häufigkeit: {}/5"
+msgid "Commonness:"
+msgstr "Häufigkeit:"
 
 #: main.py:84
 msgid "Separation:"
-msgstr "Worttrennung: "
+msgstr "Worttrennung:"
 
 #: main.py:87
 msgid "Meaning overview:"

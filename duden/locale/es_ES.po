@@ -26,8 +26,8 @@ msgid "Usage:"
 msgstr "Uso:"
 
 #: main.py:82
-msgid "Commonness: {}/5"
-msgstr "Frecuencia: {}/5"
+msgid "Commonness:"
+msgstr "Frecuencia:"
 
 #: main.py:84
 msgid "Separation:"

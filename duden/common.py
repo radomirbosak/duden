@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from crayons import blue
 from string import ascii_lowercase
 
 
@@ -67,11 +68,11 @@ def print_tree_of_strings(tree):
 
     for i1, m1 in enumerate(tree):
         if type(m1) is str:
-            print("{:>2}. {}".format(i1, m1))
+            print(blue("{:>2}. ".format(i1)), m1, sep='')
         elif type(m1) is list:
             for i2, m2 in zip(ascii_lowercase, m1):
-                indent = "{:>2}. ".format(i1) if i2 == 'a' else " " * 4
-                print("{} {}. {}".format(indent, i2, m2))
+                indent = blue("{:>2}. ".format(i1)) if i2 == 'a' else " " * 4
+                print("{} {}".format(indent, blue(i2)), blue('. '), m2, sep='')
         print()
 
 

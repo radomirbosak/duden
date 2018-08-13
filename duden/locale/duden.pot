@@ -24,7 +24,7 @@ msgid "Usage:"
 msgstr ""
 
 #: main.py:82
-msgid "Commonness: {}/5"
+msgid "Commonness:"
 msgstr ""
 
 #: main.py:84
