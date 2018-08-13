@@ -1,5 +1,13 @@
 # -*- coding: utf-8 -*-
+import os
 from setuptools import setup
+
+
+here = os.path.abspath(os.path.dirname(__file__))
+
+about = {}
+with open(os.path.join(here, 'duden', '__version__.py'), 'r', encoding='utf-8') as f:
+    exec(f.read(), about)
 
 setup(
     author='Radomír Bosák',
@@ -21,8 +29,8 @@ setup(
         'Topic :: Education',
     ],
     description='CLI-based german dictionary',
-    download_url='https://github.com/radomirbosak/duden/archive/'
-                 '0.11.2.tar.gz',
+    download_url='https://github.com/radomirbosak/duden/archive/' \
+                 + about['__version__'] + '.tar.gz',
     entry_points={
         'console_scripts': [
             'duden = duden.main:main'
@@ -39,5 +47,5 @@ setup(
     name='duden',
     packages=['duden'],
     url='https://github.com/radomirbosak/duden',
-    version='0.11.2',
+    version=about['__version__'],
 )
