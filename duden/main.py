@@ -82,20 +82,15 @@ class DudenWord():
         if self.usage:
             print(white(_('Usage:'), bold=True), self.usage)
         if self.frequency:
-            commonness = _('Commonness: {}/5').format(self.frequency)
-            print(white(commonness[:-4], bold=True),  # "Commonness:"
-                  commonness[-4:-2],  # " {}"
-                  blue(commonness[-2:-1]),  # "/"
-                  commonness[-1:],  # "5"
-                  sep='')
+            commonness = '{label} {frequency}{max_frequency}'.format(
+                label=white(_('Commonness:'), bold=True),
+                frequency=self.frequency,
+                max_frequency=blue('/5'))
+            print(commonness)
         if self.word_separation:
-            print(white(_('Separation:'), bold=True), end=' ')
-            if len(self.word_separation) > 1:
-                for part in self.word_separation[:-1]:
-                    print(part, blue('|'), sep='', end='')
-                print(self.word_separation[-1])
-            else:
-                print(self.word_separation[0])
+            print('{label} {content}'.format(
+                label=white(_('Separation:'), bold=True),
+                content=str(blue('|')).join(self.word_separation)))
 
         if self.meaning_overview:
             print(white(_('Meaning overview:'), bold=True))
