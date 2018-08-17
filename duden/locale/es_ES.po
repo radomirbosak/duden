@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-05-21 21:53+0200\n"
-"PO-Revision-Date: 2018-05-22 09:05+0200\n"
+"PO-Revision-Date: 2018-08-17 21:30+0200\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -55,7 +55,7 @@ msgstr "Código de estado de respuesta HTTP inesperado {}"
 
 #: main.py:484
 msgid "display word and article"
-msgstr "Muestra palabra y su artículo"
+msgstr "muestra palabra y artículo"
 
 #: main.py:486
 msgid "display the word itself"
@@ -71,56 +71,51 @@ msgstr "Muestra la parte del habla de la palabra"
 
 #: main.py:492
 msgid "display commonness (1 to 5)"
-msgstr "Muestra la frecuencia de la palabra, del 1 al 5"
+msgstr "muestra frecuencia (del 1 al 5)"
 
 #: main.py:495
 msgid "display context of use"
-msgstr "Muestra el contexto en que se usa la palabra"
+msgstr "muestra contexto de uso"
 
 #: main.py:498
 msgid "display proper separation (line separated)"
-msgstr ""
-"Muestra la adecuada separación de palabra, cada parte en una línea separada."
+msgstr "muestra separación adecuada (en líneas separadas)"
 
 #: main.py:501
 msgid "display meaning overview"
-msgstr "Muestra el resumen del significado de la palabra"
+msgstr "muestra resumen de significado"
 
 #: main.py:503
 msgid "list synonyms (line separated)"
-msgstr "Lista sinónimos de palabra, cada uno en una línea separada"
+msgstr "lista sinónimos (en líneas separadas)"
 
 #: main.py:505
 msgid "display origin"
-msgstr "Muestra origen de palabra"
+msgstr "muestra origen"
 
 #: main.py:507
 msgid "list common compounds"
-msgstr "Lista palabras compuestas comunes"
+msgstr "lista compuestas comunes"
 
 #: main.py:509
 msgid "list grammar forms"
-msgstr "Lista formas gramaticales"
+msgstr "lista formas gramaticales"
 
 #: main.py:512
 msgid "display n-th (starting from 1) result in case of multiple words matching the input"
-msgstr "Muestra el resultado número n en caso de que varias palabras coincidan con la entrada. Empieza por 1."
+msgstr "muestra el resultado número x (empezando por 1) en caso de que varias palabras coincidan con la entrada"
 
 #: main.py:515
 msgid "enable fuzzy word matching"
-msgstr "Habilita coincidencia de palabra parcial."
+msgstr "habilita coincidencia de palabra parcial"
 
 #: main.py:612
 msgid "Word '{}' not found"
 msgstr "Palabra «{}» no encontrada"
 
 #: main.py:617
-msgid ""
-"Found {} matching words. Use the -r/--result argument to specify which one "
-"to display."
-msgstr ""
-"Encontradas {} palabras coincidentes. Usa el argumento -r/--result para "
-"especificar cuál mostrar."
+msgid "Found {} matching words. Use the -r/--result argument to specify which one to display."
+msgstr "Encontradas {} palabras coincidentes. Usa el argumento -r/--result para especificar cuál mostrar."
 
 #: main.py:629
 msgid "No result with number {}."
