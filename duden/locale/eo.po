@@ -1,0 +1,130 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-08-18 21:14+0200\n"
+"PO-Revision-Date: 2018-08-18 21:51+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: eo\n"
+
+#: main.py:79
+msgid "Word type:"
+msgstr "Vortotipo:"
+
+#: main.py:81
+msgid "Usage:"
+msgstr "Uzado:"
+
+#: main.py:82
+msgid "Commonness:"
+msgstr "Kutimeco:"
+
+#: main.py:84
+msgid "Separation:"
+msgstr "Vortodivido:"
+
+#: main.py:87
+msgid "Meaning overview:"
+msgstr "Signifa resumo:"
+
+#: main.py:91
+msgid "Synonyms:"
+msgstr "Sinonimoj:"
+
+#: main.py:95
+msgid "Typical compounds:"
+msgstr "Tipaj kombinaj:"
+
+#: main.py:431
+msgid "Connection could not be established. Check your internet connection."
+msgstr "Konekto ne povas establiĝi. Kontrolu vian interretan konekton."
+
+#: main.py:442
+msgid "Unexpected HTTP response status code {}"
+msgstr "Neatendita HTTP responda stato-kodo {}"
+
+#: main.py:484
+msgid "display word and article"
+msgstr "montri vorton kaj artikolon"
+
+#: main.py:486
+msgid "display the word itself"
+msgstr "montri la mem vorton"
+
+#: main.py:488
+msgid "display article"
+msgstr "montri artikolon"
+
+#: main.py:490
+msgid "display part of speech"
+msgstr "montri parton de alparolo"
+
+#: main.py:492
+msgid "display commonness (1 to 5)"
+msgstr "montri kutimeco (de 1al 5)"
+
+#: main.py:495
+msgid "display context of use"
+msgstr "montri kunteksto de uzado"
+
+#: main.py:498
+msgid "display proper separation (line separated)"
+msgstr "montri konvenan vortdividon (disigitan linee)"
+
+#: main.py:501
+msgid "display meaning overview"
+msgstr "montri signifan resumon"
+
+#: main.py:503
+msgid "list synonyms (line separated)"
+msgstr "listigi sinonimojn (disigitajn linee)"
+
+#: main.py:505
+msgid "display origin"
+msgstr "montri originon"
+
+#: main.py:507
+msgid "list common compounds"
+msgstr "listigi kutimajn kombinajn"
+
+#: main.py:509
+msgid "list grammar forms"
+msgstr "listigi gramatikajn formojn"
+
+#: main.py:512
+msgid ""
+"display n-th (starting from 1) result in case of multiple words matching the "
+"input"
+msgstr ""
+"montri n-an (komencitan de 1) rezulton okaze de kelkaj vortoj koincidinte la "
+"enigon."
+
+#: main.py:515
+msgid "enable fuzzy word matching"
+msgstr "Ebligi malprecizan vorto-koincidon"
+
+#: main.py:612
+msgid "Word '{}' not found"
+msgstr "Vorto \"{}\" ne trovita"
+
+#: main.py:617
+msgid ""
+"Found {} matching words. Use the -r/--result argument to specify which one "
+"to display."
+msgstr ""
+"Trovitaj {} koinciditajn vortojn. Uzu je la -r/--result argumento por "
+"specifi kiun montri."
+
+#: main.py:629
+msgid "No result with number {}."
+msgstr "Neniu rezulto kun nombro {}."
