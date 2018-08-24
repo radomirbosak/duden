@@ -2,6 +2,8 @@
 
 **duden** is a CLI-based program and python module, which can provide various information about given german word. The provided data are parsed from german dictionary [duden.de](http://duden.de).
 
+![duden screenshot](screenshot.png)
+
 ## Installation
 ```console
 pip3 install duden
