@@ -107,15 +107,15 @@ msgid ""
 "input"
 msgstr ""
 "montri n-an (komencitan de 1) rezulton okaze de kelkaj vortoj koincidinte la "
-"enigon."
+"enigon"
 
 #: main.py:515
 msgid "enable fuzzy word matching"
-msgstr "Ebligi malprecizan vorto-koincidon"
+msgstr "ebligi malprecizan vorto-koincidon"
 
 #: main.py:612
 msgid "Word '{}' not found"
-msgstr "Vorto \"{}\" ne trovita"
+msgstr "Vorto '{}' ne trovita"
 
 #: main.py:617
 msgid ""
