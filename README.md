@@ -13,7 +13,7 @@ pip3 install duden
 
 ### CLI
 ```console
-$ duden Loeffel
+$ duden Löffel
 
 Löffel, der
 ===========
