@@ -1,0 +1,42 @@
+_duden () {
+    COMPREPLY=()
+    local IFS=$' \n'
+    local cur=$2 prev=$3
+    local -a opts opts_with_args
+    opts=(
+        -h --help
+        --title
+        --name
+        --article
+        --part-of-speech
+        --frequency
+        --usage
+        --word-separation
+        --meaning-overview
+        --synonyms
+        --origin
+        --compounds
+        -g --grammar
+        -r --result
+        --fuzzy
+        --version
+    )
+    opts_with_arg=(
+        -r --result
+    )
+
+    # Do not complete option arguments; only autocomplete positional
+    # arguments (queries).
+    for opt in "${opts_with_arg[@]}"; do
+        [[ $opt == $prev ]] && return 1
+    done
+
+    if [[ $cur == -* ]]; then
+        # The current argument is an option -- complete option names.
+        COMPREPLY=( $(compgen -W "${opts[*]}" -- "$cur") )
+    fi
+
+    return 0
+}
+
+complete -F _duden duden
