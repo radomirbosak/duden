@@ -3,3 +3,5 @@ __pycache__
 *.mo
 .pytest_cache
 duden.egg-info/
+/build/
+/dist/
