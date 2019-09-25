@@ -479,16 +479,17 @@ def search(word, exact=True, return_words=True):
     url = SEARCH_URL_FORM.format(word=word)
     response = requests.get(url)
     soup = bs4.BeautifulSoup(response.text, 'html.parser')
-    main_sec = soup.find('section', id='block-duden-tiles-0')
+    definitions = soup.find_all('h2', class_='vignette__title')
 
-    if main_sec is None:
+    if definitions is None:
         return []
 
-    a_tags = [h2.a for h2 in main_sec.find_all('h2')]
+    urlnames = []
+    for definition in definitions:
+        definition_title = definition.text
+        if (not exact) or word in get_search_link_variants(definition_title):
+            urlnames.append(definition.find('a')['href'].split('/')[-1])
 
-    urlnames = [a['href'].split('/')[-1]
-                for a in a_tags
-                if (not exact) or word in get_search_link_variants(a.text)]
     if return_words:
         return [get(urlname) for urlname in urlnames]
     else:
