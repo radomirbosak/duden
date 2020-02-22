@@ -179,9 +179,8 @@ class DudenWord():
         5 - most frequent
         """
         try:
-            pos_div = self._section_main_get_node(
-                'Häufigkeit:', use_label=False)
-            return pos_div.strong.text.count('▮')
+            freq_bar = self.soup.find('span', class_='shaft__full')
+            return len(freq_bar.text)
         except AttributeError:
             return None
 
