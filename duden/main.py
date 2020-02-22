@@ -112,7 +112,7 @@ class DudenWord():
         """
         The word string
         """
-        return self.soup.h1.get_text().replace('\xad', '')
+        return self.soup.h1.get_text().replace('\xad', '').strip()
 
     @property
     def name(self):
