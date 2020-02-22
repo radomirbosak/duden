@@ -218,24 +218,15 @@ class DudenWord():
         """
         Return the word separated in a form of a list
         """
-        try:
-            section = self._find_section('Rechtschreibung')
-            div = self._section_other_get_div('Worttrennung:', section,
-                                              use_label=False)
-            return div.find('span', class_='lexem').text.split('|')
-        except AttributeError:
-            pass
 
-        # If the word_separation was not found in the Rechtschreibung section
-        # we try it again in the main section (see e.g. word 'Qat').
-        try:
-            div = self._section_main_get_node('Worttrennung:')
-            div = copy.copy(div)
-            label = div.find('span', class_='label')
-            label.extract()
-            return div.text.strip().split('|')
-        except AttributeError:
-            return None
+        dls = self.soup.article.find_all('dl', class_='tuple')
+        for dl in dls:
+            label = dl.find('dt', class_='tuple__key')
+            if label.text == 'Worttrennung':
+                target = dl.find('dd', class_='tuple__val')
+                return target.text.split('|')
+
+        return None
 
     @property
     def meaning_overview(self):
