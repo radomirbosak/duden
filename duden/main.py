@@ -166,8 +166,7 @@ class DudenWord():
         Return the part of speech
         """
         try:
-            pos_div = self._section_main_get_node('Wortart:')
-            return pos_div.strong.text
+            return self.soup.article.find('dl', class_='tuple').dd.text
         except AttributeError:
             return None
 
