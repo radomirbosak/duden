@@ -160,13 +160,27 @@ class DudenWord():
         else:
             return None
 
+    def _find_tuple_dl(self, key):
+        """
+        Get value element corresponding to key element containing the text provided by
+        the `key` argument
+        """
+        dls = self.soup.article.find_all('dl', class_='tuple')
+        for dl in dls:
+            label = dl.find('dt', class_='tuple__key')
+            if key in label.text:
+                return dl.find('dd', class_='tuple__val')
+
+        return None
+
     @property
     def part_of_speech(self):
         """
         Return the part of speech
         """
         try:
-            return self.soup.article.find('dl', class_='tuple').dd.text
+            pos_element = self._find_tuple_dl('Wortart')
+            return pos_element.text
         except AttributeError:
             return None
 
@@ -218,15 +232,11 @@ class DudenWord():
         """
         Return the word separated in a form of a list
         """
+        sep_element = self._find_tuple_dl('Worttrennung')
+        if not sep_element:
+            return None
 
-        dls = self.soup.article.find_all('dl', class_='tuple')
-        for dl in dls:
-            label = dl.find('dt', class_='tuple__key')
-            if label.text == 'Worttrennung':
-                target = dl.find('dd', class_='tuple__val')
-                return target.text.split('|')
-
-        return None
+        return sep_element.text.split('|')
 
     @property
     def meaning_overview(self):
