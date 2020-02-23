@@ -289,14 +289,14 @@ class DudenWord():
         """
         Return the word origin
         """
-        section = self._find_section('Herkunft')
+        section = self.soup.find('div', id='herkunft')
         if section is None:
             return None
 
         section = copy.copy(section)
         if section.header:
             section.header.extract()
-        return section.text
+        return section.text.strip()
 
     @property
     def compounds(self):
