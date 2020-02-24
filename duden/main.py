@@ -160,12 +160,15 @@ class DudenWord():
         else:
             return None
 
-    def _find_tuple_dl(self, key):
+    def _find_tuple_dl(self, key, element=None):
         """
         Get value element corresponding to key element containing the text provided by
         the `key` argument
         """
-        dls = self.soup.article.find_all('dl', class_='tuple')
+        if element is None:
+            element = self.soup.article
+
+        dls = element.find_all('dl', class_='tuple', recursive=False)
         for dl in dls:
             label = dl.find('dt', class_='tuple__key')
             if key in label.text:
@@ -204,8 +207,8 @@ class DudenWord():
         Return usage context
         """
         try:
-            pos_div = self._section_main_get_node('Gebrauch:')
-            return pos_div.strong.text
+            element = self._find_tuple_dl('Gebrauch')
+            return element.text
         except AttributeError:
             return None
 
@@ -232,7 +235,8 @@ class DudenWord():
         """
         Return the word separated in a form of a list
         """
-        sep_element = self._find_tuple_dl('Worttrennung')
+        containing_div = self.soup.find('div', id='rechtschreibung')
+        sep_element = self._find_tuple_dl('Worttrennung', containing_div)
         if not sep_element:
             return None
 
