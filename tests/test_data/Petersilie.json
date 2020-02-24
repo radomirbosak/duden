@@ -15,5 +15,5 @@
     "compounds": null,
     "grammar_raw": [[["Nominativ", "Singular"], "die Petersilie"], [["Plural", "Nominativ"], "die Petersilien"], [["Singular", "Genitiv"], "der Petersilie"], [["Plural", "Genitiv"], "der Petersilien"], [["Dativ", "Singular"], "der Petersilie"], [["Dativ", "Plural"], "den Petersilien"], [["Singular", "Akkusativ"], "die Petersilie"], [["Plural", "Akkusativ"], "die Petersilien"]],
 
-    "synonyms": "(schweizerisch) Peterli; (bayrisch, österreichisch umgangssprachlich) Petersil; (südwestdeutsch und schweizerisch mundartlich) Peterle"
+    "synonyms": ["(schweizerisch) Peterli; (bayrisch, österreichisch umgangssprachlich) Petersil; (südwestdeutsch und schweizerisch mundartlich) Peterle"]
 }
