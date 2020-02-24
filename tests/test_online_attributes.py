@@ -37,7 +37,7 @@ word_data = generate_word_data()
 
 basic_attributes = [
     'title', 'name', 'article', 'part_of_speech', 'frequency', 'usage',
-    'word_separation', 'meaning_overview', 'synonyms', 'origin', 'compounds'
+    'word_separation', 'meaning_overview', 'synonyms', 'origin',
 ]
 
 word_param = pytest.mark.parametrize("parsed_word,expected_json", word_data)
@@ -48,6 +48,26 @@ attribute_param = pytest.mark.parametrize("attribute", basic_attributes)
 @attribute_param
 def test_basic_attributes(parsed_word, expected_json, attribute):
     assert getattr(parsed_word, attribute) == expected_json[attribute]
+
+
+@word_param
+def test_word_compounds(parsed_word, expected_json):
+    parsed = parsed_word.compounds
+    expected = expected_json['compounds']
+
+    if parsed == expected == None:
+        return
+
+    assert parsed.keys() == expected.keys()
+
+    if 'substantive' in expected:
+        assert set(parsed['substantive']) == set(expected['substantive'])
+
+    if 'verben' in expected:
+        assert set(parsed['verben']) == set(expected['verben'])
+
+    if 'adjektive' in expected:
+        assert set(parsed['adjektive']) == set(expected['adjektive'])
 
 
 @word_param

@@ -303,18 +303,28 @@ class DudenWord():
         """
         Return the typical word compounds
         """
-        section = self._find_section('Typische Verbindungen', approximate=True)
+        section = self.soup.find('div', id='kontext')
         if not section:
             return None
 
-        d = {}
-        for pos in DudenWord.wordcloud_parts_of_speech:
-            word_cloud = section.find(id=pos)
-            if word_cloud:
-                words = [a.text for a in word_cloud.find_all('a')] \
-                    if word_cloud else []
-                d[pos] = words
-        return d
+        pos_trans = {
+            'noun': 'substantive',
+            'verb': 'verben',
+            'adj': 'adjektive',
+        }
+
+        compounds = {}
+
+        for a in section.find('figure', class_='tag-cluster__cluster').find_all('a'):
+            compound_word = a.text
+            compound_type = pos_trans[a.attrs['data-group']]
+
+            if compound_type not in compounds:
+                compounds[compound_type] = []
+
+            compounds[compound_type].append(compound_word)
+
+        return compounds
 
     def grammar(self, *target_tags):
         """
