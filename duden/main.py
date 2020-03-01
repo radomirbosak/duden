@@ -247,31 +247,11 @@ class DudenWord():
         """
         Return the meaning structure, which can be string, list or a dict
         """
-        try:
-            section = self._find_section('Bedeutungsübersicht')
-        except AttributeError:
-            return None
 
+        section = self.soup.find('div', id='bedeutung') or self.soup.find('div', id='bedeutungen')
         if section is None:
             return None
-
-        node = copy.copy(section)
-
-        # remove the meaning overview header
-        if node.header:
-            node.header.extract()
-
-        # remove examples
-        if node.section and (node.section.h3.text == 'Beispiel' or
-                             node.section.h3.text == 'Beispiele'):
-            node.section.extract()
-
-        # remove figures
-        while node.figure:
-            node.figure.extract()
-
-        return recursively_extract(node, maxdepth=2,
-                                   exfun=lambda x: x.text.strip())
+        return recursively_extract(section, maxdepth=2, exfun=lambda x: x.text.strip())
 
     @property
     def synonyms(self):
