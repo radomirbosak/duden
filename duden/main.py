@@ -162,8 +162,8 @@ class DudenWord():
 
     def _find_tuple_dl(self, key, element=None):
         """
-        Get value element corresponding to key element containing the text provided by
-        the `key` argument
+        Get value element corresponding to key element containing the text
+        provided by the `key` argument
         """
         if element is None:
             element = self.soup.article
@@ -247,11 +247,12 @@ class DudenWord():
         """
         Return the meaning structure, which can be string, list or a dict
         """
-
-        section = self.soup.find('div', id='bedeutung') or self.soup.find('div', id='bedeutungen')
+        section = self.soup.find('div', id='bedeutung') \
+            or self.soup.find('div', id='bedeutungen')
         if section is None:
             return None
-        return recursively_extract(section, maxdepth=2, exfun=lambda x: x.text.strip())
+        return recursively_extract(
+            section, maxdepth=2, exfun=lambda x: x.text.strip())
 
     @property
     def synonyms(self):
@@ -299,7 +300,8 @@ class DudenWord():
 
         compounds = {}
 
-        for a in section.find('figure', class_='tag-cluster__cluster').find_all('a'):
+        cluster_element = section.find('figure', class_='tag-cluster__cluster')
+        for a in cluster_element.find_all('a'):
             compound_word = a.text
             compound_type = pos_trans[a.attrs['data-group']]
 
@@ -338,7 +340,7 @@ class DudenWord():
             return None
 
         table_nodes = self.soup.find_all('div', class_='wrap-table') \
-                      + self.soup.find_all('table', class_='mere-table')
+            + self.soup.find_all('table', class_='mere-table')
 
         tagged_strings = []
         for table_node in table_nodes:
@@ -377,8 +379,9 @@ class DudenWord():
         # convert table html node to raw table (list of lists) and optional
         # left and top headers (also lists)
         if table_node.thead:
-            top_header = [clear_text(t.text)
-                          for t in table_node.thead.find_all('th', class_='wrap-table__flexions-head')]
+            all_ths = table_node.thead.find_all(
+                'th', class_='wrap-table__flexions-head')
+            top_header = [clear_text(t.text) for t in all_ths]
 
         for row in table_node.tbody.find_all('tr'):
             if row.th:
