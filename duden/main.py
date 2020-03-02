@@ -333,11 +333,12 @@ class DudenWord():
 
         The concatinated tagged string list (for all tables) is returned
         """
-        section = self._find_section('Grammatik')
+        section = self.soup.find('div', id='grammatik')
         if not section:
             return None
 
-        table_nodes = section.find_all('table')
+        table_nodes = self.soup.find_all('div', class_='wrap-table') \
+                      + self.soup.find_all('table', class_='mere-table')
 
         tagged_strings = []
         for table_node in table_nodes:
@@ -369,32 +370,24 @@ class DudenWord():
         left_header = []
         top_header = None
         table_content = []
-        table_name = ''
+
+        title_element = table_node.h3
+        table_name = title_element.text if title_element else ''
 
         # convert table html node to raw table (list of lists) and optional
         # left and top headers (also lists)
         if table_node.thead:
             top_header = [clear_text(t.text)
-                          for t in table_node.thead.find_all('th')]
+                          for t in table_node.thead.find_all('th', class_='wrap-table__flexions-head')]
 
         for row in table_node.tbody.find_all('tr'):
             if row.th:
-                left_header.append(clear_text(row.th.text))
+                th = row.th
+                rowspan = int(th.attrs.get('rowspan', 1))
+                left_header.extend([clear_text(row.th.text)] * rowspan)
 
             tds = row.find_all('td')
             table_content.append([clear_text(td.text) for td in tds])
-
-        if top_header and left_header:
-            table_name = top_header[0]
-            top_header = top_header[1:]
-
-        # sanitize missing cells
-        last_nonempty_cell = ''
-        for i, cell in enumerate(left_header):
-            if cell == '':
-                left_header[i] = last_nonempty_cell
-            else:
-                last_nonempty_cell = cell
 
         # convert left, top, and table headers to sets for easier tagging
         if left_header:
