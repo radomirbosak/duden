@@ -251,6 +251,19 @@ class DudenWord():
             or self.soup.find('div', id='bedeutungen')
         if section is None:
             return None
+        section = copy.copy(section)
+        section.header.extract()
+
+        # 1. remove examples
+        for dl in section.find_all('dl', class_='note'):
+            if True or dl.dt.text == 'Beispiele':
+                dl.extract()
+
+        # 2. remove grammar parts
+        for dl in section.find_all('dl', class_='tuple'):
+            if dl.dt.text in ['Grammatik', 'Gebrauch']:
+                dl.extract()
+
         return recursively_extract(
             section, maxdepth=2, exfun=lambda x: x.text.strip())
 

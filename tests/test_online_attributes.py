@@ -50,7 +50,6 @@ def test_basic_attributes(parsed_word, expected_json, attribute):
     assert getattr(parsed_word, attribute) == expected_json[attribute]
 
 
-@pytest.mark.xfail
 @word_param
 def test_meaning_overview(parsed_word, expected_json):
     assert parsed_word.meaning_overview == expected_json['meaning_overview']
