@@ -448,19 +448,35 @@ def sanitize_word(word):
     return ''.join(filtered)
 
 
-def request_word(word, cache=True):
-    cachedir = Path(xdg_cache_home) / 'duden'
-    filename = sanitize_word(word) + '.gz'
+def cached_response(prefix=''):
+    def decorator_itself(func):
+        def function_wrapper(cache_key, cache=True, **kwargs):
+            cachedir = Path(xdg_cache_home) / 'duden'
+            filename = prefix + sanitize_word(cache_key) + '.gz'
 
-    if cache:
-        # try to read from cache
-        cachedir.mkdir(exist_ok=True)
-        try:
-            with gzip.open(cachedir / filename, 'rt') as f:
-                return f.read()
-        except FileNotFoundError:
-            pass
+            if cache:
+                # try to read from cache
+                cachedir.mkdir(exist_ok=True)
+                try:
+                    with gzip.open(cachedir / filename, 'rt') as f:
+                        return f.read()
+                except FileNotFoundError:
+                    pass
 
+            result = func(cache_key, **kwargs)
+
+            if cache and result is not None:
+                with gzip.open(cachedir / filename, 'wt') as f:
+                    f.write(result)
+
+            return result
+
+        return function_wrapper
+    return decorator_itself
+
+
+@cached_response(prefix='')
+def request_word(word):
     url = URL_FORM.format(word=word)
     try:
         response = requests.get(url)
@@ -472,10 +488,6 @@ def request_word(word, cache=True):
         return None
     else:
         response.raise_for_status()
-
-    if response.ok and cache:
-        with gzip.open(cachedir / filename, 'wt') as f:
-            f.write(response.text)
 
     return response.text
 
