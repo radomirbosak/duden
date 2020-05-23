@@ -494,7 +494,7 @@ def get_search_link_variants(link_text):
     return clear_text(link_text).split(', ')
 
 
-def search(word, exact=True, return_words=True):
+def search(word, exact=True, return_words=True, cache=True):
     """
     Search for a word 'word' in duden
     """
@@ -513,7 +513,7 @@ def search(word, exact=True, return_words=True):
             urlnames.append(definition.find('a')['href'].split('/')[-1])
 
     if return_words:
-        return [get(urlname) for urlname in urlnames]
+        return [get(urlname, cache=cache) for urlname in urlnames]
     else:
         return urlnames
 
@@ -554,6 +554,8 @@ def parse_args():
                                'of multiple words matching the input'))
     parser.add_argument('--fuzzy', action='store_true',
                         help=_('enable fuzzy word matching'))
+    parser.add_argument('--no-cache', action='store_false', dest='cache',
+                        help=_('do not cache retrieved words'))
 
     parser.add_argument('-V', '--version', action='store_true',
                         help=_('print program version'))
@@ -656,7 +658,8 @@ def main():
     args = parse_args()
 
     # search all words matching the string
-    words = search(args.word, return_words=False, exact=not args.fuzzy)
+    words = search(args.word, return_words=False, exact=not args.fuzzy,
+                   cache=args.cache)
 
     # exit if the word wasn't found
     if not words:
@@ -683,7 +686,7 @@ def main():
 
     # fetch and parse the word
     try:
-        word = get(word_url_suffix)
+        word = get(word_url_suffix, cache=args.cache)
     except Exception as exception:
         print(red(exception))
         sys.exit(1)
