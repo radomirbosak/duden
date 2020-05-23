@@ -19,11 +19,14 @@ import copy
 import gettext
 import os
 import sys
+import gzip
 from itertools import cycle
+from pathlib import Path
 
 import bs4
 import requests
 from crayons import blue, red, yellow, white
+from xdg.BaseDirectory import xdg_cache_home
 
 from .common import (recursively_extract, print_tree_of_strings,
                      clear_text, print_string_or_list)
@@ -434,10 +437,19 @@ class DudenWord():
         return tagged_strings
 
 
-def get(word):
-    """
-    Load the word 'word' and return the DudenWord instance
-    """
+def request_word(word, cache=True):
+    cachedir = Path(xdg_cache_home) / 'duden'
+    filename = word + '.gz'
+
+    if cache:
+        # try to read from cache
+        cachedir.mkdir(exist_ok=True)
+        try:
+            with gzip.open(cachedir / filename, 'rt') as f:
+                return f.read()
+        except FileNotFoundError:
+            pass
+
     url = URL_FORM.format(word=word)
     try:
         response = requests.get(url)
@@ -445,23 +457,27 @@ def get(word):
         raise Exception(_("Connection could not be established. "
                           "Check your internet connection."))
 
-    code = response.status_code
-    if code == 200:
-        soup = bs4.BeautifulSoup(response.text, 'html.parser')
-    elif code == 404:
-        # non-existent word
+    if response.status_code == 404:
         return None
     else:
-        raise Exception(
-            _("Unexpected HTTP response status code {}").format(code))
+        response.raise_for_status()
 
-    return load_soup(soup)
+    if response.ok and cache:
+        with gzip.open(cachedir / filename, 'wt') as f:
+            f.write(response.text)
+
+    return response.text
 
 
-def load_soup(soup):
+def get(word, cache=True):
     """
-    Load the DudenWord instance using a BeautifulSoup object
+    Load the word 'word' and return the DudenWord instance
     """
+    html_content = request_word(word, cache=cache)
+    if html_content is None:
+        return None
+
+    soup = bs4.BeautifulSoup(html_content, 'html.parser')
     return DudenWord(soup)
 
 
