@@ -7,6 +7,7 @@ name = "pypi"
 "beautifulsoup4" = "*"
 requests = "*"
 crayons = "*"
+pyxdg = "*"
 
 [dev-packages]
 "autopep8" = "*"

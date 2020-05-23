@@ -40,7 +40,8 @@ setup(
     install_requires=[
         "requests",
         "beautifulsoup4",
-        "crayons"
+        "crayons",
+        "pyxdg"
     ],
     keywords=['duden', 'duden.de', 'dictionary', 'cli', 'word'],
     license='MIT',
