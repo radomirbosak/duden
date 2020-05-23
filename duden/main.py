@@ -509,13 +509,18 @@ def get_search_link_variants(link_text):
     return clear_text(link_text).split(', ')
 
 
+@cached_response(prefix='search-')
+def request_search(word):
+    url = SEARCH_URL_FORM.format(word=word)
+    return requests.get(url).text
+
+
 def search(word, exact=True, return_words=True, cache=True):
     """
     Search for a word 'word' in duden
     """
-    url = SEARCH_URL_FORM.format(word=word)
-    response = requests.get(url)
-    soup = bs4.BeautifulSoup(response.text, 'html.parser')
+    response_text = request_search(word, cache=cache)
+    soup = bs4.BeautifulSoup(response_text, 'html.parser')
     definitions = soup.find_all('h2', class_='vignette__title')
 
     if definitions is None:
