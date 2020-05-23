@@ -20,6 +20,7 @@ import gettext
 import os
 import sys
 import gzip
+import string
 from itertools import cycle
 from pathlib import Path
 
@@ -437,9 +438,15 @@ class DudenWord():
         return tagged_strings
 
 
+def sanitize_word(word):
+    allowed_chars = string.ascii_letters + '_'
+    filtered = (char for char in word if char in allowed_chars)
+    return ''.join(filtered)
+
+
 def request_word(word, cache=True):
     cachedir = Path(xdg_cache_home) / 'duden'
-    filename = word + '.gz'
+    filename = sanitize_word(word) + '.gz'
 
     if cache:
         # try to read from cache
