@@ -26,6 +26,7 @@ from pathlib import Path
 
 import bs4
 import requests
+import yaml
 from crayons import blue, red, yellow, white
 from xdg.BaseDirectory import xdg_cache_home
 
@@ -36,6 +37,12 @@ from .__version__ import __version__
 
 URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
 SEARCH_URL_FORM = 'http://www.duden.de/suchen/dudenonline/{word}'
+
+EXPORT_ATTRIBUTES = [
+    'name', 'urlname', 'title', 'article', 'part_of_speech', 'usage',
+    'frequency', 'word_separation', 'meaning_overview', 'origin', 'compounds',
+    'grammar_raw', 'synonyms',
+]
 
 # grammar forms constants
 SINGULAR = 'Singular'
@@ -128,6 +135,10 @@ class DudenWord():
         else:
             name, article = self.title.split(', ')
             return name
+
+    @property
+    def urlname(self):
+        return self.soup.head.link.attrs['href'].split('/')[-1]
 
     @property
     def article(self):
@@ -441,6 +452,18 @@ class DudenWord():
                 tagged_strings.append((taglist, cell))
         return tagged_strings
 
+    def export(self):
+        worddict = dict()
+        for attribute in EXPORT_ATTRIBUTES:
+            worddict[attribute] = getattr(self, attribute, None)
+
+        # convert grammar to lists
+        listed_grammar = []
+        for keylist, form in worddict['grammar_raw']:
+            listed_grammar.append([list(keylist), form])
+        worddict['grammar_raw'] = listed_grammar
+        return worddict
+
 
 def sanitize_word(word):
     allowed_chars = string.ascii_letters + '_'
@@ -578,6 +601,8 @@ def parse_args():
                         help=_('list common compounds'))
     parser.add_argument('-g', '--grammar', nargs='?', const='ALL',
                         help=_('list grammar forms'))
+    parser.add_argument('--export', action='store_true',
+                        help=_('export parsed word attributes in yaml format'))
 
     parser.add_argument('-r', '--result', type=int,
                         help=_('display n-th (starting from 1) result in case '
@@ -634,6 +659,10 @@ def display_word(word, args):
                 print_string_or_list(word.compounds[args.compounds])
     elif args.grammar:
         display_grammar(word, args.grammar)
+    elif args.export:
+        yaml_string = yaml.dump(word.export(),
+                                sort_keys=False, allow_unicode=True)
+        print(yaml_string)
     else:
         # print the description
         word.describe()

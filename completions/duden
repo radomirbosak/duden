@@ -21,6 +21,7 @@ _duden () {
         --fuzzy
         --version
         --no-cache
+        --export
     )
     opts_with_arg=(
         -r --result
