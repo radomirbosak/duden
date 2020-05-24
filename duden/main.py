@@ -440,8 +440,13 @@ class DudenWord():
 
 def sanitize_word(word):
     allowed_chars = string.ascii_letters + '_'
-    filtered = (char for char in word if char in allowed_chars)
-    return ''.join(filtered)
+
+    def sanitize_char(char):
+        if char in allowed_chars:
+            return char
+        else:
+            return '-u' + str(ord(char)) + '-'
+    return ''.join(sanitize_char(char) for char in word)
 
 
 def cached_response(prefix=''):
