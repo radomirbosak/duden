@@ -8,15 +8,15 @@ import yaml
 import duden.main as duden
 
 
-JSON_DIR = 'tests/test_data'
+TEST_DATA_DIR = 'tests/test_data'
 
-WordTestRecord = namedtuple('WordTestRecord', ["parsed_word", "expected_json"])
+WordTestRecord = namedtuple('WordTestRecord', ["parsed_word", "expected_dict"])
 
 
 def generate_word_data():
     data = []
-    for filename in os.listdir(JSON_DIR):
-        full_path = os.path.join(JSON_DIR, filename)
+    for filename in os.listdir(TEST_DATA_DIR):
+        full_path = os.path.join(TEST_DATA_DIR, filename)
 
         # read only yaml files
         if not filename.endswith('.yaml'):
@@ -24,10 +24,10 @@ def generate_word_data():
 
         # store real and expected result
         with open(full_path, 'r') as fh:
-            expected_json = yaml.load(fh, Loader=yaml.SafeLoader)
-        parsed_word = duden.get(expected_json['urlname'])
+            expected_dict = yaml.load(fh, Loader=yaml.SafeLoader)
+        parsed_word = duden.get(expected_dict['urlname'])
 
-        record = WordTestRecord(parsed_word, expected_json)
+        record = WordTestRecord(parsed_word, expected_dict)
         data.append(record)
     return data
 
@@ -40,25 +40,25 @@ basic_attributes = [
     'word_separation', 'synonyms', 'origin',
 ]
 
-word_param = pytest.mark.parametrize("parsed_word,expected_json", word_data)
+word_param = pytest.mark.parametrize("parsed_word,expected_dict", word_data)
 attribute_param = pytest.mark.parametrize("attribute", basic_attributes)
 
 
 @word_param
 @attribute_param
-def test_basic_attributes(parsed_word, expected_json, attribute):
-    assert getattr(parsed_word, attribute) == expected_json[attribute]
+def test_basic_attributes(parsed_word, expected_dict, attribute):
+    assert getattr(parsed_word, attribute) == expected_dict[attribute]
 
 
 @word_param
-def test_meaning_overview(parsed_word, expected_json):
-    assert parsed_word.meaning_overview == expected_json['meaning_overview']
+def test_meaning_overview(parsed_word, expected_dict):
+    assert parsed_word.meaning_overview == expected_dict['meaning_overview']
 
 
 @word_param
-def test_word_compounds(parsed_word, expected_json):
+def test_word_compounds(parsed_word, expected_dict):
     parsed = parsed_word.compounds
-    expected = expected_json['compounds']
+    expected = expected_dict['compounds']
 
     if parsed == expected == None:
         return
@@ -76,8 +76,8 @@ def test_word_compounds(parsed_word, expected_json):
 
 
 @word_param
-def test_word_grammar(parsed_word, expected_json):
-    expected_grammar = expected_json['grammar_raw']
+def test_word_grammar(parsed_word, expected_dict):
+    expected_grammar = expected_dict['grammar_raw']
     if expected_grammar is not None:
         expected_grammar = [(set(tags), string)
                             for tags, string in expected_grammar]
