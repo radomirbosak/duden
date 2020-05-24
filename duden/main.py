@@ -264,6 +264,10 @@ class DudenWord():
             if dl.dt.text in ['Grammatik', 'Gebrauch']:
                 dl.extract()
 
+        # 3. remove pictures
+        for node in section.find_all('figure'):
+            node.extract()
+
         return recursively_extract(
             section, maxdepth=2, exfun=lambda x: x.text.strip())
 
