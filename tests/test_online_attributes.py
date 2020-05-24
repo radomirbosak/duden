@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
-import json
 from collections import namedtuple
 
 import pytest
+import yaml
 
 import duden.main as duden
 
@@ -18,13 +18,13 @@ def generate_word_data():
     for filename in os.listdir(JSON_DIR):
         full_path = os.path.join(JSON_DIR, filename)
 
-        # read only json files
-        if not filename.endswith('.json'):
+        # read only yaml files
+        if not filename.endswith('.yaml'):
             continue
 
         # store real and expected result
         with open(full_path, 'r') as fh:
-            expected_json = json.load(fh)
+            expected_json = yaml.load(fh, Loader=yaml.SafeLoader)
         parsed_word = duden.get(expected_json['urlname'])
 
         record = WordTestRecord(parsed_word, expected_json)
