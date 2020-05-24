@@ -24,7 +24,7 @@ localization:
 	./duden/locale/build.sh
 
 package: localization
-	python setup.py sdist bdist_wheel
+	python3 setup.py sdist bdist_wheel
 
 pypi-upload-test:
 	python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
