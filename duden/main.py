@@ -744,7 +744,7 @@ def main():
     # fetch and parse the word
     try:
         word = get(word_url_suffix, cache=args.cache)
-    except Exception as exception:
+    except Exception as exception:  # pylint: disable=broad-except
         print(red(exception))
         sys.exit(1)
 
