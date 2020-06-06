@@ -1,17 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Dudendown
-
-This script takes a german word as a commandline input and returns its meaning
-overview, as parsed from the dictionary on the website `www.duden.de`.
-
-Words with non-ascii characters should be given using following
-transliteration:
-* ä -> ae
-* ö -> oe
-* ü -> ue
-* ß -> sz
+Contains main duden functionality: DudenWord class, CLI argument handling,
+parsing, network requests.
 """
 
 import argparse
