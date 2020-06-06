@@ -571,7 +571,8 @@ def display_grammar(word, grammar_args):
 
     # if provided keys uniquely determine the value(s), display a 1-col table
     if max_keys_count == 0:
-        return display_table([[value] for value in value_column])
+        display_table([[value] for value in value_column])
+        return
 
     # otherwise make a nice "| key1 key2 | value |" table
     table = []
