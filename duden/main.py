@@ -155,15 +155,6 @@ class DudenWord():
                 return div
         return None
 
-    def _section_other_get_div(self, name, section, use_label=True):
-        entries = section.find_all('div', class_='entry')
-        for div in entries:
-            labelnode = div.find('span', class_='label') if use_label else div
-
-            if name in labelnode.text:
-                return div
-        return None
-
     def _find_tuple_dl(self, key, element=None):
         """
         Get value element corresponding to key element containing the text
