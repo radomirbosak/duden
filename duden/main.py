@@ -124,7 +124,7 @@ class DudenWord():
         if ', ' not in self.title:
             return self.title
         else:
-            name, article = self.title.split(', ')
+            name, _ = self.title.split(', ')
             return name
 
     @property
@@ -139,7 +139,7 @@ class DudenWord():
         if ', ' not in self.title:
             return None
         else:
-            name, article = self.title.split(', ')
+            _, article = self.title.split(', ')
             return article
 
     def _section_main_get_node(self, name, use_label=True):
