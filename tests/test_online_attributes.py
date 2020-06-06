@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+Test if words currently available online parse as expected
+"""
 import os
 from collections import namedtuple
 

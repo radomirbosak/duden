@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+Contains functions not directly related to word parsing, but used by the it.
+"""
 from crayons import blue
 from string import ascii_lowercase
 
