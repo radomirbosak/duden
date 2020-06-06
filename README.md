@@ -87,6 +87,8 @@ optional arguments:
 Python modules:
 * beautifulsoup4
 * requests
+* crayons
+* pyxdg
 
 ## Testing
 
