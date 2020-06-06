@@ -70,9 +70,9 @@ def print_tree_of_strings(tree):
         return
 
     for i1, m1 in enumerate(tree):
-        if type(m1) is str:
+        if isinstance(m1, str):
             print(blue("{:>2}. ".format(i1)), m1, sep='')
-        elif type(m1) is list:
+        elif isinstance(m1, list):
             for i2, m2 in zip(ascii_lowercase, m1):
                 indent = blue("{:>2}. ".format(i1)) if i2 == 'a' else " " * 4
                 print("{} {}".format(indent, blue(i2)), blue('. '), m2, sep='')
