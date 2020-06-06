@@ -10,7 +10,7 @@ test:
 	python -m pytest tests/
 	autopep8 --diff -r duden/ | colordiff
 	autopep8 --diff -r tests/ | colordiff
-	flake8 --builtins="_" duden/ tests/
+	flake8 --builtins="_" --max-line-length 99 duden/ tests/
 
 testloop:
 	while inotifywait -q -r -e modify --exclude .git .; do \
