@@ -18,7 +18,7 @@ from pathlib import Path
 import bs4
 import requests
 import yaml
-from crayons import blue, red, yellow, white
+from crayons import blue, red, yellow, white  # pylint: disable=no-name-in-module
 from xdg.BaseDirectory import xdg_cache_home
 
 from .common import (recursively_extract, print_tree_of_strings,

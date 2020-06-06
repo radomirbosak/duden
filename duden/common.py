@@ -2,7 +2,7 @@
 """
 Contains functions not directly related to word parsing, but used by the it.
 """
-from crayons import blue
+from crayons import blue  # pylint: disable=no-name-in-module
 from string import ascii_lowercase
 
 
