@@ -403,7 +403,7 @@ def get(word, cache=True):
     """
     Load the word 'word' and return the DudenWord instance
     """
-    html_content = request_word(word, cache=cache)
+    html_content = request_word(word, cache=cache)  # pylint: disable=unexpected-keyword-arg
     if html_content is None:
         return None
 
@@ -430,7 +430,7 @@ def search(word, exact=True, return_words=True, cache=True):
     """
     Search for a word 'word' in duden
     """
-    response_text = request_search(word, cache=cache)
+    response_text = request_search(word, cache=cache)  # pylint: disable=unexpected-keyword-arg
     soup = bs4.BeautifulSoup(response_text, 'html.parser')
     definitions = soup.find_all('h2', class_='vignette__title')
 
