@@ -112,14 +112,14 @@ class DudenWord():
     @property
     def title(self):
         """
-        The word string
+        The word string with article
         """
         return self.soup.h1.get_text().replace('\xad', '').strip()
 
     @property
     def name(self):
         """
-        Word together with its article
+        Word without article
         """
         if ', ' not in self.title:
             return self.title
