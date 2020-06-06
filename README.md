@@ -44,6 +44,44 @@ Ohr; [Ge]hörorgan; (salopp) Horcher, Horchlappen, Lauscher; (Jägersprache) Los
 ```
 For more examples see [usage documentation](docs/usage.md).
 
+### CLI syntax
+```console
+$ duden --help
+usage: duden [-h] [--title] [--name] [--article] [--part-of-speech]
+             [--frequency] [--usage] [--word-separation]
+             [--meaning-overview] [--synonyms] [--origin]
+             [--compounds [COMPOUNDS]] [-g [GRAMMAR]] [--export]
+             [-r RESULT] [--fuzzy] [--no-cache] [-V]
+             word
+
+positional arguments:
+  word
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --title               display word and article
+  --name                display the word itself
+  --article             display article
+  --part-of-speech      display part of speech
+  --frequency           display commonness (1 to 5)
+  --usage               display context of use
+  --word-separation     display proper separation (line separated)
+  --meaning-overview    display meaning overview
+  --synonyms            list synonyms (line separated)
+  --origin              display origin
+  --compounds [COMPOUNDS]
+                        list common compounds
+  -g [GRAMMAR], --grammar [GRAMMAR]
+                        list grammar forms
+  --export              export parsed word attributes in yaml format
+  -r RESULT, --result RESULT
+                        display n-th (starting from 1) result in case of
+                        multiple words matching the input
+  --fuzzy               enable fuzzy word matching
+  --no-cache            do not cache retrieved words
+  -V, --version         print program version
+  ```
+
 ## Dependencies
 
 Python modules:
