@@ -116,6 +116,7 @@ def table_node_to_tagged_cells(table_node):
     html tag. The first column is considered a header column if the
     corresponding cells are <th> html nodes.
     """
+    # pylint: disable=too-many-locals
     left_header = []
     top_header = None
     table_content = []
