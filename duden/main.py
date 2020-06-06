@@ -675,7 +675,9 @@ def display_grammar(word, grammar_args):
 
     grammar_tokens = [token.lower() for token in grammar_args.split(',')]
 
-    table = []
+    # filter out grammar forms which do not match provided keys
+    tag_columns = []
+    value_column = []
     for keys, value in word.grammar_raw:
         lkeys = {key.lower() for key in keys}
 
@@ -683,13 +685,24 @@ def display_grammar(word, grammar_args):
             continue
 
         reduced_keys = lkeys.difference(grammar_tokens)
-        keystring = ' '.join(reduced_keys)
 
-        if keystring:
-            row = list(reduced_keys) + [blue("|"), value]
-        else:
-            row = [value]
+        tag_columns.append(list(reduced_keys))
+        value_column.append(value)
+
+    # determine the width of the table
+    max_keys_count = max(map(len, tag_columns))
+
+    # if provided keys uniquely determine the value(s), display a 1-col table
+    if max_keys_count == 0:
+        return display_table([[value] for value in value_column])
+
+    # otherwise make a nice "| key1 key2 | value |" table
+    table = []
+    for keys, value in zip(tag_columns, value_column):
+        padding = [""] * (max_keys_count - len(keys))
+        row = keys + padding + [blue("|")] + [value]
         table.append(row)
+
     display_table(table)
 
 
