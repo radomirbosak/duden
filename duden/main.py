@@ -12,7 +12,6 @@ import os
 import sys
 import gzip
 import string
-from itertools import cycle
 from pathlib import Path
 
 import bs4
@@ -22,7 +21,7 @@ from crayons import blue, red, yellow, white  # pylint: disable=no-name-in-modul
 from xdg.BaseDirectory import xdg_cache_home
 
 from .common import (recursively_extract, print_tree_of_strings,
-                     clear_text, print_string_or_list)
+                     clear_text, print_string_or_list, table_node_to_tagged_cells)
 from .__version__ import __version__
 
 
@@ -330,80 +329,7 @@ class DudenWord():
 
         tagged_strings = []
         for table_node in table_nodes:
-            tagged_strings.extend(
-                self._table_node_to_tagged_cells(table_node))
-        return tagged_strings
-
-    def _table_node_to_tagged_cells(self, table_node):
-        """
-        Takes a table HTML node and returns the list of table cell strings
-        tagged using the table top and left header (optionally using the table
-        name found in the upper-leftmost cell).
-
-        The return type is a list of 2-tuples:
-        [(tag_set, text), ...]
-
-        where text is a string taken from the cell, and tag_set is a set of
-        strings (tags). If e.g. cell in the 3rd row and 2nd column with the
-        text 'der Barmherzigkeit', has its top_header tag (1st row, 2nd
-        column) 'Singular' and its left_header tag (1st column, 3rd row)
-        'Genitiv', the corresponding tuple would look like:
-        ({'Singular', 'Genitiv'}, 'der Barmherzigkeit')
-        .
-
-        The first row is considered a header row, if it's inside of <thead>
-        html tag. The first column is considered a header column if the
-        corresponding cells are <th> html nodes.
-        """
-        left_header = []
-        top_header = None
-        table_content = []
-
-        title_element = table_node.h3
-        table_name = title_element.text if title_element else ''
-
-        # convert table html node to raw table (list of lists) and optional
-        # left and top headers (also lists)
-        if table_node.thead:
-            all_ths = table_node.thead.find_all(
-                'th', class_='wrap-table__flexions-head')
-            top_header = [clear_text(t.text) for t in all_ths]
-
-        for row in table_node.tbody.find_all('tr'):
-            if row.th:
-                th = row.th
-                rowspan = int(th.attrs.get('rowspan', 1))
-                left_header.extend([clear_text(row.th.text)] * rowspan)
-
-            tds = row.find_all('td')
-            table_content.append([clear_text(td.text) for td in tds])
-
-        # convert left, top, and table headers to sets for easier tagging
-        if left_header:
-            left_header = [{cell} for cell in left_header]
-        else:
-            left_header = [set() for _ in table_content]
-        if top_header:
-            top_header = [{cell} for cell in top_header]
-        else:
-            top_header = [set() for _ in table_content[0]]
-        table_tag = {table_name} if table_name else set()
-
-        if table_name in [PRASENS, PRATERITUM]:
-            person_tags = [{PERSON_1}, {PERSON_2}, {PERSON_3}]
-        else:
-            person_tags = [set(), set(), set()]
-
-        # create a list of tagged strings
-        tagged_strings = []
-        for row, row_tag, person_tag \
-                in zip(table_content, left_header, cycle(person_tags)):
-            for cell, col_tag in zip(row, top_header):
-                taglist = table_tag \
-                    .union(row_tag) \
-                    .union(col_tag) \
-                    .union(person_tag)
-                tagged_strings.append((taglist, cell))
+            tagged_strings.extend(table_node_to_tagged_cells(table_node))
         return tagged_strings
 
     def export(self):
