@@ -60,7 +60,7 @@ def test_word_compounds(parsed_word, expected_dict):
     parsed = parsed_word.compounds
     expected = expected_dict['compounds']
 
-    if parsed == expected == None:
+    if parsed == expected == None:  # noqa
         return
 
     assert parsed.keys() == expected.keys()
