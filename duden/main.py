@@ -153,8 +153,7 @@ class DudenWord():
 
             if name in labelnode.text:
                 return div
-        else:
-            return None
+        return None
 
     def _section_other_get_div(self, name, section, use_label=True):
         entries = section.find_all('div', class_='entry')
@@ -163,8 +162,7 @@ class DudenWord():
 
             if name in labelnode.text:
                 return div
-        else:
-            return None
+        return None
 
     def _find_tuple_dl(self, key, element=None):
         """
