@@ -5,6 +5,8 @@ Contains functions not directly related to word parsing, but used by the it.
 from crayons import blue  # pylint: disable=no-name-in-module
 from string import ascii_lowercase
 
+from .constants import PRASENS, PRATERITUM, PERSON_1, PERSON_2, PERSON_3
+
 
 def recursively_extract(node, exfun, maxdepth=2):
     """
