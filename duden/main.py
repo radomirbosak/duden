@@ -123,9 +123,9 @@ class DudenWord():
         """
         if ', ' not in self.title:
             return self.title
-        else:
-            name, _ = self.title.split(', ')
-            return name
+
+        name, _ = self.title.split(', ')
+        return name
 
     @property
     def urlname(self):
@@ -138,9 +138,9 @@ class DudenWord():
         """
         if ', ' not in self.title:
             return None
-        else:
-            _, article = self.title.split(', ')
-            return article
+
+        _, article = self.title.split(', ')
+        return article
 
     def _section_main_get_node(self, name, use_label=True):
         """
@@ -231,10 +231,9 @@ class DudenWord():
             if section.h2:
                 if name == section.h2.text:
                     return section
-                elif approximate and name in section.h2.text:
+                if approximate and name in section.h2.text:
                     return section
-        else:
-            return None
+        return None
 
     @property
     def word_separation(self):
@@ -462,8 +461,7 @@ def sanitize_word(word):
     def sanitize_char(char):
         if char in allowed_chars:
             return char
-        else:
-            return '-u' + str(ord(char)) + '-'
+        return '-u' + str(ord(char)) + '-'
     return ''.join(sanitize_char(char) for char in word)
 
 
@@ -506,8 +504,7 @@ def request_word(word):
 
     if response.status_code == 404:
         return None
-    else:
-        response.raise_for_status()
+    response.raise_for_status()
 
     return response.text
 
@@ -556,10 +553,9 @@ def search(word, exact=True, return_words=True, cache=True):
         if (not exact) or word in get_search_link_variants(definition_title):
             urlnames.append(definition.find('a')['href'].split('/')[-1])
 
-    if return_words:
-        return [get(urlname, cache=cache) for urlname in urlnames]
-    else:
+    if not return_words:
         return urlnames
+    return [get(urlname, cache=cache) for urlname in urlnames]
 
 
 def parse_args():
