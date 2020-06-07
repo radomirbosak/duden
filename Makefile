@@ -10,6 +10,7 @@ test:
 	python -m pytest tests/
 	autopep8 --max-line-length 99  --diff -r duden/ tests/ | colordiff
 	flake8 --builtins="_" --max-line-length 99 duden/ tests/
+	pylint duden/ tests/  --good-names 'f,i'
 
 testloop:
 	while inotifywait -q -r -e modify --exclude .git .; do \
