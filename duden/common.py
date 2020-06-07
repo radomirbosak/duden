@@ -84,6 +84,9 @@ def print_tree_of_strings(tree):
 
 
 def print_string_or_list(obj):
+    """
+    Print string value or all list elements, if of type list
+    """
     if isinstance(obj, list):
         for elem in obj:
             print(elem)
@@ -92,6 +95,9 @@ def print_string_or_list(obj):
 
 
 def clear_text(text):
+    """
+    Remove soft hyphens anywhere, and heading and trailing spaces.
+    """
     return text.replace('\xad', '').strip()
 
 

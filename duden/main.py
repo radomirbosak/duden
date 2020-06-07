@@ -113,6 +113,9 @@ class DudenWord():
 
     @property
     def urlname(self):
+        """
+        Return unique representation of the word used in duden.de urls
+        """
         return self.soup.head.link.attrs['href'].split('/')[-1]
 
     @property
@@ -343,6 +346,11 @@ class DudenWord():
         return tagged_strings
 
     def export(self):
+        """
+        Export word's attributes as a dictionary
+
+        Used e.g. for creating test data.
+        """
         worddict = dict()
         for attribute in EXPORT_ATTRIBUTES:
             worddict[attribute] = getattr(self, attribute, None)
@@ -356,6 +364,12 @@ class DudenWord():
 
 
 def sanitize_word(word):
+    """
+    Sanitize unicode word for use as filename
+
+    Ascii letters and underscore are kept unchanged.
+    Other characters are replaced with "-u{charccode}-" string.
+    """
     allowed_chars = string.ascii_letters + '_'
 
     def sanitize_char(char):
@@ -366,6 +380,10 @@ def sanitize_word(word):
 
 
 def cached_response(prefix=''):
+    """
+    Add `cache=True` keyword argument to a function to allow result caching based on single string
+    argument.
+    """
     def decorator_itself(func):
         def function_wrapper(cache_key, cache=True, **kwargs):
             cachedir = Path(xdg_cache_home) / 'duden'
@@ -395,6 +413,9 @@ def cached_response(prefix=''):
 
 @cached_response(prefix='')
 def request_word(word):
+    """
+    Request word page from duden
+    """
     url = URL_FORM.format(word=word)
     try:
         response = requests.get(url)
@@ -432,6 +453,9 @@ def get_search_link_variants(link_text):
 
 @cached_response(prefix='search-')
 def request_search(word):
+    """
+    Request search page from duden
+    """
     url = SEARCH_URL_FORM.format(word=word)
     return requests.get(url).text
 
@@ -506,6 +530,9 @@ def parse_args():
 
 
 def display_word(word, args):
+    """
+    Display word attribute or general description, based on commandline arguments
+    """
     # pylint: disable=too-many-branches
     if args.title:
         print(word.title)
@@ -557,6 +584,9 @@ def display_word(word, args):
 
 
 def display_grammar(word, grammar_args):
+    """
+    Display word grammar forms, corresponds to --grammar switch
+    """
     grammar_struct = word.grammar_raw
     if grammar_struct is None:
         return
@@ -596,6 +626,9 @@ def display_grammar(word, grammar_args):
 
 
 def display_table(table, cell_spacing=' '):
+    """
+    Display general table with aligned columns
+    """
     cols = list(zip(*table))
     collens = [max(len(word) for word in col) for col in cols]
 
