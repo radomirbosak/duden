@@ -496,6 +496,7 @@ def parse_args():
 
 
 def display_word(word, args):
+    # pylint: disable=too-many-branches
     if args.title:
         print(word.title)
     elif args.name:
