@@ -148,10 +148,10 @@ class DudenWord():
             element = self.soup.article
 
         dls = element.find_all('dl', class_='tuple', recursive=False)
-        for dl in dls:
-            label = dl.find('dt', class_='tuple__key')
+        for dl_node in dls:
+            label = dl_node.find('dt', class_='tuple__key')
             if key in label.text:
-                return dl.find('dd', class_='tuple__val')
+                return dl_node.find('dd', class_='tuple__val')
 
         return None
 
@@ -233,14 +233,14 @@ class DudenWord():
         section.header.extract()
 
         # 1. remove examples
-        for dl in section.find_all('dl', class_='note'):
-            if True or dl.dt.text == 'Beispiele':
-                dl.extract()
+        for dl_node in section.find_all('dl', class_='note'):
+            if True or dl_node.dt.text == 'Beispiele':
+                dl_node.extract()
 
         # 2. remove grammar parts
-        for dl in section.find_all('dl', class_='tuple'):
-            if dl.dt.text in ['Grammatik', 'Gebrauch']:
-                dl.extract()
+        for dl_node in section.find_all('dl', class_='tuple'):
+            if dl_node.dt.text in ['Grammatik', 'Gebrauch']:
+                dl_node.extract()
 
         # 3. remove pictures
         for node in section.find_all('figure'):
@@ -296,9 +296,9 @@ class DudenWord():
         compounds = {}
 
         cluster_element = section.find('figure', class_='tag-cluster__cluster')
-        for a in cluster_element.find_all('a'):
-            compound_word = a.text
-            compound_type = pos_trans[a.attrs['data-group']]
+        for a_node in cluster_element.find_all('a'):
+            compound_word = a_node.text
+            compound_type = pos_trans[a_node.attrs['data-group']]
 
             if compound_type not in compounds:
                 compounds[compound_type] = []

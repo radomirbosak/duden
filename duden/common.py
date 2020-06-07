@@ -73,13 +73,13 @@ def print_tree_of_strings(tree):
         print(tree)
         return
 
-    for i1, m1 in enumerate(tree):
-        if isinstance(m1, str):
-            print(blue("{:>2}. ".format(i1)), m1, sep='')
-        elif isinstance(m1, list):
-            for i2, m2 in zip(ascii_lowercase, m1):
-                indent = blue("{:>2}. ".format(i1)) if i2 == 'a' else " " * 4
-                print("{} {}".format(indent, blue(i2)), blue('. '), m2, sep='')
+    for index, value in enumerate(tree):
+        if isinstance(value, str):
+            print(blue("{:>2}. ".format(index)), value, sep='')
+        elif isinstance(value, list):
+            for index_inner, value_inner in zip(ascii_lowercase, value):
+                indent = blue("{:>2}. ".format(index)) if index_inner == 'a' else " " * 4
+                print("{} {}".format(indent, blue(index_inner)), blue('. '), value_inner, sep='')
         print()
 
 
@@ -133,8 +133,8 @@ def table_node_to_tagged_cells(table_node):
 
     for row in table_node.tbody.find_all('tr'):
         if row.th:
-            th = row.th
-            rowspan = int(th.attrs.get('rowspan', 1))
+            th_node = row.th
+            rowspan = int(th_node.attrs.get('rowspan', 1))
             left_header.extend([clear_text(row.th.text)] * rowspan)
 
         tds = row.find_all('td')
