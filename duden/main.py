@@ -38,7 +38,17 @@ gettext.install('duden', os.path.join(os.path.dirname(__file__), 'locale'))
 
 
 class DudenWord():
+    """
+    Represents parsed word. Takes a BeautifulSoup object as a constructor argument.
 
+    Example:
+
+        > r = requests.get('http://www.duden.de/rechtschreibung/Hase')
+        > soup = bs4.BeautifulSoup(r.text)
+        > word = duden.DudenWord(soup)
+        > word
+        Hase, der (Substantiv, maskulin)
+    """
     wordcloud_parts_of_speech = ['substantive', 'verben', 'adjektive']
 
     def __init__(self, soup):
