@@ -26,8 +26,8 @@ def generate_word_data():
             continue
 
         # store real and expected result
-        with open(full_path, 'r') as fh:
-            expected_dict = yaml.load(fh, Loader=yaml.SafeLoader)
+        with open(full_path, 'r') as f:
+            expected_dict = yaml.load(f, Loader=yaml.SafeLoader)
         parsed_word = duden.get(expected_dict['urlname'])
 
         record = WordTestRecord(parsed_word, expected_dict)
