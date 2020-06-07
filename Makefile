@@ -8,8 +8,7 @@ all:
 test:
 	python --version
 	python -m pytest tests/
-	autopep8 --diff -r duden/ | colordiff
-	autopep8 --diff -r tests/ | colordiff
+	autopep8 --max-line-length 99  --diff -r duden/ tests/ | colordiff
 	flake8 --builtins="_" --max-line-length 99 duden/ tests/
 
 testloop:
