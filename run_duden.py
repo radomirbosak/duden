@@ -1,4 +1,4 @@
 #!/usr/bin/env python3
 
-from duden.main import main
+from duden.cli import main
 main()

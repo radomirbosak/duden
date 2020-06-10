@@ -1,28 +1,23 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Contains main duden functionality: DudenWord class, CLI argument handling,
-parsing, network requests.
+Contains main duden functionality: DudenWord class, parsing, network requests.
 """
 
-import argparse
 import copy
 import gettext
 import os
-import sys
 import gzip
 import string
 from pathlib import Path
 
 import bs4
 import requests
-import yaml
-from crayons import blue, red, yellow, white  # pylint: disable=no-name-in-module
+from crayons import blue, yellow, white  # pylint: disable=no-name-in-module
 from xdg.BaseDirectory import xdg_cache_home
 
 from .common import (recursively_extract, print_tree_of_strings,
-                     clear_text, print_string_or_list, table_node_to_tagged_cells)
-from .__version__ import __version__
+                     clear_text, table_node_to_tagged_cells)
 
 
 URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
@@ -482,107 +477,6 @@ def search(word, exact=True, return_words=True, cache=True):
     return [get(urlname, cache=cache) for urlname in urlnames]
 
 
-def parse_args():
-    """
-    Parse CLI arguments
-    """
-    parser = argparse.ArgumentParser()
-    parser.add_argument('word')
-    parser.add_argument('--title', action='store_true',
-                        help=_('display word and article'))
-    parser.add_argument('--name', action='store_true',
-                        help=_('display the word itself'))
-    parser.add_argument('--article', action='store_true',
-                        help=_('display article'))
-    parser.add_argument('--part-of-speech', action='store_true',
-                        help=_('display part of speech'))
-    parser.add_argument('--frequency', action='store_true',
-                        help=_('display commonness (1 to 5)'))
-    parser.add_argument('--usage', action='store_true',
-                        help=_('display context of use'))
-    parser.add_argument('--word-separation', action='store_true',
-                        help=_('display proper separation (line separated)'))
-    parser.add_argument('--meaning-overview', action='store_true',
-                        help=_('display meaning overview'))
-    parser.add_argument('--synonyms', action='store_true',
-                        help=_('list synonyms (line separated)'))
-    parser.add_argument('--origin', action='store_true',
-                        help=_('display origin'))
-    parser.add_argument('--compounds', nargs='?', const='ALL',
-                        help=_('list common compounds'))
-    parser.add_argument('-g', '--grammar', nargs='?', const='ALL',
-                        help=_('list grammar forms'))
-    parser.add_argument('--export', action='store_true',
-                        help=_('export parsed word attributes in yaml format'))
-
-    parser.add_argument('-r', '--result', type=int,
-                        help=_('display n-th (starting from 1) result in case '
-                               'of multiple words matching the input'))
-    parser.add_argument('--fuzzy', action='store_true',
-                        help=_('enable fuzzy word matching'))
-    parser.add_argument('--no-cache', action='store_false', dest='cache',
-                        help=_('do not cache retrieved words'))
-
-    parser.add_argument('-V', '--version', action='store_true',
-                        help=_('print program version'))
-
-    return parser.parse_args()
-
-
-def display_word(word, args):
-    """
-    Display word attribute or general description, based on commandline arguments
-    """
-    # pylint: disable=too-many-branches
-    if args.title:
-        print(word.title)
-    elif args.name:
-        print(word.name)
-    elif args.article:
-        if word.article:
-            print(word.article)
-    elif args.part_of_speech:
-        if word.part_of_speech:
-            print(word.part_of_speech)
-    elif args.frequency:
-        if word.frequency:
-            print(word.frequency)
-    elif args.usage:
-        if word.usage:
-            print(word.usage)
-    elif args.word_separation:
-        for part in word.word_separation:
-            print(part)
-    elif args.meaning_overview:
-        if word.meaning_overview:
-            print_tree_of_strings(word.meaning_overview)
-    elif args.synonyms:
-        synonyms = word.synonyms
-        if synonyms:
-            print_string_or_list(synonyms)
-    elif args.origin:
-        if word.origin:
-            print(word.origin)
-    elif args.compounds:
-        if word.compounds:
-            if args.compounds == 'ALL':
-                for part_of_speech, compounds in word.compounds.items():
-                    print(white('# ' + part_of_speech.capitalize(), bold=True))
-                    print_string_or_list(compounds)
-                    print()
-            else:
-                print_string_or_list(word.compounds[args.compounds])
-    elif args.grammar:
-        display_grammar(word, args.grammar)
-    elif args.export:
-        yaml_string = yaml.dump(word.export(),
-                                sort_keys=False, allow_unicode=True)
-        print(yaml_string)
-    else:
-        # print the description
-        word.describe()
-
-
 def display_grammar(word, grammar_args):
     """
     Display word grammar forms, corresponds to --grammar switch
@@ -636,57 +530,3 @@ def display_table(table, cell_spacing=' '):
         for elem, collen in zip(row, collens):
             print(elem.ljust(collen), end=cell_spacing)
         print()
-
-
-def main():
-    """
-    Take the first CLI argument and describe the corresponding word
-    """
-
-    # handle the --version switch
-    if '--version' in sys.argv:
-        print('duden ' + __version__)
-        sys.exit(0)
-
-    # parse normal arguments
-    args = parse_args()
-
-    # search all words matching the string
-    words = search(args.word, return_words=False, exact=not args.fuzzy,
-                   cache=args.cache)
-
-    # exit if the word wasn't found
-    if not words:
-        print(red(_("Word '{}' not found")).format(args.word))
-        sys.exit(1)
-
-    # list the options when there is more than one matching word
-    if len(words) > 1 and args.result is None:
-        print(_('Found {} matching words. Use the -r/--result argument to '
-                'specify which one to display.').format(white(len(words),
-                                                              bold=True)))
-        for i, word in enumerate(words, 1):
-            print('{} {}'.format(blue('{})'.format(i)), word))
-        sys.exit(1)
-
-    result_index = args.result if args.result is not None else 1
-
-    # choose the correct result
-    try:
-        word_url_suffix = words[result_index - 1]
-    except IndexError:
-        print(red(_("No result with number {}.")).format(result_index))
-        sys.exit(1)
-
-    # fetch and parse the word
-    try:
-        word = get(word_url_suffix, cache=args.cache)
-    except Exception as exception:  # pylint: disable=broad-except
-        print(red(exception))
-        sys.exit(1)
-
-    display_word(word, args)
-
-
-if __name__ == '__main__':
-    main()

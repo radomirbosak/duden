@@ -33,7 +33,7 @@ setup(
                  + about['__version__'] + '.tar.gz',
     entry_points={
         'console_scripts': [
-            'duden = duden.main:main'
+            'duden = duden.cli:main'
         ]
     },
     include_package_data=True,
