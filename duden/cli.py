@@ -10,8 +10,9 @@ from crayons import white, blue, red  # pylint: disable=no-name-in-module
 import yaml
 
 from .__version__ import __version__
-from .common import print_tree_of_strings, print_string_or_list
-from .main import get, search, display_grammar
+from .main import get, search
+from .display import (display_grammar, display_compounds, print_tree_of_strings,
+                      print_string_or_list)
 
 
 def display_word(word, args):
@@ -50,13 +51,7 @@ def display_word(word, args):
             print(word.origin)
     elif args.compounds:
         if word.compounds:
-            if args.compounds == 'ALL':
-                for part_of_speech, compounds in word.compounds.items():
-                    print(white('# ' + part_of_speech.capitalize(), bold=True))
-                    print_string_or_list(compounds)
-                    print()
-            else:
-                print_string_or_list(word.compounds[args.compounds])
+            display_compounds(word, args.compounds)
     elif args.grammar:
         display_grammar(word, args.grammar)
     elif args.export:
