@@ -3,9 +3,6 @@
 Contains functions not directly related to word parsing, but used by the it.
 """
 from itertools import cycle
-from string import ascii_lowercase
-
-from crayons import blue  # pylint: disable=no-name-in-module
 
 from .constants import PRASENS, PRATERITUM, PERSON_1, PERSON_2, PERSON_3
 
@@ -52,46 +49,6 @@ def recursively_extract(node, exfun, maxdepth=2):
     # if this node doesn't contain 'ol' or 'ul' node, return the transformed
     # leaf (using the 'exfun' function)
     return exfun(node)
-
-
-def print_tree_of_strings(tree):
-    """
-    Print a tree of strings up to depth 2
-
-    Args:
-        tree: tree of strings
-
-    Example:
-
-    >>> print_tree_of_strings(['Hase', ['Eins', 'Zwei']])
-    0. Hase
-    <BLANKLINE>
-    1.  a. Eins
-        b. Zwei
-    """
-    if isinstance(tree, str):
-        print(tree)
-        return
-
-    for index, value in enumerate(tree):
-        if isinstance(value, str):
-            print(blue("{:>2}. ".format(index)), value, sep='')
-        elif isinstance(value, list):
-            for index_inner, value_inner in zip(ascii_lowercase, value):
-                indent = blue("{:>2}. ".format(index)) if index_inner == 'a' else " " * 4
-                print("{} {}".format(indent, blue(index_inner)), blue('. '), value_inner, sep='')
-        print()
-
-
-def print_string_or_list(obj):
-    """
-    Print string value or all list elements, if of type list
-    """
-    if isinstance(obj, list):
-        for elem in obj:
-            print(elem)
-    else:
-        print(obj)
 
 
 def clear_text(text):

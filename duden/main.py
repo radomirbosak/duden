@@ -16,8 +16,8 @@ import requests
 from crayons import blue, yellow, white  # pylint: disable=no-name-in-module
 from xdg.BaseDirectory import xdg_cache_home
 
-from .common import (recursively_extract, print_tree_of_strings,
-                     clear_text, table_node_to_tagged_cells)
+from .common import recursively_extract, clear_text, table_node_to_tagged_cells
+from .display import print_tree_of_strings
 
 
 URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
@@ -475,58 +475,3 @@ def search(word, exact=True, return_words=True, cache=True):
     if not return_words:
         return urlnames
     return [get(urlname, cache=cache) for urlname in urlnames]
-
-
-def display_grammar(word, grammar_args):
-    """
-    Display word grammar forms, corresponds to --grammar switch
-    """
-    grammar_struct = word.grammar_raw
-    if grammar_struct is None:
-        return
-
-    grammar_tokens = [token.lower() for token in grammar_args.split(',')]
-
-    # filter out grammar forms which do not match provided keys
-    tag_columns = []
-    value_column = []
-    for keys, value in word.grammar_raw:
-        lkeys = {key.lower() for key in keys}
-
-        if not (grammar_args == 'ALL' or lkeys.issuperset(grammar_tokens)):
-            continue
-
-        reduced_keys = lkeys.difference(grammar_tokens)
-
-        tag_columns.append(list(reduced_keys))
-        value_column.append(value)
-
-    # determine the width of the table
-    max_keys_count = max(map(len, tag_columns))
-
-    # if provided keys uniquely determine the value(s), display a 1-col table
-    if max_keys_count == 0:
-        display_table([[value] for value in value_column])
-        return
-
-    # otherwise make a nice "| key1 key2 | value |" table
-    table = []
-    for keys, value in zip(tag_columns, value_column):
-        padding = [""] * (max_keys_count - len(keys))
-        row = keys + padding + [blue("|")] + [value]
-        table.append(row)
-
-    display_table(table)
-
-
-def display_table(table, cell_spacing=' '):
-    """
-    Display general table with aligned columns
-    """
-    cols = list(zip(*table))
-    collens = [max(len(word) for word in col) for col in cols]
-
-    for row in table:
-        for elem, collen in zip(row, collens):
-            print(elem.ljust(collen), end=cell_spacing)
-        print()
