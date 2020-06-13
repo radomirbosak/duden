@@ -8,10 +8,7 @@ import copy
 import gettext
 import os
 
-from crayons import blue, yellow, white  # pylint: disable=no-name-in-module
-
 from .common import recursively_extract, table_node_to_tagged_cells
-from .display import print_tree_of_strings
 
 
 EXPORT_ATTRIBUTES = [
@@ -42,42 +39,6 @@ class DudenWord():
 
     def __repr__(self):
         return '{} ({})'.format(self.title, self.part_of_speech)
-
-    def describe(self):
-        """
-        Print overall word description
-        """
-        print(yellow(self.title, bold=True))
-        print(yellow('=' * len(self.title)))
-
-        if self.part_of_speech:
-            print(white(_('Word type:'), bold=True), self.part_of_speech)
-        if self.usage:
-            print(white(_('Usage:'), bold=True), self.usage)
-        if self.frequency:
-            commonness = '{label} {frequency}{max_frequency}'.format(
-                label=white(_('Commonness:'), bold=True),
-                frequency=self.frequency,
-                max_frequency=blue('/5'))
-            print(commonness)
-        if self.word_separation:
-            print('{label} {content}'.format(
-                label=white(_('Separation:'), bold=True),
-                content=str(blue('|')).join(self.word_separation)))
-
-        if self.meaning_overview:
-            print(white(_('Meaning overview:'), bold=True))
-            print_tree_of_strings(self.meaning_overview)
-
-        if self.synonyms:
-            print(white(_('Synonyms:'), bold=True))
-            print_tree_of_strings(self.synonyms)
-
-        if self.compounds:
-            print(white(_('Typical compounds:'), bold=True))
-            for part_of_speech, words in self.compounds.items():
-                print(blue(' - {}:'.format(part_of_speech.capitalize())),
-                      ', '.join(words))
 
     @property
     def title(self):

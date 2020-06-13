@@ -12,7 +12,7 @@ import yaml
 from .__version__ import __version__
 from .search import get, search
 from .display import (display_grammar, display_compounds, print_tree_of_strings,
-                      print_string_or_list)
+                      print_string_or_list, describe_word)
 
 
 def display_word(word, args):
@@ -60,7 +60,7 @@ def display_word(word, args):
         print(yaml_string)
     else:
         # print the description
-        word.describe()
+        describe_word(word)
 
 
 def parse_args():

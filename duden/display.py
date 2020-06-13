@@ -4,7 +4,7 @@ Console printing functions
 """
 from string import ascii_lowercase
 
-from crayons import white, blue  # pylint: disable=no-name-in-module
+from crayons import white, blue, yellow  # pylint: disable=no-name-in-module
 
 
 def display_grammar(word, grammar_args):
@@ -113,3 +113,40 @@ def print_string_or_list(obj):
             print(elem)
     else:
         print(obj)
+
+
+def describe_word(word):
+    """
+    Print overall word description
+    """
+    print(yellow(word.title, bold=True))
+    print(yellow('=' * len(word.title)))
+
+    if word.part_of_speech:
+        print(white(_('Word type:'), bold=True), word.part_of_speech)
+    if word.usage:
+        print(white(_('Usage:'), bold=True), word.usage)
+    if word.frequency:
+        commonness = '{label} {frequency}{max_frequency}'.format(
+            label=white(_('Commonness:'), bold=True),
+            frequency=word.frequency,
+            max_frequency=blue('/5'))
+        print(commonness)
+    if word.word_separation:
+        print('{label} {content}'.format(
+            label=white(_('Separation:'), bold=True),
+            content=str(blue('|')).join(word.word_separation)))
+
+    if word.meaning_overview:
+        print(white(_('Meaning overview:'), bold=True))
+        print_tree_of_strings(word.meaning_overview)
+
+    if word.synonyms:
+        print(white(_('Synonyms:'), bold=True))
+        print_tree_of_strings(word.synonyms)
+
+    if word.compounds:
+        print(white(_('Typical compounds:'), bold=True))
+        for part_of_speech, words in word.compounds.items():
+            print(blue(' - {}:'.format(part_of_speech.capitalize())),
+                  ', '.join(words))
