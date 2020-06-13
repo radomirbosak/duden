@@ -76,19 +76,6 @@ class DudenWord():
         _, article = self.title.split(', ')
         return article
 
-    def _section_main_get_node(self, name, use_label=True):
-        """
-        Return the div in main section which contains the text `name` as label
-        """
-        section = self.soup.find('section', id='block-system-main')
-        entry = section.find('div', class_='entry')
-        for div in entry.find_all('div'):
-            labelnode = div.find('span', class_='label') if use_label else div
-
-            if name in labelnode.text:
-                return div
-        return None
-
     def _find_tuple_dl(self, key, element=None):
         """
         Get value element corresponding to key element containing the text
@@ -140,23 +127,6 @@ class DudenWord():
             return element.text
         except AttributeError:
             return None
-
-    def _find_section(self, name, approximate=False):
-        """
-        Return the section which has <h2> tag with title `name`
-
-        If approximate is True, it is sufficient that `name` is a substring of
-        the <h2> title's string.
-
-        If no matching section is found, None is returned.
-        """
-        for section in self.soup.find_all('section'):
-            if section.h2:
-                if name == section.h2.text:
-                    return section
-                if approximate and name in section.h2.text:
-                    return section
-        return None
 
     @property
     def word_separation(self):
