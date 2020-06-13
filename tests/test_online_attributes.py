@@ -8,7 +8,7 @@ from collections import namedtuple
 import pytest
 import yaml
 
-import duden.main as duden
+from duden.search import get
 
 
 TEST_DATA_DIR = 'tests/test_data'
@@ -31,7 +31,7 @@ def generate_word_data():
         # store real and expected result
         with open(full_path, 'r') as f:
             expected_dict = yaml.load(f, Loader=yaml.SafeLoader)
-        parsed_word = duden.get(expected_dict['urlname'])
+        parsed_word = get(expected_dict['urlname'])
 
         record = WordTestRecord(parsed_word, expected_dict)
         data.append(record)

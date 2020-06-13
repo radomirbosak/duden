@@ -19,7 +19,7 @@ __all__ = [
     'NOMINATIV', 'GENITIV', 'DATIV', 'AKKUSATIV'
 ]
 
-from .main import get, search
+from .search import get, search
 
 from .constants import (SINGULAR, PLURAL,
                         PRASENS, PRATERITUM,

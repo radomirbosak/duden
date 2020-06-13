@@ -7,21 +7,12 @@ Contains main duden functionality: DudenWord class, parsing, network requests.
 import copy
 import gettext
 import os
-import gzip
-import string
-from pathlib import Path
 
-import bs4
-import requests
 from crayons import blue, yellow, white  # pylint: disable=no-name-in-module
-from xdg.BaseDirectory import xdg_cache_home
 
-from .common import recursively_extract, clear_text, table_node_to_tagged_cells
+from .common import recursively_extract, table_node_to_tagged_cells
 from .display import print_tree_of_strings
 
-
-URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
-SEARCH_URL_FORM = 'http://www.duden.de/suchen/dudenonline/{word}'
 
 EXPORT_ATTRIBUTES = [
     'name', 'urlname', 'title', 'article', 'part_of_speech', 'usage',
@@ -356,122 +347,3 @@ class DudenWord():
             listed_grammar.append([list(keylist), form])
         worddict['grammar_raw'] = listed_grammar
         return worddict
-
-
-def sanitize_word(word):
-    """
-    Sanitize unicode word for use as filename
-
-    Ascii letters and underscore are kept unchanged.
-    Other characters are replaced with "-u{charccode}-" string.
-    """
-    allowed_chars = string.ascii_letters + '_'
-
-    def sanitize_char(char):
-        if char in allowed_chars:
-            return char
-        return '-u' + str(ord(char)) + '-'
-    return ''.join(sanitize_char(char) for char in word)
-
-
-def cached_response(prefix=''):
-    """
-    Add `cache=True` keyword argument to a function to allow result caching based on single string
-    argument.
-    """
-    def decorator_itself(func):
-        def function_wrapper(cache_key, cache=True, **kwargs):
-            cachedir = Path(xdg_cache_home) / 'duden'
-            filename = prefix + sanitize_word(cache_key) + '.gz'
-            full_path = str(cachedir / filename)
-
-            if cache:
-                # try to read from cache
-                cachedir.mkdir(exist_ok=True)
-                try:
-                    with gzip.open(full_path, 'rt') as f:
-                        return f.read()
-                except FileNotFoundError:
-                    pass
-
-            result = func(cache_key, **kwargs)
-
-            if cache and result is not None:
-                with gzip.open(full_path, 'wt') as f:
-                    f.write(result)
-
-            return result
-
-        return function_wrapper
-    return decorator_itself
-
-
-@cached_response(prefix='')
-def request_word(word):
-    """
-    Request word page from duden
-    """
-    url = URL_FORM.format(word=word)
-    try:
-        response = requests.get(url)
-    except requests.exceptions.ConnectionError:
-        raise Exception(_("Connection could not be established. "
-                          "Check your internet connection."))
-
-    if response.status_code == 404:
-        return None
-    response.raise_for_status()
-
-    return response.text
-
-
-def get(word, cache=True):
-    """
-    Load the word 'word' and return the DudenWord instance
-    """
-    html_content = request_word(word, cache=cache)  # pylint: disable=unexpected-keyword-arg
-    if html_content is None:
-        return None
-
-    soup = bs4.BeautifulSoup(html_content, 'html.parser')
-    return DudenWord(soup)
-
-
-def get_search_link_variants(link_text):
-    """
-    Lists possible interpretations of link text on search page.
-
-    Used for determining whether a search page entry matches the search term.
-    """
-    return clear_text(link_text).split(', ')
-
-
-@cached_response(prefix='search-')
-def request_search(word):
-    """
-    Request search page from duden
-    """
-    url = SEARCH_URL_FORM.format(word=word)
-    return requests.get(url).text
-
-
-def search(word, exact=True, return_words=True, cache=True):
-    """
-    Search for a word 'word' in duden
-    """
-    response_text = request_search(word, cache=cache)  # pylint: disable=unexpected-keyword-arg
-    soup = bs4.BeautifulSoup(response_text, 'html.parser')
-    definitions = soup.find_all('h2', class_='vignette__title')
-
-    if definitions is None:
-        return []
-
-    urlnames = []
-    for definition in definitions:
-        definition_title = definition.text
-        if (not exact) or word in get_search_link_variants(definition_title):
-            urlnames.append(definition.find('a')['href'].split('/')[-1])
-
-    if not return_words:
-        return urlnames
-    return [get(urlname, cache=cache) for urlname in urlnames]
