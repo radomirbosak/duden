@@ -11,7 +11,7 @@ import bs4
 import requests
 from xdg.BaseDirectory import xdg_cache_home
 
-from .main import DudenWord
+from .word import DudenWord
 from .common import clear_text
 
 

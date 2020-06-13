@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Contains main duden functionality: DudenWord class, parsing, network requests.
+Contains the DudenWord class: a parser of duden.de response.
 """
 
 import copy
