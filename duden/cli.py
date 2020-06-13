@@ -10,7 +10,7 @@ from crayons import white, blue, red  # pylint: disable=no-name-in-module
 import yaml
 
 from .__version__ import __version__
-from .main import get, search
+from .search import get, search
 from .display import (display_grammar, display_compounds, print_tree_of_strings,
                       print_string_or_list)
 
