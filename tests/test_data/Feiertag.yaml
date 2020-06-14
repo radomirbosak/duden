@@ -69,3 +69,15 @@ grammar_raw:
 synonyms:
 - Festtag, Gedenktag
 - Ehrentag
+words_before:
+- feierlich
+- Feierlichkeit
+- feiern
+- Feierschicht
+- Feierstunde
+words_after:
+- feiertäglich
+- feiertags
+- Feiertagsarbeit
+- Feiertagsruhe
+- Feiertagsstille

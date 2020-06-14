@@ -58,6 +58,10 @@ def display_word(word, args):
         yaml_string = yaml.dump(word.export(),
                                 sort_keys=False, allow_unicode=True)
         print(yaml_string)
+    elif args.words_before:
+        print_string_or_list(word.words_before)
+    elif args.words_after:
+        print_string_or_list(word.words_after)
     else:
         # print the description
         describe_word(word)
@@ -95,6 +99,10 @@ def parse_args():
                         help=_('list grammar forms'))
     parser.add_argument('--export', action='store_true',
                         help=_('export parsed word attributes in yaml format'))
+    parser.add_argument('--words-before', action='store_true',
+                        help=_('list 5 words before this one'))
+    parser.add_argument('--words-after', action='store_true',
+                        help=_('list 5 words after this one'))
 
     parser.add_argument('-r', '--result', type=int,
                         help=_('display n-th (starting from 1) result in case '

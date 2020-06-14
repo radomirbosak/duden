@@ -12,3 +12,15 @@ origin: null
 compounds: null
 grammar_raw: null
 synonyms: null
+words_before:
+- q, Q
+- q
+- q
+- Q
+- Q.
+words_after:
+- QbA
+- Q. b. A.
+- qcm
+- qdm
+- q. e. d.
