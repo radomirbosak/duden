@@ -116,7 +116,7 @@ def main():
     """
 
     # handle the --version switch
-    if '--version' in sys.argv:
+    if '--version' in sys.argv or '-V' in sys.argv:
         print('duden ' + __version__)
         sys.exit(0)
 
