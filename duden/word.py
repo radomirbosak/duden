@@ -8,13 +8,13 @@ import copy
 import gettext
 import os
 
-from .common import recursively_extract, table_node_to_tagged_cells
+from .common import recursively_extract, table_node_to_tagged_cells, clear_text
 
 
 EXPORT_ATTRIBUTES = [
     'name', 'urlname', 'title', 'article', 'part_of_speech', 'usage',
     'frequency', 'word_separation', 'meaning_overview', 'origin', 'compounds',
-    'grammar_raw', 'synonyms',
+    'grammar_raw', 'synonyms', 'words_before', 'words_after'
 ]
 
 gettext.install('duden', os.path.join(os.path.dirname(__file__), 'locale'))
@@ -279,3 +279,44 @@ class DudenWord():
                 listed_grammar.append([list(keylist), form])
             worddict['grammar_raw'] = listed_grammar
         return worddict
+
+    @property
+    def before_after_structure(self):
+        """
+        Parsed "Blätter section"
+
+        Returns: dict mapping section names to list of words tuples.
+                 Each tuple is comprised of word name and word urlname.
+
+        Example:
+            >>> duden.get("laufen").before_after_structure
+            {'Im Alphabet davor': [('Laufbekleidung', 'Laufbekleidung'),
+              ('Laufbrett', 'Laufbrett'),
+              ('Laufbursche', 'Laufbursche'),
+              ('Läufchen', 'Laeufchen'),
+              ('Läufel', 'Laeufel')],
+             'Im Alphabet danach': [('laufend', 'laufend'),
+              ('laufen lassen, laufenlassen', 'laufen_lassen'),
+              ('Laufer', 'Laufer'),
+              ('Läufer', 'Laeufer'),
+              ('Lauferei', 'Lauferei')]}
+        """
+        result = {}
+        section = self.soup.find('div', id='block-beforeafterblock-2')
+        for group in section.find_all('nav', class_='hookup__group'):
+            h3title = group.h3.text
+            result[h3title] = []
+            for item in group.find_all('li'):
+                link = item.a.attrs['href'].split('/')[-1]
+                result[h3title].append((clear_text(item.text), link))
+        return result
+
+    @property
+    def words_before(self):
+        """Returns 5 words before this one in duden database"""
+        return [name for name, _ in self.before_after_structure['Im Alphabet davor']]
+
+    @property
+    def words_after(self):
+        """Returns 5 words after this one in duden database"""
+        return [name for name, _ in self.before_after_structure['Im Alphabet danach']]

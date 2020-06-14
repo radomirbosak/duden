@@ -43,3 +43,15 @@ grammar_raw:
 synonyms:
 - (schweizerisch) Peterli; (bayrisch, österreichisch umgangssprachlich) Petersil;
   (südwestdeutsch und schweizerisch mundartlich) Peterle
+words_before:
+- Peter-Paul-Kirche
+- Petersburg
+- Petersdom
+- Petersfisch
+- Petersil
+words_after:
+- Petersilienhochzeit
+- Petersilienkartoffeln
+- Petersiliensoße
+- Petersilienwurzel
+- Peterskirche
