@@ -273,8 +273,9 @@ class DudenWord():
             worddict[attribute] = getattr(self, attribute, None)
 
         # convert grammar to lists
-        listed_grammar = []
-        for keylist, form in worddict['grammar_raw']:
-            listed_grammar.append([list(keylist), form])
-        worddict['grammar_raw'] = listed_grammar
+        if worddict['grammar_raw'] is not None:
+            listed_grammar = []
+            for keylist, form in worddict['grammar_raw']:
+                listed_grammar.append([list(keylist), form])
+            worddict['grammar_raw'] = listed_grammar
         return worddict
