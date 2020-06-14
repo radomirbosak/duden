@@ -57,7 +57,7 @@ def display_word(word, args):
     elif args.export:
         yaml_string = yaml.dump(word.export(),
                                 sort_keys=False, allow_unicode=True)
-        print(yaml_string)
+        print(yaml_string, end='')
     elif args.words_before:
         print_string_or_list(word.words_before)
     elif args.words_after:
