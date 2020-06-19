@@ -32,6 +32,7 @@ class DudenWord():
         > word
         Hase, der (Substantiv, maskulin)
     """
+    # pylint: disable=too-many-public-methods
     wordcloud_parts_of_speech = ['substantive', 'verben', 'adjektive']
 
     def __init__(self, soup):
@@ -64,6 +65,21 @@ class DudenWord():
         Return unique representation of the word used in duden.de urls
         """
         return self.soup.head.link.attrs['href'].split('/')[-1]
+
+    @property
+    def revision_url(self):
+        """Returns url to this specific word revision"""
+        return self.soup.find('input', id='cite-field').attrs['value']
+
+    @property
+    def node_no(self):
+        """Returns word node number"""
+        return self.revision_url.split('/')[-3]
+
+    @property
+    def revision_no(self):
+        """Returns word revision number"""
+        return self.revision_url.split('/')[-1]
 
     @property
     def article(self):
