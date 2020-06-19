@@ -30,21 +30,9 @@ Synonyms:
 Ohr; [Ge]hörorgan; (salopp) Horcher, Horchlappen, Lauscher; (Jägersprache) Loser, Teller
 ```
 
-### Module usage
+<details>
+<summary>Full CLI syntax (expand)</summary>
 
-```python
->>> import duden
->>> w = duden.get('Loeffel')
->>> w.name
-'Löffel'
->>> w.word_separation
-['Löf', 'fel']
->>> w.synonyms
-'Ohr; [Ge]hörorgan; (salopp) Horcher, Horchlappen, Lauscher; (Jägersprache) Loser, Teller'
-```
-For more examples see [usage documentation](docs/usage.md).
-
-### CLI syntax
 ```console
 $ duden --help
 usage: duden [-h] [--title] [--name] [--article] [--part-of-speech]
@@ -80,7 +68,22 @@ optional arguments:
   --fuzzy               enable fuzzy word matching
   --no-cache            do not cache retrieved words
   -V, --version         print program version
-  ```
+```
+</details>
+
+### Module usage
+
+```python
+>>> import duden
+>>> w = duden.get('Loeffel')
+>>> w.name
+'Löffel'
+>>> w.word_separation
+['Löf', 'fel']
+>>> w.synonyms
+'Ohr; [Ge]hörorgan; (salopp) Horcher, Horchlappen, Lauscher; (Jägersprache) Loser, Teller'
+```
+For more examples see [usage documentation](docs/usage.md).
 
 ## Dependencies
 
