@@ -41,8 +41,7 @@ grammar_raw:
     - Akkusativ
   - die Petersilien
 synonyms:
-- (schweizerisch) Peterli; (bayrisch, österreichisch umgangssprachlich) Petersil;
-  (südwestdeutsch und schweizerisch mundartlich) Peterle
+- (schweizerisch) Peterli; (bayrisch, österreichisch umgangssprachlich) Petersil
 words_before:
 - Peter-Paul-Kirche
 - Petersburg

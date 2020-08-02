@@ -28,9 +28,7 @@ grammar_raw:
     - Akkusativ
   - die Barmherzigkeit
 synonyms:
-- '[Engels]güte, Milde, Nachsicht, Nachsichtigkeit; (gehoben) Herzensgüte, Mildtätigkeit,
-  Seelengüte; (bildungssprachlich) Humanität, Indulgenz; (veraltend) Wohltätigkeit;
-  (Religion) Gnade'
+- '[Engels]güte, Milde, Nachsicht'
 words_before:
 - barmen
 - Barmen

@@ -67,8 +67,7 @@ grammar_raw:
     - Plural
   - die Feiertage
 synonyms:
-- Festtag, Gedenktag
-- Ehrentag
+- Festtag, GedenktagEhrentag
 words_before:
 - feierlich
 - Feierlichkeit

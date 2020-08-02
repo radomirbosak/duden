@@ -219,22 +219,7 @@ grammar_raw:
 - - - Infinitiv mit zu
   - zu laufen
 synonyms:
-- eilen, fegen, hetzen, jagen, preschen, rennen, sausen, schießen, stürmen, wieseln;
-  (gehoben) fliegen, hasten, stieben; (umgangssprachlich) die Beine in die Hand/unter
-  die Arme nehmen, düsen, flitzen, pesen, rasen, schwirren, sprinten, spritzen, spurten,
-  wetzen; (salopp) gasen; (süddeutsch, schweizerisch) springen; (landschaftlich) schesen
-- sich fortbewegen, gehen; (gehoben) schreiten
-- marschieren, spazieren [gehen], wandern, zu Fuß gehen
-- angeschaltet/angestellt/eingeschaltet sein, arbeiten, funktionieren, gehen, in Betrieb/Funktion/Gang
-  sein; (umgangssprachlich) an sein, tun
-- ausfließen, sich ergießen, fließen, herausfließen, heraussprudeln, herausströmen,
-  rieseln, rinnen, sprudeln, strömen; (gehoben) fluten
-- sich erstrecken, führen, verlaufen
-- ablaufen, sich abspielen, sich ereignen, erfolgen, geschehen, passieren, seinen
-  Verlauf nehmen, stattfinden, verlaufen, sich vollziehen, vonstattengehen, vor sich
-  gehen; (gehoben) sich begeben, sich zutragen; (umgangssprachlich) abgehen, los sein,
-  über die Bühne gehen
-- gelten, Gültigkeit/Laufzeit haben, gültig sein, wirksam sein
+- eilen, fegen, hetzen
 words_before:
 - Laufbekleidung
 - Laufbrett
