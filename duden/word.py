@@ -241,7 +241,11 @@ class DudenWord():
 
             compounds[compound_type].append(compound_word)
 
-        return compounds
+        compounds_sorted = {}
+        for pos in sorted(compounds.keys()):
+            compounds_sorted[pos] = sorted(compounds[pos])
+
+        return compounds_sorted
 
     def grammar(self, *target_tags):
         """
@@ -292,7 +296,7 @@ class DudenWord():
         if worddict['grammar_raw'] is not None:
             listed_grammar = []
             for keylist, form in worddict['grammar_raw']:
-                listed_grammar.append([list(keylist), form])
+                listed_grammar.append([sorted(keylist), form])
             worddict['grammar_raw'] = listed_grammar
         return worddict
 

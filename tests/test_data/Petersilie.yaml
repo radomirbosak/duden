@@ -19,14 +19,14 @@ grammar_raw:
 - - - Nominativ
     - Singular
   - die Petersilie
-- - - Plural
-    - Nominativ
+- - - Nominativ
+    - Plural
   - die Petersilien
-- - - Singular
-    - Genitiv
+- - - Genitiv
+    - Singular
   - der Petersilie
-- - - Plural
-    - Genitiv
+- - - Genitiv
+    - Plural
   - der Petersilien
 - - - Dativ
     - Singular
@@ -34,11 +34,11 @@ grammar_raw:
 - - - Dativ
     - Plural
   - den Petersilien
-- - - Singular
-    - Akkusativ
+- - - Akkusativ
+    - Singular
   - die Petersilie
-- - - Plural
-    - Akkusativ
+- - - Akkusativ
+    - Plural
   - die Petersilien
 synonyms:
 - (schweizerisch) Peterli; (bayrisch, österreichisch umgangssprachlich) Petersil

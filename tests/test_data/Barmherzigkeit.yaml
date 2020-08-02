@@ -24,8 +24,8 @@ grammar_raw:
 - - - Dativ
     - Singular
   - der Barmherzigkeit
-- - - Singular
-    - Akkusativ
+- - - Akkusativ
+    - Singular
   - die Barmherzigkeit
 synonyms:
 - '[Engels]güte, Milde, Nachsicht'

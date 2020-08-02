@@ -17,32 +17,32 @@ meaning_overview:
 origin: spätmittelhochdeutsch einfach, -fach
 compounds:
   adjektive:
-  - schnell
   - billig
+  - doppelt
+  - geometrisch
   - klar
   - kostengünstig
   - preiswert
-  - geometrisch
-  - doppelt
+  - schnell
   - verständlich
   substantive:
-  - Mehrheit
-  - Mittel
-  - Lösung
-  - Verhältnis
-  - Erklärung
   - Antwort
+  - Erklärung
   - Formel
   - Grund
+  - Lösung
+  - Mehrheit
+  - Mittel
+  - Verhältnis
   verben:
-  - lassen
-  - fehlen
   - bewerben
-  - werden
-  - haben
+  - fehlen
   - gehören
+  - haben
+  - lassen
   - passen
   - stimmen
+  - werden
 grammar_raw: null
 synonyms:
 - einmal, nicht doppelt, nicht mehrfachbequem

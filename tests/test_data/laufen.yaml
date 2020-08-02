@@ -45,131 +45,131 @@ origin: mittelhochdeutsch loufen, althochdeutsch (h)louf(f)an, wahrscheinlich ur
   = (im Kreise) hüpfen, tanzen
 compounds:
   adjektive:
-  - schief
-  - gut
   - dumm
-  - parallel
   - glatt
-  - rot
+  - gut
   - optimal
+  - parallel
   - reibungslos
+  - rot
+  - schief
   substantive:
+  - Amok
   - Gefahr
+  - Geschäft
   - Hochtour
   - Ruder
-  - Geschäft
-  - Amok
   - Vertrag
   - Vorbereitung
 grammar_raw:
 - - - Indikativ
     - Person I
-    - Singular
     - Präsens
+    - Singular
   - ich laufe
 - - - Konjunktiv I
     - Person I
-    - Singular
     - Präsens
+    - Singular
   - ich laufe
 - - - Imperativ
-    - Singular
     - Person I
     - Präsens
-  - –
-- - - Person II
-    - Indikativ
     - Singular
+  - –
+- - - Indikativ
+    - Person II
     - Präsens
+    - Singular
   - du läufst
 - - - Konjunktiv I
     - Person II
-    - Singular
     - Präsens
+    - Singular
   - du laufest
-- - - Person II
-    - Imperativ
-    - Singular
+- - - Imperativ
+    - Person II
     - Präsens
+    - Singular
   - lauf, laufe!
 - - - Indikativ
     - Person III
-    - Singular
     - Präsens
+    - Singular
   - er/sie/es läuft
 - - - Konjunktiv I
     - Person III
-    - Singular
     - Präsens
+    - Singular
   - er/sie/es laufe
-- - - Person III
-    - Imperativ
-    - Singular
+- - - Imperativ
+    - Person III
     - Präsens
+    - Singular
   - –
 - - - Indikativ
     - Person I
-    - Präsens
     - Plural
+    - Präsens
   - wir laufen
 - - - Konjunktiv I
     - Person I
-    - Präsens
     - Plural
+    - Präsens
   - wir laufen
 - - - Imperativ
     - Person I
-    - Präsens
     - Plural
+    - Präsens
   - –
 - - - Indikativ
     - Person II
-    - Präsens
     - Plural
+    - Präsens
   - ihr lauft
 - - - Konjunktiv I
     - Person II
-    - Präsens
     - Plural
+    - Präsens
   - ihr laufet
-- - - Person II
-    - Imperativ
+- - - Imperativ
+    - Person II
     - Plural
     - Präsens
   - lauft!
 - - - Indikativ
     - Person III
-    - Präsens
     - Plural
+    - Präsens
   - sie laufen
 - - - Konjunktiv I
     - Person III
-    - Präsens
     - Plural
+    - Präsens
   - sie laufen
-- - - Person III
-    - Imperativ
-    - Präsens
+- - - Imperativ
+    - Person III
     - Plural
+    - Präsens
   - –
 - - - Indikativ
     - Person I
     - Präteritum
     - Singular
   - ich lief
-- - - Person I
+- - - Konjunktiv II
+    - Person I
     - Präteritum
-    - Konjunktiv II
     - Singular
   - ich liefe
-- - - Person II
-    - Indikativ
+- - - Indikativ
+    - Person II
     - Präteritum
     - Singular
   - du liefst
-- - - Person II
+- - - Konjunktiv II
+    - Person II
     - Präteritum
-    - Konjunktiv II
     - Singular
   - du liefest
 - - - Indikativ
@@ -177,40 +177,40 @@ grammar_raw:
     - Präteritum
     - Singular
   - er/sie/es lief
-- - - Person III
+- - - Konjunktiv II
+    - Person III
     - Präteritum
-    - Konjunktiv II
     - Singular
   - er/sie/es liefe
-- - - Person I
-    - Präteritum
-    - Indikativ
+- - - Indikativ
+    - Person I
     - Plural
+    - Präteritum
   - wir liefen
-- - - Person I
-    - Präteritum
-    - Konjunktiv II
+- - - Konjunktiv II
+    - Person I
     - Plural
+    - Präteritum
   - wir liefen
-- - - Person II
-    - Präteritum
-    - Indikativ
+- - - Indikativ
+    - Person II
     - Plural
+    - Präteritum
   - ihr lieft
-- - - Person II
-    - Präteritum
-    - Konjunktiv II
+- - - Konjunktiv II
+    - Person II
     - Plural
+    - Präteritum
   - ihr liefet
-- - - Person III
-    - Präteritum
-    - Indikativ
+- - - Indikativ
+    - Person III
     - Plural
+    - Präteritum
   - sie liefen
-- - - Person III
-    - Präteritum
-    - Konjunktiv II
+- - - Konjunktiv II
+    - Person III
     - Plural
+    - Präteritum
   - sie liefen
 - - - Partizip I
   - laufend

@@ -15,41 +15,41 @@ meaning_overview:
 origin: mittelhochdeutsch vīretac, althochdeutsch fīratag
 compounds:
   adjektive:
+  - allgemein
+  - arbeitsfrei
+  - christlich
   - gesetzlich
   - hoch
+  - jüdisch
   - kirchlich
   - national
-  - allgemein
-  - christlich
-  - jüdisch
-  - arbeitsfrei
   substantive:
-  - Wochenende
-  - Sonntag
-  - Sonnabend
-  - Freitag
-  - Urlaub
-  - Geburtstag
   - Fest
+  - Freitag
+  - Geburtstag
   - Samstag
+  - Sonnabend
+  - Sonntag
+  - Urlaub
+  - Wochenende
   verben:
-  - schließen
-  - ausnehmen
   - abschaffen
+  - ausnehmen
   - begehen
-  - öffnen
   - bleiben
-  - verbringen
   - erklären
+  - schließen
+  - verbringen
+  - öffnen
 grammar_raw:
-- - - Singular
-    - Nominativ
+- - - Nominativ
+    - Singular
   - der Feiertag
 - - - Nominativ
     - Plural
   - die Feiertage
-- - - Singular
-    - Genitiv
+- - - Genitiv
+    - Singular
   - des Feiertages, Feiertags
 - - - Genitiv
     - Plural
