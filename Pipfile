@@ -8,6 +8,7 @@ name = "pypi"
 requests = "*"
 crayons = "*"
 pyxdg = "*"
+pyyaml = "*"
 
 [dev-packages]
 "autopep8" = "*"

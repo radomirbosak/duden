@@ -41,7 +41,8 @@ setup(
         "requests",
         "beautifulsoup4",
         "crayons",
-        "pyxdg"
+        "pyxdg",
+        "pyyaml"
     ],
     keywords=['duden', 'duden.de', 'dictionary', 'cli', 'word'],
     license='MIT',

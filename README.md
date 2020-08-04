@@ -92,6 +92,7 @@ Python modules:
 * requests
 * crayons
 * pyxdg
+* pyyaml
 
 ## Testing
 
