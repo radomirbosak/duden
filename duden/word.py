@@ -272,7 +272,7 @@ class DudenWord():
         """
         section = self.soup.find('div', id='grammatik')
         if not section:
-            return None
+            return []
 
         table_nodes = self.soup.find_all('div', class_='wrap-table') \
             + self.soup.find_all('table', class_='mere-table')
