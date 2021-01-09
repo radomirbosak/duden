@@ -10,7 +10,7 @@ word_separation:
 meaning_overview: null
 origin: null
 compounds: null
-grammar_raw: null
+grammar_raw: []
 synonyms: null
 words_before:
 - q, Q

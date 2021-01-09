@@ -93,3 +93,8 @@ def test_word_grammar(parsed_word, expected_dict):
                             for tags, string in expected_grammar]
 
     assert parsed_word.grammar_raw == expected_grammar
+
+def test_empty_grammar():
+    word = get("Wahlbeobachter")
+    assert word.grammar_raw == []
+    assert word.grammar() == []
