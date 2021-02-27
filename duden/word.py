@@ -53,6 +53,8 @@ class DudenWord():
         """
         Word without article
         """
+        if self.part_of_speech is not None and 'Substantiv' not in self.part_of_speech:
+            return self.title
         if ', ' not in self.title:
             return self.title
 
@@ -86,6 +88,8 @@ class DudenWord():
         """
         Word article
         """
+        if self.part_of_speech is not None and 'Substantiv' not in self.part_of_speech:
+            return None
         if ', ' not in self.title:
             return None
 
