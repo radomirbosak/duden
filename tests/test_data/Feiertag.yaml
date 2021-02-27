@@ -4,7 +4,7 @@ title: Feiertag, der
 article: der
 part_of_speech: Substantiv, maskulin
 usage: null
-frequency: null
+frequency: 3
 word_separation:
 - Fei
 - er
@@ -67,10 +67,10 @@ grammar_raw:
     - Plural
   - die Feiertage
 synonyms:
-- Festtag, GedenktagEhrentag
+- Festtag, Gedenktag, Ehrentag
 words_before:
-- feierlich
 - Feierlichkeit
+- Feiermodus
 - feiern
 - Feierschicht
 - Feierstunde

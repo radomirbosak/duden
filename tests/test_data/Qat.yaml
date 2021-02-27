@@ -13,7 +13,7 @@ compounds: null
 grammar_raw: []
 synonyms: null
 words_before:
-- q, Q
+- q
 - q
 - q
 - Q
