@@ -94,7 +94,9 @@ def test_word_grammar(parsed_word, expected_dict):
 
     assert parsed_word.grammar_raw == expected_grammar
 
+
 def test_empty_grammar():
+    """Test word with empty grammar section"""
     word = get("Wahlbeobachter")
     assert word.grammar_raw == []
     assert word.grammar() == []
