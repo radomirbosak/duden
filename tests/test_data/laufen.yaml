@@ -219,7 +219,7 @@ grammar_raw:
 - - - Infinitiv mit zu
   - zu laufen
 synonyms:
-- eilen, fegen, hetzen
+- eilen, fegen, hetzen, jagen
 words_before:
 - Laufbekleidung
 - Laufbrett
@@ -228,7 +228,7 @@ words_before:
 - Läufel
 words_after:
 - laufend
-- laufen lassen, laufenlassen
+- laufen lassen
 - Laufer
 - Läufer
 - Lauferei

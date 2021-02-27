@@ -4,7 +4,7 @@ title: einfach
 article: null
 part_of_speech: Adjektiv
 usage: null
-frequency: null
+frequency: 4
 word_separation:
 - ein
 - fach
@@ -45,10 +45,10 @@ compounds:
   - werden
 grammar_raw: []
 synonyms:
-- einmal, nicht doppelt, nicht mehrfachbequem
+- einmal, nicht doppelt, nicht mehrfach, bequem
 words_before:
-- Eineuromünze, Ein-Euro-Münze
-- Eineurostück, Ein-Euro-Stück
+- Eineuromünze
+- Eineurostück
 - Eine-Welt-Laden
 - einexerzieren
 - einfach

@@ -28,7 +28,7 @@ grammar_raw:
     - Singular
   - die Barmherzigkeit
 synonyms:
-- '[Engels]güte, Milde, Nachsicht'
+- '[Engels]güte, Milde, Nachsicht, Nachsichtigkeit'
 words_before:
 - barmen
 - Barmen
@@ -39,5 +39,5 @@ words_after:
 - Barmittel
 - Barmixer
 - Barmixerin
-- Bar-Mizwa, Bar Mizwa
-- Bar-Mizwa, Bar Mizwa
+- Bar-Mizwa
+- Bar-Mizwa
