@@ -12,7 +12,7 @@ def display_grammar(word, grammar_args):
     Display word grammar forms, corresponds to --grammar switch
     """
     grammar_struct = word.grammar_raw
-    if grammar_struct is None:
+    if not grammar_struct:
         return
 
     grammar_tokens = [token.lower() for token in grammar_args.split(',')]
