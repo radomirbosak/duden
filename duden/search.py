@@ -48,7 +48,7 @@ def cached_response(prefix=''):
 
             if cache:
                 # try to read from cache
-                cachedir.mkdir(exist_ok=True)
+                cachedir.mkdir(parents=True, exist_ok=True)
                 try:
                     with gzip.open(full_path, 'rt', encoding='utf8') as f:
                         return f.read()
