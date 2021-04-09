@@ -103,11 +103,8 @@ def get_word_of_the_day():
     Scrapes the word of the day and returns DudenWord instance of it.
 
     """
-
     html_content = requests.get("http://www.duden.de").content
-
     soup = bs4.BeautifulSoup(html_content, features="lxml")
-    # word = soup.find_all("#block-wordoftheday .scene__title-link")
     link = soup.find("a", class_="scene__title-link").get("href")
     word_start_index = link.rfind("/") + 1
     word = link[word_start_index:]
