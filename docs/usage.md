@@ -108,3 +108,11 @@ To avoid automatically retrieving and parsing the search results, use the `retur
 > duden.search('einfach', return_words=False)
 ['einfach_einmal_simpel', 'einfach_vollkommen_wirklich']
 ```
+
+### Word of the day
+
+Retrieves a parses the Word of the day from the main page.
+```python
+> duden.get_word_of_the_day
+Quasimodogeniti (Substantiv ohne Artikel)
+```

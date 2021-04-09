@@ -19,7 +19,7 @@ __all__ = [
     'NOMINATIV', 'GENITIV', 'DATIV', 'AKKUSATIV'
 ]
 
-from .search import get, search
+from .search import get, search, get_word_of_the_day
 
 from .constants import (SINGULAR, PLURAL,
                         PRASENS, PRATERITUM,
