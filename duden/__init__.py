@@ -10,7 +10,7 @@ words.
 The basic class representing the parsed word is `DudenWord`.
 """
 __all__ = [
-    'get', 'search',
+    'get', 'search', 'get_word_of_the_day',
     'SINGULAR', 'PLURAL',
     'PRASENS', 'PRATERITUM',
     'INDIKATIV', 'IMPERATIV', 'KONJUKTIV_1', 'KONJUKTIV_2',
