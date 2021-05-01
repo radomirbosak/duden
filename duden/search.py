@@ -52,7 +52,7 @@ def cached_response(prefix=''):
                 try:
                     with gzip.open(full_path, 'rt', encoding='utf8') as f:
                         return f.read()
-                except (FileNotFoundError, gzip.BadGzipFile, IOError):
+                except (FileNotFoundError, IOError, EOFError):
                     pass
 
             result = func(cache_key, **kwargs)
