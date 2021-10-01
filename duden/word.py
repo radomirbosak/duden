@@ -14,7 +14,7 @@ from .common import recursively_extract, table_node_to_tagged_cells, clear_text
 EXPORT_ATTRIBUTES = [
     'name', 'urlname', 'title', 'article', 'part_of_speech', 'usage',
     'frequency', 'word_separation', 'meaning_overview', 'origin', 'compounds',
-    'grammar_raw', 'synonyms', 'words_before', 'words_after'
+    'grammar_raw', 'synonyms', 'words_before', 'words_after', 'phonetic'
 ]
 
 gettext.install('duden', os.path.join(os.path.dirname(__file__), 'locale'))
