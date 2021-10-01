@@ -344,3 +344,14 @@ class DudenWord():
     def words_after(self):
         """Returns 5 words after this one in duden database"""
         return [name for name, _ in self.before_after_structure['Im Alphabet danach']]
+
+    @property
+    def phonetic(self):
+        """
+        Returns pronunciation of the word in phonetic notation (https://en.wikipedia.org/wiki/International_Phonetic_Alphabet)
+        """
+        lautschrift = self.soup.find('span', {"class": "ipa"})
+        if lautschrift is not None:
+            return lautschrift.get_text()
+
+        return None
