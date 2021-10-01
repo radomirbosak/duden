@@ -52,6 +52,9 @@ def display_word(word, args):
     elif args.compounds:
         if word.compounds:
             display_compounds(word, args.compounds)
+    elif args.phonetic:
+        if word.phonetic:
+            print(word.phonetic)
     elif args.grammar:
         display_grammar(word, args.grammar)
     elif args.export:
@@ -114,6 +117,8 @@ def parse_args():
 
     parser.add_argument('-V', '--version', action='store_true',
                         help=_('print program version'))
+    parser.add_argument('--phonetic', action='store_true',
+                        help=('displays pronunciation'))
 
     return parser.parse_args()
 
