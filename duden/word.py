@@ -348,7 +348,8 @@ class DudenWord():
     @property
     def phonetic(self):
         """
-        Returns pronunciation of the word in phonetic notation (https://en.wikipedia.org/wiki/International_Phonetic_Alphabet)
+        Returns pronunciation of the word in phonetic notation.
+        See: https://en.wikipedia.org/wiki/International_Phonetic_Alphabet
         """
         ipa = self.soup.find('span', {"class": "ipa"})
         if ipa is not None:
