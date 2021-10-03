@@ -9,7 +9,7 @@ test:
 check:
 	autopep8 --max-line-length 99  --diff -r duden/ tests/ | colordiff
 	flake8 --builtins="_" --max-line-length 99 duden/ tests/
-	pylint duden/ tests/*.py  --good-names 'f,i'
+	pylint --disable consider-using-f-string duden/ tests/*.py  --good-names 'f,i'
 
 testloop:
 	while inotifywait -q -r -e modify --exclude .git .; do \
