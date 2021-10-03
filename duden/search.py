@@ -75,9 +75,9 @@ def request_word(word):
     url = URL_FORM.format(word=word)
     try:
         response = requests.get(url)
-    except requests.exceptions.ConnectionError:
+    except requests.exceptions.ConnectionError as exc:
         raise Exception(_("Connection could not be established. "
-                          "Check your internet connection."))
+                          "Check your internet connection.")) from exc
 
     if response.status_code == 404:
         return None

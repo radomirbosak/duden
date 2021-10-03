@@ -16,11 +16,10 @@ TEST_DATA_DIR = 'tests/test_data'
 WordTestRecord = namedtuple('WordTestRecord', ["parsed_word", "expected_dict"])
 
 
-def generate_word_data():
+def iterate_test_yaml():
     """
-    Download actual words from duden corresponding to test words from `TEST_DATA_DIR`
+    Iterate over .yaml file contents in test data directory
     """
-    data = []
     for filename in os.listdir(TEST_DATA_DIR):
         full_path = os.path.join(TEST_DATA_DIR, filename)
 
@@ -29,13 +28,18 @@ def generate_word_data():
             continue
 
         # store real and expected result
-        with open(full_path, 'r') as f:
-            expected_dict = yaml.load(f, Loader=yaml.SafeLoader)
-        parsed_word = get(expected_dict['urlname'])
+        with open(full_path, 'r', encoding="UTF-8") as f:
+            yield yaml.load(f, Loader=yaml.SafeLoader)
 
-        record = WordTestRecord(parsed_word, expected_dict)
-        data.append(record)
-    return data
+
+def generate_word_data():
+    """
+    Download actual words from duden corresponding to test words from `TEST_DATA_DIR`
+    """
+    return [
+        WordTestRecord(get(expected_dict['urlname']), expected_dict)
+        for expected_dict in iterate_test_yaml()
+    ]
 
 
 # set up test parameters matrix

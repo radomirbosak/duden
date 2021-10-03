@@ -66,7 +66,7 @@ class DudenWord():
         """
         Return unique representation of the word used in duden.de urls
         """
-        return self.soup.head.link.attrs['href'].split('/')[-1]
+        return self.soup.head.find('link', rel='canonical').attrs['href'].split('/')[-1]
 
     @property
     def revision_url(self):
@@ -174,6 +174,7 @@ class DudenWord():
 
         # 1. remove examples
         for dl_node in section.find_all('dl', class_='note'):
+            # pylint: disable=condition-evals-to-constant
             if True or dl_node.dt.text == 'Beispiele':
                 dl_node.extract()
 
@@ -292,7 +293,7 @@ class DudenWord():
 
         Used e.g. for creating test data.
         """
-        worddict = dict()
+        worddict = {}
         for attribute in EXPORT_ATTRIBUTES:
             worddict[attribute] = getattr(self, attribute, None)
 
