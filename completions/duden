@@ -22,6 +22,7 @@ _duden () {
         --version
         --no-cache
         --export
+        --phonetic
     )
     opts_with_arg=(
         -r --result
