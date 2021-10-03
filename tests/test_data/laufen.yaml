@@ -66,12 +66,12 @@ grammar_raw:
     - Person I
     - Präsens
     - Singular
-  - ich laufe
+  - ich laufe (mich/mir)
 - - - Konjunktiv I
     - Person I
     - Präsens
     - Singular
-  - ich laufe
+  - ich laufe (mich/mir)
 - - - Imperativ
     - Person I
     - Präsens
@@ -81,27 +81,27 @@ grammar_raw:
     - Person II
     - Präsens
     - Singular
-  - du läufst
+  - du läufst (dich/dir)
 - - - Konjunktiv I
     - Person II
     - Präsens
     - Singular
-  - du laufest
+  - du laufest (dich/dir)
 - - - Imperativ
     - Person II
     - Präsens
     - Singular
-  - lauf, laufe!
+  - lauf (dich/dir), laufe (dich/dir)!
 - - - Indikativ
     - Person III
     - Präsens
     - Singular
-  - er/sie/es läuft
+  - er/sie/es läuft (sich)
 - - - Konjunktiv I
     - Person III
     - Präsens
     - Singular
-  - er/sie/es laufe
+  - er/sie/es laufe (sich)
 - - - Imperativ
     - Person III
     - Präsens
@@ -111,12 +111,12 @@ grammar_raw:
     - Person I
     - Plural
     - Präsens
-  - wir laufen
+  - wir laufen (uns)
 - - - Konjunktiv I
     - Person I
     - Plural
     - Präsens
-  - wir laufen
+  - wir laufen (uns)
 - - - Imperativ
     - Person I
     - Plural
@@ -126,27 +126,27 @@ grammar_raw:
     - Person II
     - Plural
     - Präsens
-  - ihr lauft
+  - ihr lauft (euch)
 - - - Konjunktiv I
     - Person II
     - Plural
     - Präsens
-  - ihr laufet
+  - ihr laufet (euch)
 - - - Imperativ
     - Person II
     - Plural
     - Präsens
-  - lauft!
+  - lauft (euch)!
 - - - Indikativ
     - Person III
     - Plural
     - Präsens
-  - sie laufen
+  - sie laufen (sich)
 - - - Konjunktiv I
     - Person III
     - Plural
     - Präsens
-  - sie laufen
+  - sie laufen (sich)
 - - - Imperativ
     - Person III
     - Plural
@@ -156,62 +156,62 @@ grammar_raw:
     - Person I
     - Präteritum
     - Singular
-  - ich lief
+  - ich lief (mich/mir)
 - - - Konjunktiv II
     - Person I
     - Präteritum
     - Singular
-  - ich liefe
+  - ich liefe (mich/mir)
 - - - Indikativ
     - Person II
     - Präteritum
     - Singular
-  - du liefst
+  - du liefst (dich/dir)
 - - - Konjunktiv II
     - Person II
     - Präteritum
     - Singular
-  - du liefest
+  - du liefest (dich/dir)
 - - - Indikativ
     - Person III
     - Präteritum
     - Singular
-  - er/sie/es lief
+  - er/sie/es lief (sich)
 - - - Konjunktiv II
     - Person III
     - Präteritum
     - Singular
-  - er/sie/es liefe
+  - er/sie/es liefe (sich)
 - - - Indikativ
     - Person I
     - Plural
     - Präteritum
-  - wir liefen
+  - wir liefen (uns)
 - - - Konjunktiv II
     - Person I
     - Plural
     - Präteritum
-  - wir liefen
+  - wir liefen (uns)
 - - - Indikativ
     - Person II
     - Plural
     - Präteritum
-  - ihr lieft
+  - ihr lieft (euch)
 - - - Konjunktiv II
     - Person II
     - Plural
     - Präteritum
-  - ihr liefet
+  - ihr liefet (euch)
 - - - Indikativ
     - Person III
     - Plural
     - Präteritum
-  - sie liefen
+  - sie liefen (sich)
 - - - Konjunktiv II
     - Person III
     - Plural
     - Präteritum
-  - sie liefen
+  - sie liefen (sich)
 - - - Partizip I
   - laufend
 - - - Partizip II
