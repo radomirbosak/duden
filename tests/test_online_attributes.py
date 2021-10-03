@@ -29,7 +29,7 @@ def generate_word_data():
             continue
 
         # store real and expected result
-        with open(full_path, 'r') as f:
+        with open(full_path, 'r', encoding="UTF-8") as f:
             expected_dict = yaml.load(f, Loader=yaml.SafeLoader)
         parsed_word = get(expected_dict['urlname'])
 
