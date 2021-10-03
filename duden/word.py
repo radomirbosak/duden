@@ -66,7 +66,7 @@ class DudenWord():
         """
         Return unique representation of the word used in duden.de urls
         """
-        return self.soup.head.link.attrs['href'].split('/')[-1]
+        return self.soup.head.find('link', rel='canonical').attrs['href'].split('/')[-1]
 
     @property
     def revision_url(self):
