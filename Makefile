@@ -36,3 +36,12 @@ completions-install-bash:
 
 completions-install-fish:
 	cp completions/duden.fish ~/.config/fish/completions/
+
+update-test-data:
+	./run_duden.py --export Barmherzigkeit > tests/test_data/Barmherzigkeit.yaml
+	./run_duden.py --export Feiertag > tests/test_data/Feiertag.yaml
+	./run_duden.py --export laufen > tests/test_data/laufen.yaml
+	./run_duden.py --export Qat > tests/test_data/Qat.yaml
+	./run_duden.py --export Kragen > tests/test_data/Kragen.yaml
+	./run_duden.py --export Petersilie > tests/test_data/Petersilie.yaml
+	./run_duden.py --export einfach -r1 > tests/test_data/einfach.yaml
