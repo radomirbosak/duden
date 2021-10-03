@@ -118,7 +118,7 @@ def parse_args():
     parser.add_argument('-V', '--version', action='store_true',
                         help=_('print program version'))
     parser.add_argument('--phonetic', action='store_true',
-                        help=('displays pronunciation'))
+                        help=_('display pronunciation'))
 
     return parser.parse_args()
 
