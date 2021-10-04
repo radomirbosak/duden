@@ -2,4 +2,4 @@
 """
 Contains module version constant
 """
-__version__ = '0.14.4'
+__version__ = '0.15.0'
