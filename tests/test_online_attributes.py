@@ -47,7 +47,7 @@ word_data = generate_word_data()
 
 basic_attributes = [
     'title', 'name', 'article', 'part_of_speech', 'frequency', 'usage',
-    'word_separation', 'synonyms', 'origin', 'words_before', 'words_after'
+    'word_separation', 'synonyms', 'origin', 'words_before', 'words_after', 'phonetic'
 ]
 
 word_param = pytest.mark.parametrize("parsed_word,expected_dict", word_data)

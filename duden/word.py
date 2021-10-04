@@ -14,7 +14,7 @@ from .common import recursively_extract, table_node_to_tagged_cells, clear_text
 EXPORT_ATTRIBUTES = [
     'name', 'urlname', 'title', 'article', 'part_of_speech', 'usage',
     'frequency', 'word_separation', 'meaning_overview', 'origin', 'compounds',
-    'grammar_raw', 'synonyms', 'words_before', 'words_after'
+    'grammar_raw', 'synonyms', 'words_before', 'words_after', 'phonetic'
 ]
 
 gettext.install('duden', os.path.join(os.path.dirname(__file__), 'locale'))
@@ -345,3 +345,15 @@ class DudenWord():
     def words_after(self):
         """Returns 5 words after this one in duden database"""
         return [name for name, _ in self.before_after_structure['Im Alphabet danach']]
+
+    @property
+    def phonetic(self):
+        """
+        Returns pronunciation of the word in phonetic notation.
+        See: https://en.wikipedia.org/wiki/International_Phonetic_Alphabet
+        """
+        ipa = self.soup.find('span', {"class": "ipa"})
+        if ipa is not None:
+            return ipa.get_text()
+
+        return None

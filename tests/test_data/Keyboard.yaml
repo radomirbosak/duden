@@ -1,0 +1,56 @@
+name: Keyboard
+urlname: Keyboard
+title: Keyboard, das
+article: das
+part_of_speech: Substantiv, Neutrum
+usage: null
+frequency: 2
+word_separation:
+- Key
+- board
+meaning_overview:
+- elektronisch verstärktes Tasteninstrument
+- '[Geräteteil mit der] Tastatur (b) eines Personal Computers'
+origin: 'englisch keyboard, eigentlich = Klaviatur, Tastatur, aus: key = Taste (eigentlich =
+  Schlüssel, wohl in der Bedeutung beeinflusst von mittellateinisch clavis, Klavier)
+  und board = Brett'
+compounds: null
+grammar_raw:
+- - - Nominativ
+    - Singular
+  - das Keyboard
+- - - Nominativ
+    - Plural
+  - die Keyboards
+- - - Genitiv
+    - Singular
+  - des Keyboards
+- - - Genitiv
+    - Plural
+  - der Keyboards
+- - - Dativ
+    - Singular
+  - dem Keyboard
+- - - Dativ
+    - Plural
+  - den Keyboards
+- - - Akkusativ
+    - Singular
+  - das Keyboard
+- - - Akkusativ
+    - Plural
+  - die Keyboards
+synonyms: null
+words_before:
+- Key-Accounter
+- Key-Accounterin
+- Key-Account-Management
+- Key-Account-Manager
+- Key-Account-Managerin
+words_after:
+- Keyboarder
+- Keyboarderin
+- Keyboardspieler
+- Keyboardspielerin
+- Keylogger
+phonetic: '[ˈkiːbɔːɐ̯t]'

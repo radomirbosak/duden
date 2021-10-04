@@ -122,6 +122,8 @@ def describe_word(word):
     print(yellow(word.title, bold=True))
     print(yellow('=' * len(word.title)))
 
+    if word.phonetic:
+        print(white(_('Pronunciation:'), bold=True), word.phonetic)
     if word.part_of_speech:
         print(white(_('Word type:'), bold=True), word.part_of_speech)
     if word.usage:
