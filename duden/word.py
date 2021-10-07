@@ -14,7 +14,7 @@ from .common import recursively_extract, table_node_to_tagged_cells, clear_text
 EXPORT_ATTRIBUTES = [
     'name', 'urlname', 'title', 'article', 'part_of_speech', 'usage',
     'frequency', 'word_separation', 'meaning_overview', 'origin', 'compounds',
-    'grammar_raw', 'synonyms', 'words_before', 'words_after', 'phonetic'
+    'grammar_raw', 'synonyms', 'words_before', 'words_after', 'phonetic', 'alternative_spellings'
 ]
 
 gettext.install('duden', os.path.join(os.path.dirname(__file__), 'locale'))
@@ -370,5 +370,17 @@ class DudenWord():
         ipa = self.soup.find('span', {"class": "ipa"})
         if ipa is not None:
             return ipa.get_text()
+
+        return None
+
+    @property
+    def alternative_spellings(self):
+        """
+        Returns alternate spellings
+        """
+        alternative_spellings = self.soup.find_all('span', {"class": "lemma__alt-spelling"})
+        if alternative_spellings is not None:
+            for spelling in alternative_spellings:
+                return spelling.get_text()
 
         return None

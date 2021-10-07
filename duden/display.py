@@ -152,3 +152,6 @@ def describe_word(word):
         for part_of_speech, words in word.compounds.items():
             print(blue(' - {}:'.format(part_of_speech.capitalize())),
                   ', '.join(words))
+
+    if word.alternative_spellings:
+        print(white(_('Alternative_spellings:'), bold=True), word.alternative_spellings)

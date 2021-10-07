@@ -55,6 +55,9 @@ def display_word(word, args):
     elif args.phonetic:
         if word.phonetic:
             print(word.phonetic)
+    elif args.alternative_spellings:
+        if word.alternative_spellings:
+            print(word.alternative_spellings)
     elif args.grammar:
         display_grammar(word, args.grammar)
     elif args.export:
@@ -119,6 +122,8 @@ def parse_args():
                         help=_('print program version'))
     parser.add_argument('--phonetic', action='store_true',
                         help=_('display pronunciation'))
+    parser.add_argument('--alternative-spellings', action='store_true',
+                        help=_('display alternative spellings'))
 
     return parser.parse_args()
 
