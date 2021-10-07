@@ -96,12 +96,19 @@ class DudenWord():
         """
         Word article
         """
+        # Find span with class "lemma__determiner"
+        article_element = self.soup.find('span', {"class": "lemma__determiner"})
+        if article_element is not None:
+            # remove soft hyphens "\xad" and return
+            return article_element.get_text().replace('\xad', '').strip() 
+
+        #  if the article_element does not exist, we fall back to the old method
         if self.part_of_speech is not None and 'Substantiv' not in self.part_of_speech:
             return None
         if ', ' not in self.title:
             return None
 
-        _, article = self.title.split(', ')
+        _, article = self.title.split(', ' , 1)
         return article
 
     def _find_tuple_dl(self, key, element=None):
