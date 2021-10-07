@@ -46,3 +46,5 @@ update-test-data:
 	./run_duden.py --export Petersilie > tests/test_data/Petersilie.yaml
 	./run_duden.py --export einfach -r1 > tests/test_data/einfach.yaml
 	./run_duden.py --export Keyboard > tests/test_data/Keyboard.yaml
+	./run_duden.py --export Meme > tests/test_data/Meme.yaml
+	
