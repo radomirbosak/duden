@@ -59,7 +59,7 @@ class DudenWord():
         if title_element is not None:
             # remove soft hyphens "\xad" and return
             return clear_text(title_element.get_text())
-        
+
         #  if the title_element does not exist, we fall back to the old method
         if self.part_of_speech is not None and 'Substantiv' not in self.part_of_speech:
             return self.title
@@ -100,7 +100,7 @@ class DudenWord():
         article_element = self.soup.find('span', {"class": "lemma__determiner"})
         if article_element is not None:
             # remove soft hyphens "\xad" and return
-            return article_element.get_text().replace('\xad', '').strip() 
+            return article_element.get_text().replace('\xad', '').strip()
 
         #  if the article_element does not exist, we fall back to the old method
         if self.part_of_speech is not None and 'Substantiv' not in self.part_of_speech:
@@ -108,7 +108,7 @@ class DudenWord():
         if ', ' not in self.title:
             return None
 
-        _, article = self.title.split(', ' , 1)
+        _, article = self.title.split(', ', 1)
         return article
 
     def _find_tuple_dl(self, key, element=None):
