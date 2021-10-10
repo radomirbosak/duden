@@ -382,4 +382,4 @@ class DudenWord():
         if alternative_spellings is None:
             return None
 
-        return [spelling.get_text() for spelling in alternate_spellings]
+        return [spelling.get_text() for spelling in alternative_spellings]
