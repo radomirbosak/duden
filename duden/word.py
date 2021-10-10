@@ -58,7 +58,7 @@ class DudenWord():
         title_element = self.soup.find('span', {"class": "lemma__main"})
         if title_element is not None:
             # remove soft hyphens "\xad" and return
-            return title_element.get_text().replace('\xad', '').strip() 
+            return clear_text(title_element.get_text())
         
         #  if the title_element does not exist, we fall back to the old method
         if self.part_of_speech is not None and 'Substantiv' not in self.part_of_speech:
