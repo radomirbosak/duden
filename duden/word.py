@@ -58,7 +58,7 @@ class DudenWord():
         title_element = self.soup.find('span', {"class": "lemma__main"})
         if title_element is not None:
             # remove soft hyphens "\xad" and return
-            return title_element.get_text().replace('\xad', '').strip() 
+            return clear_text(title_element.get_text())
         
         #  if the title_element does not exist, we fall back to the old method
         if self.part_of_speech is not None and 'Substantiv' not in self.part_of_speech:
@@ -379,8 +379,7 @@ class DudenWord():
         Returns alternate spellings
         """
         alternative_spellings = self.soup.find_all('span', {"class": "lemma__alt-spelling"})
-        if alternative_spellings is not None:
-            for spelling in alternative_spellings:
-                return spelling.get_text()
+        if alternative_spellings is None:
+            return None
 
-        return None
+        return [spelling.get_text() for spelling in alternate_spellings]
