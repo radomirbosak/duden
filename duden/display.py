@@ -154,4 +154,4 @@ def describe_word(word):
                   ', '.join(words))
 
     if word.alternative_spellings:
-        print(white(_('Alternative_spellings:'), bold=True), word.alternative_spellings)
+        print(white(_('Alternative spellings:'), bold=True), word.alternative_spellings)
