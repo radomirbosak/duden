@@ -379,8 +379,7 @@ class DudenWord():
         Returns alternate spellings
         """
         alternative_spellings = self.soup.find_all('span', {"class": "lemma__alt-spelling"})
-        if alternative_spellings is not None:
-            for spelling in alternative_spellings:
-                return spelling.get_text()
+        if alternative_spellings is None:
+            return None
 
-        return None
+        return [spelling.get_text() for spelling in alternate_spellings]
