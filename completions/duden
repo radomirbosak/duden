@@ -23,6 +23,7 @@ _duden () {
         --no-cache
         --export
         --phonetic
+        --alternative-spellings
     )
     opts_with_arg=(
         -r --result
