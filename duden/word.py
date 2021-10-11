@@ -14,7 +14,7 @@ from .common import recursively_extract, table_node_to_tagged_cells, clear_text
 EXPORT_ATTRIBUTES = [
     'name', 'urlname', 'title', 'article', 'part_of_speech', 'usage',
     'frequency', 'word_separation', 'meaning_overview', 'origin', 'compounds',
-    'grammar_raw', 'synonyms', 'words_before', 'words_after', 'phonetic'
+    'grammar_raw', 'synonyms', 'words_before', 'words_after', 'phonetic', 'alternative_spellings'
 ]
 
 gettext.install('duden', os.path.join(os.path.dirname(__file__), 'locale'))
@@ -53,12 +53,20 @@ class DudenWord():
         """
         Word without article
         """
+
+        # Find span with class "lemma__main"
+        title_element = self.soup.find('span', {"class": "lemma__main"})
+        if title_element is not None:
+            # remove soft hyphens "\xad" and return
+            return clear_text(title_element.get_text())
+
+        #  if the title_element does not exist, we fall back to the old method
         if self.part_of_speech is not None and 'Substantiv' not in self.part_of_speech:
             return self.title
         if ', ' not in self.title:
             return self.title
 
-        name, _ = self.title.split(', ')
+        name, _ = self.title.split(', ', 1)
         return name
 
     @property
@@ -88,12 +96,19 @@ class DudenWord():
         """
         Word article
         """
+        # Find span with class "lemma__determiner"
+        article_element = self.soup.find('span', {"class": "lemma__determiner"})
+        if article_element is not None:
+            # remove soft hyphens "\xad" and return
+            return clear_text(article_element.get_text())
+
+        #  if the article_element does not exist, we fall back to the old method
         if self.part_of_speech is not None and 'Substantiv' not in self.part_of_speech:
             return None
         if ', ' not in self.title:
             return None
 
-        _, article = self.title.split(', ')
+        _, article = self.title.split(', ', 1)
         return article
 
     def _find_tuple_dl(self, key, element=None):
@@ -357,3 +372,14 @@ class DudenWord():
             return ipa.get_text()
 
         return None
+
+    @property
+    def alternative_spellings(self):
+        """
+        Returns alternate spellings
+        """
+        alternative_spellings = self.soup.find_all('span', {"class": "lemma__alt-spelling"})
+        if alternative_spellings is None:
+            return None
+
+        return [spelling.get_text() for spelling in alternative_spellings]
