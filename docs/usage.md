@@ -61,6 +61,10 @@ This example showcases the most useful functions of the `DudenWord` class.
 
 > w.grammar(duden.SINGULAR, duden.PRASENS, duden.INDIKATIV)
 ['ich laufe', 'du läufst', 'er/sie/es läuft']
+
+> w = duden.get('Meme')
+> w.alternative_spellings
+['Mem']
 ```
 
 ## Other functions
