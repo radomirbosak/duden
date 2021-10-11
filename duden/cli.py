@@ -57,7 +57,8 @@ def display_word(word, args):
             print(word.phonetic)
     elif args.alternative_spellings:
         if word.alternative_spellings:
-            print(word.alternative_spellings)
+            for spelling in word.alternative_spellings:
+                print(spelling)
     elif args.grammar:
         display_grammar(word, args.grammar)
     elif args.export:
