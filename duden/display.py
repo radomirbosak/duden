@@ -124,6 +124,8 @@ def describe_word(word):
 
     if word.phonetic:
         print(white(_('Pronunciation:'), bold=True), word.phonetic)
+    if word.alternative_spellings:
+        print(white(_('Alternative spellings:'), bold=True), ', '.join(word.alternative_spellings))
     if word.part_of_speech:
         print(white(_('Word type:'), bold=True), word.part_of_speech)
     if word.usage:
@@ -152,6 +154,3 @@ def describe_word(word):
         for part_of_speech, words in word.compounds.items():
             print(blue(' - {}:'.format(part_of_speech.capitalize())),
                   ', '.join(words))
-
-    if word.alternative_spellings:
-        print(white(_('Alternative spellings:'), bold=True), word.alternative_spellings)
