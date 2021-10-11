@@ -39,7 +39,8 @@ usage: duden [-h] [--title] [--name] [--article] [--part-of-speech]
              [--frequency] [--usage] [--word-separation]
              [--meaning-overview] [--synonyms] [--origin]
              [--compounds [COMPOUNDS]] [-g [GRAMMAR]] [--export]
-             [-r RESULT] [--fuzzy] [--no-cache] [-V]
+             [--words-before] [--words-after] [-r RESULT] [--fuzzy]
+             [--no-cache] [-V] [--phonetic] [--alternative-spellings]
              word
 
 positional arguments:
@@ -62,12 +63,16 @@ optional arguments:
   -g [GRAMMAR], --grammar [GRAMMAR]
                         list grammar forms
   --export              export parsed word attributes in yaml format
+  --words-before        list 5 words before this one
+  --words-after         list 5 words after this one
   -r RESULT, --result RESULT
-                        display n-th (starting from 1) result in case of
-                        multiple words matching the input
+                        display n-th (starting from 1) result in case of multiple words matching the input
   --fuzzy               enable fuzzy word matching
   --no-cache            do not cache retrieved words
   -V, --version         print program version
+  --phonetic            display pronunciation
+  --alternative-spellings
+                        display alternative spellings
 ```
 </details>
 
