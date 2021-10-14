@@ -96,7 +96,7 @@ The `duden.search` function requests the url `https://www.duden.de/suchen/dudeno
 ('einfach', 'Partikel', 'einfach_vollkommen_wirklich')
 ```
 
-By default, just words with title maching exactly the searched word are returned by the `search` function. To return all results of the `/suchen/dudenonline/` call, use the `exact` keyword:
+By default, just words with title matching exactly the searched word are returned by the `search` function. To return all results of the `/suchen/dudenonline/` call, use the `exact` keyword:
 
 ```python
 > duden.search('einfach', exact=False)
