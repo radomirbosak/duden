@@ -288,7 +288,7 @@ class DudenWord():
         Find the Grammar sections in the document and extract tagged string
         list of all tables found there.
 
-        The concatinated tagged string list (for all tables) is returned
+        The concatenated tagged string list (for all tables) is returned
         """
         section = self.soup.find('div', id='grammatik')
         if not section:
