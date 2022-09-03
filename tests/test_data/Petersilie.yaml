@@ -15,31 +15,7 @@ meaning_overview: zum Würzen und Garnieren von Speisen verwendete Pflanze mit d
 origin: mittelhochdeutsch pētersil(je), althochdeutsch petersilie, petrasile < mittellateinisch
   petrosilium < lateinisch petroselinon < griechisch petrosélinon = Felsen-, Steineppich
 compounds: null
-grammar_raw:
-- - - Nominativ
-    - Singular
-  - die Petersilie
-- - - Nominativ
-    - Plural
-  - die Petersilien
-- - - Genitiv
-    - Singular
-  - der Petersilie
-- - - Genitiv
-    - Plural
-  - der Petersilien
-- - - Dativ
-    - Singular
-  - der Petersilie
-- - - Dativ
-    - Plural
-  - den Petersilien
-- - - Akkusativ
-    - Singular
-  - die Petersilie
-- - - Akkusativ
-    - Plural
-  - die Petersilien
+grammar_raw: []
 synonyms:
 - (schweizerisch) Peterli; (bayrisch, österreichisch umgangssprachlich) Petersil;
   (südwestdeutsch und schweizerisch mundartlich) Peterle
