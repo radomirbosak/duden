@@ -15,31 +15,7 @@ origin: 'englisch keyboard, eigentlich = Klaviatur, Tastatur, aus: key = Taste
   Schlüssel, wohl in der Bedeutung beeinflusst von mittellateinisch clavis, Klavier)
   und board = Brett'
 compounds: null
-grammar_raw:
-- - - Nominativ
-    - Singular
-  - das Keyboard
-- - - Nominativ
-    - Plural
-  - die Keyboards
-- - - Genitiv
-    - Singular
-  - des Keyboards
-- - - Genitiv
-    - Plural
-  - der Keyboards
-- - - Dativ
-    - Singular
-  - dem Keyboard
-- - - Dativ
-    - Plural
-  - den Keyboards
-- - - Akkusativ
-    - Singular
-  - das Keyboard
-- - - Akkusativ
-    - Plural
-  - die Keyboards
+grammar_raw: []
 synonyms: null
 words_before:
 - Key-Accounter

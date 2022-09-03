@@ -41,31 +41,7 @@ compounds:
   - schließen
   - verbringen
   - öffnen
-grammar_raw:
-- - - Nominativ
-    - Singular
-  - der Feiertag
-- - - Nominativ
-    - Plural
-  - die Feiertage
-- - - Genitiv
-    - Singular
-  - des Feiertages, Feiertags
-- - - Genitiv
-    - Plural
-  - der Feiertage
-- - - Dativ
-    - Singular
-  - dem Feiertag
-- - - Dativ
-    - Plural
-  - den Feiertagen
-- - - Akkusativ
-    - Singular
-  - den Feiertag
-- - - Akkusativ
-    - Plural
-  - die Feiertage
+grammar_raw: []
 synonyms:
 - Festtag, Gedenktag, Ehrentag
 words_before:

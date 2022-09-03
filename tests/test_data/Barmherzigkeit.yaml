@@ -14,19 +14,7 @@ meaning_overview: barmherziges Wesen, Verhalten
 origin: mittelhochdeutsch barmherzekeit, barmherze, althochdeutsch armherzi, nach
   (kirchen)lateinisch misericordia
 compounds: null
-grammar_raw:
-- - - Nominativ
-    - Singular
-  - die Barmherzigkeit
-- - - Genitiv
-    - Singular
-  - der Barmherzigkeit
-- - - Dativ
-    - Singular
-  - der Barmherzigkeit
-- - - Akkusativ
-    - Singular
-  - die Barmherzigkeit
+grammar_raw: []
 synonyms:
 - '[Engels]güte, Milde, Nachsicht, Nachsichtigkeit'
 words_before:
