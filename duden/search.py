@@ -15,8 +15,8 @@ from .word import DudenWord
 from .common import clear_text
 
 
-URL_FORM = 'http://www.duden.de/rechtschreibung/{word}'
-SEARCH_URL_FORM = 'http://www.duden.de/suchen/dudenonline/{word}'
+URL_FORM = 'https://www.duden.de/rechtschreibung/{word}'
+SEARCH_URL_FORM = 'https://www.duden.de/suchen/dudenonline/{word}'
 
 
 def sanitize_word(word):
@@ -102,7 +102,7 @@ def get_word_of_the_day():
     """
     Scrapes the word of the day and returns DudenWord instance of it.
     """
-    html_content = requests.get("http://www.duden.de").content
+    html_content = requests.get("https://www.duden.de").content
     soup = bs4.BeautifulSoup(html_content, "html.parser")
     link = soup.find("a", class_="scene__title-link").get("href")
     word = link.split("/")[-1]  # get word from "/rechtschreibung/word"

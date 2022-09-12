@@ -26,7 +26,7 @@ class DudenWord():
 
     Example:
 
-        > r = requests.get('http://www.duden.de/rechtschreibung/Hase')
+        > r = requests.get('https://www.duden.de/rechtschreibung/Hase')
         > soup = bs4.BeautifulSoup(r.text)
         > word = duden.DudenWord(soup)
         > word
