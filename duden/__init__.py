@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-The duden package can parse the http://www.duden.de/ word information.
+The duden package can parse the https://www.duden.de/ word information.
 
 The `get` function is used to return parsed word, when provided with the word's
 exact url name. The `search` function is used to search for words, either
