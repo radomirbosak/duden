@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
-import os
+from pathlib import Path
 from setuptools import setup
 
-
-here = os.path.abspath(os.path.dirname(__file__))
+this_directory = Path(__file__).parent
 
 about = {}
-with open(os.path.join(here, 'duden', '__version__.py'), 'r', encoding='utf-8') as f:
+version_file = this_directory / "duden" / "__version__.py"
+with open(version_file, 'r', encoding='utf-8') as f:
     exec(f.read(), about)
+
+long_description = (this_directory / "README.md").read_text()
 
 setup(
     author='Radomír Bosák',
@@ -29,6 +31,8 @@ setup(
         'Topic :: Education',
     ],
     description='CLI-based german dictionary',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     download_url='https://github.com/radomirbosak/duden/archive/' \
                  + about['__version__'] + '.tar.gz',
     entry_points={
@@ -44,7 +48,7 @@ setup(
         "pyxdg",
         "pyyaml"
     ],
-    keywords=['duden', 'duden.de', 'dictionary', 'cli', 'word'],
+    keywords=['duden', 'duden.de', 'dictionary', 'cli', 'word', 'german'],
     license='MIT',
     name='duden',
     packages=['duden'],
