@@ -90,21 +90,28 @@ optional arguments:
 ```
 For more examples see [usage documentation](docs/usage.md).
 
-## Dependencies
+## Development
 
-Python modules:
-* beautifulsoup4
-* requests
-* crayons
-* pyxdg
-* pyyaml
+Dependencies and packaging are managed by [Poetry](https://python-poetry.org/).
 
-## Testing
+Install the virtual environment and enter it with
+```console
+$ poetry install
+$ poetry shell
+```
+
+### Testing
 
 ```console
-make test
+$ pytest
 ```
+
+### Publishing
+
+Before `poetry publish`, make sure to build locale files with `make localization`.
+
+Poetry configuration for PyPI and Test PyPI credentials are well covered in [this SO answer](https://stackoverflow.com/a/72524326).
 
 ## Supported versions of Python
 
-* Python 3
+* Python 3.4+
