@@ -1,4 +1,4 @@
-# Duden [![Build Status](https://travis-ci.org/radomirbosak/duden.svg?branch=master)](https://travis-ci.org/radomirbosak/duden) [![Version](http://img.shields.io/pypi/v/duden.svg?style=flat)](https://pypi.python.org/pypi/duden/)
+# Duden [![Version](http://img.shields.io/pypi/v/duden.svg?style=flat)](https://pypi.python.org/pypi/duden/)
 
 **duden** is a CLI-based program and python module, which can provide various information about given german word. The provided data are parsed from german dictionary [duden.de](https://duden.de).
 
