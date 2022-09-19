@@ -4,16 +4,15 @@ Network requests-related functions
 """
 
 import gzip
-from pathlib import Path
 import string
+from pathlib import Path
 
 import bs4
 import requests
 from xdg.BaseDirectory import xdg_cache_home
 
-from .word import DudenWord
 from .common import clear_text
-
+from .word import DudenWord
 
 URL_FORM = 'https://www.duden.de/rechtschreibung/{word}'
 SEARCH_URL_FORM = 'https://www.duden.de/suchen/dudenonline/{word}'

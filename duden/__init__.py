@@ -19,11 +19,24 @@ __all__ = [
     'NOMINATIV', 'GENITIV', 'DATIV', 'AKKUSATIV'
 ]
 
-from .search import get, search, get_word_of_the_day
-
-from .constants import (SINGULAR, PLURAL,
-                        PRASENS, PRATERITUM,
-                        INDIKATIV, IMPERATIV, KONJUKTIV_1, KONJUKTIV_2,
-                        PARTIZIP_1, PARTIZIP_2, INFINITIV_MIT_ZU,
-                        PERSON_1, PERSON_2, PERSON_3,
-                        NOMINATIV, GENITIV, DATIV, AKKUSATIV)
+from .constants import (
+    AKKUSATIV,
+    DATIV,
+    GENITIV,
+    IMPERATIV,
+    INDIKATIV,
+    INFINITIV_MIT_ZU,
+    KONJUKTIV_1,
+    KONJUKTIV_2,
+    NOMINATIV,
+    PARTIZIP_1,
+    PARTIZIP_2,
+    PERSON_1,
+    PERSON_2,
+    PERSON_3,
+    PLURAL,
+    PRASENS,
+    PRATERITUM,
+    SINGULAR,
+)
+from .search import get, get_word_of_the_day, search

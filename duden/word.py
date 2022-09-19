@@ -8,8 +8,7 @@ import copy
 import gettext
 import os
 
-from .common import recursively_extract, table_node_to_tagged_cells, clear_text
-
+from .common import clear_text, recursively_extract, table_node_to_tagged_cells
 
 EXPORT_ATTRIBUTES = [
     'name', 'urlname', 'title', 'article', 'part_of_speech', 'usage',
