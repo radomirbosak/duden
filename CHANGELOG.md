@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+New features:
+* Add 10 second timeout to every network request to prevent program hanging #164
+
 Intenal:
 * Change dependency management tool from pipenv to poetry #160
 

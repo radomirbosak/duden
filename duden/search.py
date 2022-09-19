@@ -16,6 +16,7 @@ from .word import DudenWord
 
 URL_FORM = "https://www.duden.de/rechtschreibung/{word}"
 SEARCH_URL_FORM = "https://www.duden.de/suchen/dudenonline/{word}"
+DEFAULT_TIMEOUT = 10
 
 
 def sanitize_word(word):
@@ -76,7 +77,7 @@ def request_word(word):
     """
     url = URL_FORM.format(word=word)
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=DEFAULT_TIMEOUT)
     except requests.exceptions.ConnectionError as exc:
         raise Exception(
             _("Connection could not be established. " "Check your internet connection.")
@@ -107,7 +108,7 @@ def get_word_of_the_day():
     """
     Scrapes the word of the day and returns DudenWord instance of it.
     """
-    html_content = requests.get("https://www.duden.de").content
+    html_content = requests.get("https://www.duden.de", timeout=DEFAULT_TIMEOUT).content
     soup = bs4.BeautifulSoup(html_content, "html.parser")
     link = soup.find("a", class_="scene__title-link").get("href")
     word = link.split("/")[-1]  # get word from "/rechtschreibung/word"
@@ -129,7 +130,7 @@ def request_search(word):
     Request search page from duden
     """
     url = SEARCH_URL_FORM.format(word=word)
-    return requests.get(url).text
+    return requests.get(url, timeout=DEFAULT_TIMEOUT).text
 
 
 def search(word, exact=True, return_words=True, cache=True):
