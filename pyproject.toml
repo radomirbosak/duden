@@ -53,3 +53,9 @@ line_length = 88
 [tool.black]
 line-length = 88
 target-version = ['py310']
+
+[tool.pylint.VARIABLES]
+additional-builtins = ["_"]
+
+[tool.pylint.'MESSAGES CONTROL']
+disable = ["consider-using-f-string"]
