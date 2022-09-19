@@ -65,6 +65,9 @@ This example showcases the most useful functions of the `DudenWord` class.
 > w = duden.get('Meme')
 > w.alternative_spellings
 ['Mem']
+
+> w.phonetic
+'[mi:m]'
 ```
 
 ## Other functions
