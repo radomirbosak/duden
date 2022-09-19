@@ -67,9 +67,8 @@ def display_word(word, args):
     elif args.grammar:
         display_grammar(word, args.grammar)
     elif args.export:
-        yaml_string = yaml.dump(word.export(),
-                                sort_keys=False, allow_unicode=True)
-        print(yaml_string, end='')
+        yaml_string = yaml.dump(word.export(), sort_keys=False, allow_unicode=True)
+        print(yaml_string, end="")
     elif args.words_before:
         print_string_or_list(word.words_before)
     elif args.words_after:
@@ -84,52 +83,83 @@ def parse_args():
     Parse CLI arguments
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument('word')
-    parser.add_argument('--title', action='store_true',
-                        help=_('display word and article'))
-    parser.add_argument('--name', action='store_true',
-                        help=_('display the word itself'))
-    parser.add_argument('--article', action='store_true',
-                        help=_('display article'))
-    parser.add_argument('--part-of-speech', action='store_true',
-                        help=_('display part of speech'))
-    parser.add_argument('--frequency', action='store_true',
-                        help=_('display commonness (1 to 5)'))
-    parser.add_argument('--usage', action='store_true',
-                        help=_('display context of use'))
-    parser.add_argument('--word-separation', action='store_true',
-                        help=_('display proper separation (line separated)'))
-    parser.add_argument('--meaning-overview', action='store_true',
-                        help=_('display meaning overview'))
-    parser.add_argument('--synonyms', action='store_true',
-                        help=_('list synonyms (line separated)'))
-    parser.add_argument('--origin', action='store_true',
-                        help=_('display origin'))
-    parser.add_argument('--compounds', nargs='?', const='ALL',
-                        help=_('list common compounds'))
-    parser.add_argument('-g', '--grammar', nargs='?', const='ALL',
-                        help=_('list grammar forms'))
-    parser.add_argument('--export', action='store_true',
-                        help=_('export parsed word attributes in yaml format'))
-    parser.add_argument('--words-before', action='store_true',
-                        help=_('list 5 words before this one'))
-    parser.add_argument('--words-after', action='store_true',
-                        help=_('list 5 words after this one'))
+    parser.add_argument("word")
+    parser.add_argument(
+        "--title", action="store_true", help=_("display word and article")
+    )
+    parser.add_argument(
+        "--name", action="store_true", help=_("display the word itself")
+    )
+    parser.add_argument("--article", action="store_true", help=_("display article"))
+    parser.add_argument(
+        "--part-of-speech", action="store_true", help=_("display part of speech")
+    )
+    parser.add_argument(
+        "--frequency", action="store_true", help=_("display commonness (1 to 5)")
+    )
+    parser.add_argument(
+        "--usage", action="store_true", help=_("display context of use")
+    )
+    parser.add_argument(
+        "--word-separation",
+        action="store_true",
+        help=_("display proper separation (line separated)"),
+    )
+    parser.add_argument(
+        "--meaning-overview", action="store_true", help=_("display meaning overview")
+    )
+    parser.add_argument(
+        "--synonyms", action="store_true", help=_("list synonyms (line separated)")
+    )
+    parser.add_argument("--origin", action="store_true", help=_("display origin"))
+    parser.add_argument(
+        "--compounds", nargs="?", const="ALL", help=_("list common compounds")
+    )
+    parser.add_argument(
+        "-g", "--grammar", nargs="?", const="ALL", help=_("list grammar forms")
+    )
+    parser.add_argument(
+        "--export",
+        action="store_true",
+        help=_("export parsed word attributes in yaml format"),
+    )
+    parser.add_argument(
+        "--words-before", action="store_true", help=_("list 5 words before this one")
+    )
+    parser.add_argument(
+        "--words-after", action="store_true", help=_("list 5 words after this one")
+    )
 
-    parser.add_argument('-r', '--result', type=int,
-                        help=_('display n-th (starting from 1) result in case '
-                               'of multiple words matching the input'))
-    parser.add_argument('--fuzzy', action='store_true',
-                        help=_('enable fuzzy word matching'))
-    parser.add_argument('--no-cache', action='store_false', dest='cache',
-                        help=_('do not cache retrieved words'))
+    parser.add_argument(
+        "-r",
+        "--result",
+        type=int,
+        help=_(
+            "display n-th (starting from 1) result in case "
+            "of multiple words matching the input"
+        ),
+    )
+    parser.add_argument(
+        "--fuzzy", action="store_true", help=_("enable fuzzy word matching")
+    )
+    parser.add_argument(
+        "--no-cache",
+        action="store_false",
+        dest="cache",
+        help=_("do not cache retrieved words"),
+    )
 
-    parser.add_argument('-V', '--version', action='store_true',
-                        help=_('print program version'))
-    parser.add_argument('--phonetic', action='store_true',
-                        help=_('display pronunciation'))
-    parser.add_argument('--alternative-spellings', action='store_true',
-                        help=_('display alternative spellings'))
+    parser.add_argument(
+        "-V", "--version", action="store_true", help=_("print program version")
+    )
+    parser.add_argument(
+        "--phonetic", action="store_true", help=_("display pronunciation")
+    )
+    parser.add_argument(
+        "--alternative-spellings",
+        action="store_true",
+        help=_("display alternative spellings"),
+    )
 
     return parser.parse_args()
 
@@ -140,16 +170,17 @@ def main():
     """
 
     # handle the --version switch
-    if '--version' in sys.argv or '-V' in sys.argv:
-        print('duden ' + __version__)
+    if "--version" in sys.argv or "-V" in sys.argv:
+        print("duden " + __version__)
         sys.exit(0)
 
     # parse normal arguments
     args = parse_args()
 
     # search all words matching the string
-    words = search(args.word, return_words=False, exact=not args.fuzzy,
-                   cache=args.cache)
+    words = search(
+        args.word, return_words=False, exact=not args.fuzzy, cache=args.cache
+    )
 
     # exit if the word wasn't found
     if not words:
@@ -158,11 +189,14 @@ def main():
 
     # list the options when there is more than one matching word
     if len(words) > 1 and args.result is None:
-        print(_('Found {} matching words. Use the -r/--result argument to '
-                'specify which one to display.').format(white(len(words),
-                                                              bold=True)))
+        print(
+            _(
+                "Found {} matching words. Use the -r/--result argument to "
+                "specify which one to display."
+            ).format(white(len(words), bold=True))
+        )
         for i, word in enumerate(words, 1):
-            print('{} {}'.format(blue('{})'.format(i)), word))
+            print("{} {}".format(blue("{})".format(i)), word))
         sys.exit(1)
 
     result_index = args.result if args.result is not None else 1
@@ -184,5 +218,5 @@ def main():
     display_word(word, args)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
