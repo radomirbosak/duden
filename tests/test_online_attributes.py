@@ -27,8 +27,8 @@ def iterate_test_yaml():
             continue
 
         # store real and expected result
-        with open(full_path, "r", encoding="UTF-8") as f:
-            yield yaml.load(f, Loader=yaml.SafeLoader)
+        with open(full_path, "r", encoding="UTF-8") as file:
+            yield yaml.load(file, Loader=yaml.SafeLoader)
 
 
 def generate_word_data():

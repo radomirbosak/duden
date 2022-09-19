@@ -51,16 +51,16 @@ def cached_response(prefix=""):
                 # try to read from cache
                 cachedir.mkdir(parents=True, exist_ok=True)
                 try:
-                    with gzip.open(full_path, "rt", encoding="utf8") as f:
-                        return f.read()
+                    with gzip.open(full_path, "rt", encoding="utf8") as file:
+                        return file.read()
                 except (FileNotFoundError, IOError, EOFError):
                     pass
 
             result = func(cache_key, **kwargs)
 
             if cache and result is not None:
-                with gzip.open(full_path, "wt", encoding="utf8") as f:
-                    f.write(result)
+                with gzip.open(full_path, "wt", encoding="utf8") as file:
+                    file.write(result)
 
             return result
 
