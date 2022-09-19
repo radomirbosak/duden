@@ -38,14 +38,16 @@ def recursively_extract(node, exfun, maxdepth=2):
     >>> recursively_extract(node, lambda x: x.get_text())
     ['Hase', ['Eins', 'Zwei']]
     """
-    if node.name in ['ol', 'ul']:
+    if node.name in ["ol", "ul"]:
         lilist = node
     else:
         lilist = node.ol or node.ul
     if lilist and maxdepth:
         # apply 'recursively_extract' to every 'li' node found under this node
-        return [recursively_extract(li, exfun, maxdepth=(maxdepth - 1))
-                for li in lilist.find_all('li', recursive=False)]
+        return [
+            recursively_extract(li, exfun, maxdepth=(maxdepth - 1))
+            for li in lilist.find_all("li", recursive=False)
+        ]
     # if this node doesn't contain 'ol' or 'ul' node, return the transformed
     # leaf (using the 'exfun' function)
     return exfun(node)
@@ -55,7 +57,7 @@ def clear_text(text):
     """
     Remove soft hyphens anywhere, and heading and trailing spaces.
     """
-    return text.replace('\xad', '').strip()
+    return text.replace("\xad", "").strip()
 
 
 def table_node_to_tagged_cells(table_node):
@@ -85,22 +87,21 @@ def table_node_to_tagged_cells(table_node):
     table_content = []
 
     title_element = table_node.h3
-    table_name = title_element.text if title_element else ''
+    table_name = title_element.text if title_element else ""
 
     # convert table html node to raw table (list of lists) and optional
     # left and top headers (also lists)
     if table_node.thead:
-        all_ths = table_node.thead.find_all(
-            'th', class_='wrap-table__flexions-head')
+        all_ths = table_node.thead.find_all("th", class_="wrap-table__flexions-head")
         top_header = [clear_text(t.text) for t in all_ths]
 
-    for row in table_node.tbody.find_all('tr'):
+    for row in table_node.tbody.find_all("tr"):
         if row.th:
             th_node = row.th
-            rowspan = int(th_node.attrs.get('rowspan', 1))
+            rowspan = int(th_node.attrs.get("rowspan", 1))
             left_header.extend([clear_text(row.th.text)] * rowspan)
 
-        tds = row.find_all('td')
+        tds = row.find_all("td")
         table_content.append([clear_text(td.text) for td in tds])
 
     # convert left, top, and table headers to sets for easier tagging
@@ -121,12 +122,8 @@ def table_node_to_tagged_cells(table_node):
 
     # create a list of tagged strings
     tagged_strings = []
-    for row, row_tag, person_tag \
-            in zip(table_content, left_header, cycle(person_tags)):
+    for row, row_tag, person_tag in zip(table_content, left_header, cycle(person_tags)):
         for cell, col_tag in zip(row, top_header):
-            taglist = table_tag \
-                .union(row_tag) \
-                .union(col_tag) \
-                .union(person_tag)
+            taglist = table_tag.union(row_tag).union(col_tag).union(person_tag)
             tagged_strings.append((taglist, cell))
     return tagged_strings

@@ -10,13 +10,27 @@ words.
 The basic class representing the parsed word is `DudenWord`.
 """
 __all__ = [
-    'get', 'search', 'get_word_of_the_day',
-    'SINGULAR', 'PLURAL',
-    'PRASENS', 'PRATERITUM',
-    'INDIKATIV', 'IMPERATIV', 'KONJUKTIV_1', 'KONJUKTIV_2',
-    'PARTIZIP_1', 'PARTIZIP_2', 'INFINITIV_MIT_ZU',
-    'PERSON_1', 'PERSON_2', 'PERSON_3',
-    'NOMINATIV', 'GENITIV', 'DATIV', 'AKKUSATIV'
+    "get",
+    "search",
+    "get_word_of_the_day",
+    "SINGULAR",
+    "PLURAL",
+    "PRASENS",
+    "PRATERITUM",
+    "INDIKATIV",
+    "IMPERATIV",
+    "KONJUKTIV_1",
+    "KONJUKTIV_2",
+    "PARTIZIP_1",
+    "PARTIZIP_2",
+    "INFINITIV_MIT_ZU",
+    "PERSON_1",
+    "PERSON_2",
+    "PERSON_3",
+    "NOMINATIV",
+    "GENITIV",
+    "DATIV",
+    "AKKUSATIV",
 ]
 
 from .constants import (

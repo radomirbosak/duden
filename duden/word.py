@@ -11,15 +11,29 @@ import os
 from .common import clear_text, recursively_extract, table_node_to_tagged_cells
 
 EXPORT_ATTRIBUTES = [
-    'name', 'urlname', 'title', 'article', 'part_of_speech', 'usage',
-    'frequency', 'word_separation', 'meaning_overview', 'origin', 'compounds',
-    'grammar_raw', 'synonyms', 'words_before', 'words_after', 'phonetic', 'alternative_spellings'
+    "name",
+    "urlname",
+    "title",
+    "article",
+    "part_of_speech",
+    "usage",
+    "frequency",
+    "word_separation",
+    "meaning_overview",
+    "origin",
+    "compounds",
+    "grammar_raw",
+    "synonyms",
+    "words_before",
+    "words_after",
+    "phonetic",
+    "alternative_spellings",
 ]
 
-gettext.install('duden', os.path.join(os.path.dirname(__file__), 'locale'))
+gettext.install("duden", os.path.join(os.path.dirname(__file__), "locale"))
 
 
-class DudenWord():
+class DudenWord:
     """
     Represents parsed word. Takes a BeautifulSoup object as a constructor argument.
 
@@ -31,21 +45,22 @@ class DudenWord():
         > word
         Hase, der (Substantiv, maskulin)
     """
+
     # pylint: disable=too-many-public-methods
-    wordcloud_parts_of_speech = ['substantive', 'verben', 'adjektive']
+    wordcloud_parts_of_speech = ["substantive", "verben", "adjektive"]
 
     def __init__(self, soup):
         self.soup = soup
 
     def __repr__(self):
-        return '{} ({})'.format(self.title, self.part_of_speech)
+        return "{} ({})".format(self.title, self.part_of_speech)
 
     @property
     def title(self):
         """
         The word string with article
         """
-        return self.soup.h1.get_text().replace('\xad', '').strip()
+        return self.soup.h1.get_text().replace("\xad", "").strip()
 
     @property
     def name(self):
@@ -54,18 +69,18 @@ class DudenWord():
         """
 
         # Find span with class "lemma__main"
-        title_element = self.soup.find('span', {"class": "lemma__main"})
+        title_element = self.soup.find("span", {"class": "lemma__main"})
         if title_element is not None:
             # remove soft hyphens "\xad" and return
             return clear_text(title_element.get_text())
 
         #  if the title_element does not exist, we fall back to the old method
-        if self.part_of_speech is not None and 'Substantiv' not in self.part_of_speech:
+        if self.part_of_speech is not None and "Substantiv" not in self.part_of_speech:
             return self.title
-        if ', ' not in self.title:
+        if ", " not in self.title:
             return self.title
 
-        name, _ = self.title.split(', ', 1)
+        name, _ = self.title.split(", ", 1)
         return name
 
     @property
@@ -73,22 +88,22 @@ class DudenWord():
         """
         Return unique representation of the word used in duden.de urls
         """
-        return self.soup.head.find('link', rel='canonical').attrs['href'].split('/')[-1]
+        return self.soup.head.find("link", rel="canonical").attrs["href"].split("/")[-1]
 
     @property
     def revision_url(self):
         """Returns url to this specific word revision"""
-        return self.soup.find('input', id='cite-field').attrs['value']
+        return self.soup.find("input", id="cite-field").attrs["value"]
 
     @property
     def node_no(self):
         """Returns word node number"""
-        return self.revision_url.split('/')[-3]
+        return self.revision_url.split("/")[-3]
 
     @property
     def revision_no(self):
         """Returns word revision number"""
-        return self.revision_url.split('/')[-1]
+        return self.revision_url.split("/")[-1]
 
     @property
     def article(self):
@@ -96,18 +111,18 @@ class DudenWord():
         Word article
         """
         # Find span with class "lemma__determiner"
-        article_element = self.soup.find('span', {"class": "lemma__determiner"})
+        article_element = self.soup.find("span", {"class": "lemma__determiner"})
         if article_element is not None:
             # remove soft hyphens "\xad" and return
             return clear_text(article_element.get_text())
 
         #  if the article_element does not exist, we fall back to the old method
-        if self.part_of_speech is not None and 'Substantiv' not in self.part_of_speech:
+        if self.part_of_speech is not None and "Substantiv" not in self.part_of_speech:
             return None
-        if ', ' not in self.title:
+        if ", " not in self.title:
             return None
 
-        _, article = self.title.split(', ', 1)
+        _, article = self.title.split(", ", 1)
         return article
 
     def _find_tuple_dl(self, key, element=None):
@@ -118,11 +133,11 @@ class DudenWord():
         if element is None:
             element = self.soup.article
 
-        dls = element.find_all('dl', class_='tuple', recursive=False)
+        dls = element.find_all("dl", class_="tuple", recursive=False)
         for dl_node in dls:
-            label = dl_node.find('dt', class_='tuple__key')
+            label = dl_node.find("dt", class_="tuple__key")
             if key in label.text:
-                return dl_node.find('dd', class_='tuple__val')
+                return dl_node.find("dd", class_="tuple__val")
 
         return None
 
@@ -132,7 +147,7 @@ class DudenWord():
         Return the part of speech
         """
         try:
-            pos_element = self._find_tuple_dl('Wortart')
+            pos_element = self._find_tuple_dl("Wortart")
             return pos_element.text
         except AttributeError:
             return None
@@ -146,7 +161,7 @@ class DudenWord():
         5 - most frequent
         """
         try:
-            freq_bar = self.soup.find('span', class_='shaft__full')
+            freq_bar = self.soup.find("span", class_="shaft__full")
             return len(freq_bar.text)
         except AttributeError:
             return None
@@ -157,7 +172,7 @@ class DudenWord():
         Return usage context
         """
         try:
-            element = self._find_tuple_dl('Gebrauch')
+            element = self._find_tuple_dl("Gebrauch")
             return element.text
         except AttributeError:
             return None
@@ -167,42 +182,42 @@ class DudenWord():
         """
         Return the word separated in a form of a list
         """
-        containing_div = self.soup.find('div', id='rechtschreibung')
-        sep_element = self._find_tuple_dl('Worttrennung', containing_div)
+        containing_div = self.soup.find("div", id="rechtschreibung")
+        sep_element = self._find_tuple_dl("Worttrennung", containing_div)
         if not sep_element:
             return None
 
-        return sep_element.text.split('|')
+        return sep_element.text.split("|")
 
     @property
     def meaning_overview(self):
         """
         Return the meaning structure, which can be string, list or a dict
         """
-        section = self.soup.find('div', id='bedeutung') \
-            or self.soup.find('div', id='bedeutungen')
+        section = self.soup.find("div", id="bedeutung") or self.soup.find(
+            "div", id="bedeutungen"
+        )
         if section is None:
             return None
         section = copy.copy(section)
         section.header.extract()
 
         # 1. remove examples
-        for dl_node in section.find_all('dl', class_='note'):
+        for dl_node in section.find_all("dl", class_="note"):
             # pylint: disable=condition-evals-to-constant
-            if True or dl_node.dt.text == 'Beispiele':
+            if True or dl_node.dt.text == "Beispiele":
                 dl_node.extract()
 
         # 2. remove grammar parts
-        for dl_node in section.find_all('dl', class_='tuple'):
-            if dl_node.dt.text in ['Grammatik', 'Gebrauch']:
+        for dl_node in section.find_all("dl", class_="tuple"):
+            if dl_node.dt.text in ["Grammatik", "Gebrauch"]:
                 dl_node.extract()
 
         # 3. remove pictures
-        for node in section.find_all('figure'):
+        for node in section.find_all("figure"):
             node.extract()
 
-        return recursively_extract(
-            section, maxdepth=2, exfun=lambda x: x.text.strip())
+        return recursively_extract(section, maxdepth=2, exfun=lambda x: x.text.strip())
 
     @property
     def synonyms(self):
@@ -210,12 +225,13 @@ class DudenWord():
         Return the structure with word synonyms
         """
         try:
-            section = self.soup.find('div', id='synonyme')
+            section = self.soup.find("div", id="synonyme")
             section = copy.copy(section)
             if section.header:
                 section.header.extract()
-            return recursively_extract(section, maxdepth=2,
-                                       exfun=lambda x: x.text.strip())
+            return recursively_extract(
+                section, maxdepth=2, exfun=lambda x: x.text.strip()
+            )
         except AttributeError:
             return None
 
@@ -224,7 +240,7 @@ class DudenWord():
         """
         Return the word origin
         """
-        section = self.soup.find('div', id='herkunft')
+        section = self.soup.find("div", id="herkunft")
         if section is None:
             return None
 
@@ -238,22 +254,22 @@ class DudenWord():
         """
         Return the typical word compounds
         """
-        section = self.soup.find('div', id='kontext')
+        section = self.soup.find("div", id="kontext")
         if not section:
             return None
 
         pos_trans = {
-            'noun': 'substantive',
-            'verb': 'verben',
-            'adj': 'adjektive',
+            "noun": "substantive",
+            "verb": "verben",
+            "adj": "adjektive",
         }
 
         compounds = {}
 
-        cluster_element = section.find('figure', class_='tag-cluster__cluster')
-        for a_node in cluster_element.find_all('a'):
+        cluster_element = section.find("figure", class_="tag-cluster__cluster")
+        for a_node in cluster_element.find_all("a"):
             compound_word = a_node.text
-            compound_type = pos_trans[a_node.attrs['data-group']]
+            compound_type = pos_trans[a_node.attrs["data-group"]]
 
             if compound_type not in compounds:
                 compounds[compound_type] = []
@@ -277,9 +293,7 @@ class DudenWord():
         """
         tagged_strings = self.grammar_raw
         target_tags = set(target_tags)
-        return [string
-                for tags, string in tagged_strings
-                if target_tags.issubset(tags)]
+        return [string for tags, string in tagged_strings if target_tags.issubset(tags)]
 
     @property
     def grammar_raw(self):
@@ -289,12 +303,13 @@ class DudenWord():
 
         The concatenated tagged string list (for all tables) is returned
         """
-        section = self.soup.find('div', id='grammatik')
+        section = self.soup.find("div", id="grammatik")
         if not section:
             return []
 
-        table_nodes = self.soup.find_all('div', class_='wrap-table') \
-            + self.soup.find_all('table', class_='mere-table')
+        table_nodes = self.soup.find_all(
+            "div", class_="wrap-table"
+        ) + self.soup.find_all("table", class_="mere-table")
 
         tagged_strings = []
         for table_node in table_nodes:
@@ -312,11 +327,11 @@ class DudenWord():
             worddict[attribute] = getattr(self, attribute, None)
 
         # convert grammar to lists
-        if worddict['grammar_raw'] is not None:
+        if worddict["grammar_raw"] is not None:
             listed_grammar = []
-            for keylist, form in worddict['grammar_raw']:
+            for keylist, form in worddict["grammar_raw"]:
                 listed_grammar.append([sorted(keylist), form])
-            worddict['grammar_raw'] = listed_grammar
+            worddict["grammar_raw"] = listed_grammar
         return worddict
 
     @property
@@ -341,24 +356,24 @@ class DudenWord():
               ('Lauferei', 'Lauferei')]}
         """
         result = {}
-        section = self.soup.find('div', id='block-beforeafterblock-2')
-        for group in section.find_all('nav', class_='hookup__group'):
+        section = self.soup.find("div", id="block-beforeafterblock-2")
+        for group in section.find_all("nav", class_="hookup__group"):
             h3title = group.h3.text
             result[h3title] = []
-            for item in group.find_all('li'):
-                link = item.a.attrs['href'].split('/')[-1]
+            for item in group.find_all("li"):
+                link = item.a.attrs["href"].split("/")[-1]
                 result[h3title].append((clear_text(item.text), link))
         return result
 
     @property
     def words_before(self):
         """Returns 5 words before this one in duden database"""
-        return [name for name, _ in self.before_after_structure['Im Alphabet davor']]
+        return [name for name, _ in self.before_after_structure["Im Alphabet davor"]]
 
     @property
     def words_after(self):
         """Returns 5 words after this one in duden database"""
-        return [name for name, _ in self.before_after_structure['Im Alphabet danach']]
+        return [name for name, _ in self.before_after_structure["Im Alphabet danach"]]
 
     @property
     def phonetic(self):
@@ -366,7 +381,7 @@ class DudenWord():
         Returns pronunciation of the word in phonetic notation.
         See: https://en.wikipedia.org/wiki/International_Phonetic_Alphabet
         """
-        ipa = self.soup.find('span', {"class": "ipa"})
+        ipa = self.soup.find("span", {"class": "ipa"})
         if ipa is not None:
             return ipa.get_text()
 
@@ -377,7 +392,9 @@ class DudenWord():
         """
         Returns alternate spellings
         """
-        alternative_spellings = self.soup.find_all('span', {"class": "lemma__alt-spelling"})
+        alternative_spellings = self.soup.find_all(
+            "span", {"class": "lemma__alt-spelling"}
+        )
         if alternative_spellings is None:
             return None
 
