@@ -12,12 +12,12 @@ isort:
 black:
 	black .
 
+pylint:
+	pylint duden/ tests/ run_duden.py
+
 autoformat: isort black
 
-check:
-	autopep8 --diff -r duden/ tests/ | colordiff
-	flake8 duden/ tests/
-	pylint duden/ tests/*.py
+check: pylint
 
 testloop:
 	while inotifywait -q -r -e modify --exclude .git .; do \
