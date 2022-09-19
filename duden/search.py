@@ -80,7 +80,7 @@ def request_word(word):
         response = requests.get(url, timeout=DEFAULT_TIMEOUT)
     except requests.exceptions.ConnectionError as exc:
         raise Exception(
-            _("Connection could not be established. " "Check your internet connection.")
+            _("Connection could not be established. Check your internet connection.")
         ) from exc
 
     if response.status_code == 404:
