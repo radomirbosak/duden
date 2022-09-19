@@ -6,6 +6,11 @@ test:
 	python --version
 	python -m pytest tests/
 
+isort:
+	isort duden tests run_duden.py
+
+autoformat: isort
+
 check:
 	autopep8 --diff -r duden/ tests/ | colordiff
 	flake8 duden/ tests/

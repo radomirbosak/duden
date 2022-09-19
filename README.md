@@ -100,10 +100,16 @@ $ poetry install
 $ poetry shell
 ```
 
-### Testing
+### Testing and code style
 
+To execute data tests, run
 ```console
 $ pytest
+```
+
+To run python style autoformaters (isort), run
+```console
+$ make autoformat
 ```
 
 ### Publishing
