@@ -109,6 +109,7 @@ def test_word_grammar(parsed_word, expected_dict):
 
 def test_empty_grammar():
     """Test word with empty grammar section"""
+    # pylint: disable=use-implicit-booleaness-not-comparison
     word = get("Wahlbeobachter")
     assert word.grammar_raw == []
     assert word.grammar() == []
