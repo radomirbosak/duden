@@ -112,11 +112,49 @@ To run python style autoformaters (isort, black), run
 $ make autoformat
 ```
 
+### Localization
+
+Apart from English, this package has partial translations to German, Spanish, and Esperanto languages.
+
+To test duden in other languages, set the `LANG` environment variable before running duden like so:
+```console
+LANG=de_DE.UTF-8 duden Kragen
+LANG=es_ES.UTF-8 duden Kragen
+LANG=eo_EO.UTF-8 duden Kragen
+```
+
+The translations are located in the [duden/locale/](duden/locale/) directory as the `*.po` and `duden.pot` files. The `duden.pot` file defines all translatable strings in series of text blocks formatted like this:
+```
+#: main.py:82
+msgid "Commonness:"
+msgstr ""
+```
+while the individual language files provides translations to the strings identified by `msgid` like this:
+```
+#: main.py:82
+msgid "Commonness:"
+msgstr "Häufigkeit:"
+```
+Note that the commented lines like `#: main.py:82` do not have any functional meaning, and can get out of sync.
+
 ### Publishing
 
-Before `poetry publish`, make sure to build locale files with `make localization`.
+To build and publish the package to (test) PyPI, you can use one of these shortcut commands:
+```console
+$ make pypi-publish-test
+$ make pypi-publish
+```
+(these also take care of building the localization files before calling `poetry publish`)
 
 Poetry configuration for PyPI and Test PyPI credentials are well covered in [this SO answer](https://stackoverflow.com/a/72524326).
+
+#### Including localization data in the package
+
+In order for the localization data to be included in the resulting python package, the `*.po` files must be compiled using the
+```
+$ make localization
+```
+command before building the package with `poetry`.
 
 ## Supported versions of Python
 

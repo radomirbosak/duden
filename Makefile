@@ -31,13 +31,13 @@ localization:
 	./duden/locale/build.sh
 
 package: localization
-	python3 setup.py sdist bdist_wheel
+	poetry build
 
-pypi-upload-test:
-	python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+pypi-publish-test: package
+	poetry publish -r test-pypi
 
-pypi-upload:
-	python3 -m twine upload dist/*
+pypi-publish: package
+	poetry publish
 
 completions-install-bash:
 	cp completions/duden /etc/bash_completion.d/ || echo "You may need to use sudo to copy to /etc/bash_completion.d"
