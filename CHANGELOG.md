@@ -8,6 +8,9 @@ New features:
 Intenal:
 * Change dependency management tool from pipenv to poetry #160
 
+Documentation:
+* Document localization process #167
+
 ## 0.17.0 (2022-09-16)
 
 Breaking:
