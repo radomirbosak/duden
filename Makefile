@@ -9,7 +9,10 @@ test:
 isort:
 	isort duden tests run_duden.py
 
-autoformat: isort
+black:
+	black .
+
+autoformat: isort black
 
 check:
 	autopep8 --diff -r duden/ tests/ | colordiff

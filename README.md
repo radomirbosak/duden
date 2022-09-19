@@ -107,7 +107,7 @@ To execute data tests, run
 $ pytest
 ```
 
-To run python style autoformaters (isort), run
+To run python style autoformaters (isort, black), run
 ```console
 $ make autoformat
 ```
