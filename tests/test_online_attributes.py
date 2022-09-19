@@ -10,7 +10,6 @@ import yaml
 
 from duden.search import get
 
-
 TEST_DATA_DIR = 'tests/test_data'
 
 WordTestRecord = namedtuple('WordTestRecord', ["parsed_word", "expected_dict"])

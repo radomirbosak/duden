@@ -4,7 +4,7 @@ Contains functions not directly related to word parsing, but used by the it.
 """
 from itertools import cycle
 
-from .constants import PRASENS, PRATERITUM, PERSON_1, PERSON_2, PERSON_3
+from .constants import PERSON_1, PERSON_2, PERSON_3, PRASENS, PRATERITUM
 
 
 def recursively_extract(node, exfun, maxdepth=2):

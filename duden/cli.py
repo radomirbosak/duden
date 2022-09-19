@@ -6,13 +6,18 @@ CLI related functions
 import argparse
 import sys
 
-from crayons import white, blue, red  # pylint: disable=no-name-in-module
 import yaml
+from crayons import blue, red, white  # pylint: disable=no-name-in-module
 
 from .__version__ import __version__
+from .display import (
+    describe_word,
+    display_compounds,
+    display_grammar,
+    print_string_or_list,
+    print_tree_of_strings,
+)
 from .search import get, search
-from .display import (display_grammar, display_compounds, print_tree_of_strings,
-                      print_string_or_list, describe_word)
 
 
 def display_word(word, args):

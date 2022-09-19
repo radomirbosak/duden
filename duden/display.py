@@ -4,7 +4,7 @@ Console printing functions
 """
 from string import ascii_lowercase
 
-from crayons import white, blue, yellow  # pylint: disable=no-name-in-module
+from crayons import blue, white, yellow  # pylint: disable=no-name-in-module
 
 
 def display_grammar(word, grammar_args):
