@@ -54,6 +54,9 @@ def display_word(word, args):
     elif args.origin:
         if word.origin:
             print(word.origin)
+    elif args.grammar_overview:
+        if word.grammar_overview:
+            print(word.grammar_overview)
     elif args.compounds:
         if word.compounds:
             display_compounds(word, args.compounds)
@@ -112,6 +115,11 @@ def parse_args():
         "--synonyms", action="store_true", help=_("list synonyms (line separated)")
     )
     parser.add_argument("--origin", action="store_true", help=_("display origin"))
+    parser.add_argument(
+        "--grammar-overview",
+        action="store_true",
+        help=_("display short grammar overview"),
+    )
     parser.add_argument(
         "--compounds", nargs="?", const="ALL", help=_("list common compounds")
     )

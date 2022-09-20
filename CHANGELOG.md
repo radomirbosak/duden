@@ -5,6 +5,12 @@
 New features:
 * Add 10 second timeout to every network request to prevent program hanging #164
 * Display word origin in the standard CLI word output #168
+* Add new word attribute `DudenWord.grammar_overview` or `--grammar-overview` #168
+
+```console
+$ duden Barmherzigkeit --grammar-overview
+die Barmherzigkeit; Genitiv: der Barmherzigkeit
+```
 
 Intenal:
 * Change dependency management tool from pipenv to poetry #160
