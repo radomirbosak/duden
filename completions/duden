@@ -15,6 +15,7 @@ _duden () {
         --meaning-overview
         --synonyms
         --origin
+        --grammar-overview
         --compounds
         -g --grammar
         -r --result

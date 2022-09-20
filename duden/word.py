@@ -21,6 +21,7 @@ EXPORT_ATTRIBUTES = [
     "word_separation",
     "meaning_overview",
     "origin",
+    "grammar_overview",
     "compounds",
     "grammar_raw",
     "synonyms",
@@ -248,6 +249,22 @@ class DudenWord:
         if section.header:
             section.header.extract()
         return section.text.strip()
+
+    @property
+    def grammar_overview(self):
+        """
+        Return short grammar overview
+        """
+        section = self.soup.find("div", id="grammatik")
+        if section is None:
+            return None
+
+        section = copy.copy(section)
+        if section.header:
+            section.header.extract()
+        if section.nav:
+            section.nav.extract()
+        return section.text.strip() or None
 
     @property
     def compounds(self):
