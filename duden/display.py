@@ -155,6 +155,9 @@ def describe_word(word):
             )
         )
 
+    if word.origin:
+        print(white(_("Origin:"), bold=True), word.origin)
+
     if word.meaning_overview:
         print(white(_("Meaning overview:"), bold=True))
         print_tree_of_strings(word.meaning_overview)

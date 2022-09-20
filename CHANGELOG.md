@@ -4,12 +4,14 @@
 
 New features:
 * Add 10 second timeout to every network request to prevent program hanging #164
+* Display word origin in the standard CLI word output #168
 
 Intenal:
 * Change dependency management tool from pipenv to poetry #160
 
 Documentation:
 * Document localization process #167
+* Document word origin property #168
 
 ## 0.17.0 (2022-09-16)
 
