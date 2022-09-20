@@ -54,6 +54,7 @@ basic_attributes = [
     "word_separation",
     "synonyms",
     "origin",
+    "grammar_overview",
     "words_before",
     "words_after",
     "phonetic",
