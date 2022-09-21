@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.18.0 (2022-09-21)
+
 New features:
 * Add 10 second timeout to every network request to prevent program hanging #164
 * Display word origin in the standard CLI word output #168
