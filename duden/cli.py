@@ -24,7 +24,7 @@ def display_word(word, args):
     """
     Display word attribute or general description, based on commandline arguments
     """
-    # pylint: disable=too-many-branches
+    # pylint: disable=too-many-branches, too-many-statements
     if args.title:
         print(word.title)
     elif args.name:
