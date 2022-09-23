@@ -15,7 +15,6 @@ origin: mittelhochdeutsch barmherzekeit, barmherze, althochdeutsch armherzi, nac
   (kirchen)lateinisch misericordia
 grammar_overview: 'die Barmherzigkeit; Genitiv: der Barmherzigkeit'
 compounds: null
-grammar_raw: []
 synonyms:
 - '[Engels]güte, Milde, Nachsicht, Nachsichtigkeit'
 words_before:
@@ -32,3 +31,10 @@ words_after:
 - Bar-Mizwa
 phonetic: null
 alternative_spellings: []
+inflection:
+  Deklination:
+    Singular:
+      Nominativ: die Barmherzigkeit
+      Akkusativ: die Barmherzigkeit
+      Dativ: der Barmherzigkeit
+      Genitiv: der Barmherzigkeit

@@ -8,7 +8,7 @@ from collections import namedtuple
 import pytest
 import yaml
 
-from duden.search import get
+from duden import get
 
 TEST_DATA_DIR = "tests/test_data"
 
@@ -99,18 +99,7 @@ def test_word_compounds(parsed_word, expected_dict):
 
 
 @word_param
-def test_word_grammar(parsed_word, expected_dict):
-    """Test word grammar"""
-    expected_grammar = expected_dict["grammar_raw"]
-    if expected_grammar is not None:
-        expected_grammar = [(set(tags), string) for tags, string in expected_grammar]
-
-    assert parsed_word.grammar_raw == expected_grammar
-
-
-def test_empty_grammar():
-    """Test word with empty grammar section"""
-    # pylint: disable=use-implicit-booleaness-not-comparison
-    word = get("Wahlbeobachter")
-    assert word.grammar_raw == []
-    assert word.grammar() == []
+def test_word_inflection(parsed_word, expected_dict):
+    """The the raw inflection tables data"""
+    raw_parsed_inf_data = parsed_word.inflection and parsed_word.inflection.data
+    assert raw_parsed_inf_data == expected_dict["inflection"]

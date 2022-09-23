@@ -62,7 +62,6 @@ compounds:
   - Ruder
   - Vertrag
   - Vorbereitung
-grammar_raw: []
 synonyms:
 - eilen, fegen, hetzen, jagen
 words_before:
@@ -79,3 +78,112 @@ words_after:
 - Lauferei
 phonetic: null
 alternative_spellings: []
+inflection:
+  Indikativ:
+    Präsens:
+      ich: laufe (mich/mir)
+      du: läufst (dich/dir)
+      er/sie/es: läuft (sich)
+      wir: laufen (uns)
+      ihr: lauft (euch)
+      sie: laufen (sich)
+    Präteritum:
+      ich: lief (mich/mir)
+      du: liefst (dich/dir)
+      er/sie/es: lief (sich)
+      wir: liefen (uns)
+      ihr: lieft (euch)
+      sie: liefen (sich)
+    Perfekt:
+      ich: bin gelaufen / habe (mich/mir) gelaufen
+      du: bist gelaufen / hast (dich/dir) gelaufen
+      er/sie/es: ist gelaufen / hat (sich) gelaufen
+      wir: sind gelaufen / haben (uns) gelaufen
+      ihr: seid gelaufen / habt (euch) gelaufen
+      sie: sind gelaufen / haben (sich) gelaufen
+    Plusquamperfekt:
+      ich: war gelaufen / hatte (mich/mir) gelaufen
+      du: warst gelaufen / hattest (dich/dir) gelaufen
+      er/sie/es: war gelaufen / hatte (sich) gelaufen
+      wir: waren gelaufen / hatten (uns) gelaufen
+      ihr: wart gelaufen / hattet (euch) gelaufen
+      sie: waren gelaufen / hatten (sich) gelaufen
+    Futur I:
+      ich: werde (mich/mir) laufen
+      du: wirst (dich/dir) laufen
+      er/sie/es: wird (sich) laufen
+      wir: werden (uns) laufen
+      ihr: werdet (euch) laufen
+      sie: werden (sich) laufen
+    Futur II:
+      ich: werde gelaufen sein / werde (mich/mir) gelaufen haben
+      du: wirst gelaufen sein / wirst (dich/dir) gelaufen haben
+      er/sie/es: wird gelaufen sein / wird (sich) gelaufen haben
+      wir: werden gelaufen sein / werden (uns) gelaufen haben
+      ihr: werdet gelaufen sein / werdet (euch) gelaufen haben
+      sie: werden gelaufen sein / werden (sich) gelaufen haben
+  Konjunktiv I:
+    Präsens:
+      ich: laufe (mich/mir)
+      du: laufest (dich/dir)
+      er/sie/es: laufe (sich)
+      wir: laufen (uns)
+      ihr: laufet (euch)
+      sie: laufen (sich)
+    Perfekt:
+      ich: sei gelaufen / habe (mich/mir) gelaufen
+      du: sei(e)st gelaufen / habest (dich/dir) gelaufen
+      er/sie/es: sei gelaufen / habe (sich) gelaufen
+      wir: seien gelaufen / haben (uns) gelaufen
+      ihr: seiet gelaufen / habet (euch) gelaufen
+      sie: seien gelaufen / haben (sich) gelaufen
+    Futur I:
+      ich: werde (mich/mir) laufen
+      du: werdest (dich/dir) laufen
+      er/sie/es: werde (sich) laufen
+      wir: werden (uns) laufen
+      ihr: werdet (euch) laufen
+      sie: werden (sich) laufen
+    Futur II:
+      ich: werde gelaufen sein / werde (mich/mir) gelaufen haben
+      du: werdest gelaufen sein / werdest (dich/dir) gelaufen haben
+      er/sie/es: werde gelaufen sein / werde (sich) gelaufen haben
+      wir: werden gelaufen sein / werden (uns) gelaufen haben
+      ihr: werdet gelaufen sein / werdet (euch) gelaufen haben
+      sie: werden gelaufen sein / werden (sich) gelaufen haben
+  Konjunktiv II:
+    Präteritum:
+      ich: liefe (mich/mir)
+      du: liefest (dich/dir)
+      er/sie/es: liefe (sich)
+      wir: liefen (uns)
+      ihr: liefet (euch)
+      sie: liefen (sich)
+    Plusquamperfekt:
+      ich: wäre gelaufen / hätte (mich/mir) gelaufen
+      du: wär(e)st gelaufen / hättest (dich/dir) gelaufen
+      er/sie/es: wäre gelaufen / hätte (sich) gelaufen
+      wir: wären gelaufen / hätten (uns) gelaufen
+      ihr: wär(e)t gelaufen / hättet (euch) gelaufen
+      sie: wären gelaufen / hätten (sich) gelaufen
+    Futur I:
+      ich: würde (mich/mir) laufen
+      du: würdest (dich/dir) laufen
+      er/sie/es: würde (sich) laufen
+      wir: würden (uns) laufen
+      ihr: würdet (euch) laufen
+      sie: würden (sich) laufen
+    Futur II:
+      ich: würde gelaufen sein / würde (mich/mir) gelaufen haben
+      du: würdest gelaufen sein / würdest (dich/dir) gelaufen haben
+      er/sie/es: würde gelaufen sein / würde (sich) gelaufen haben
+      wir: würden gelaufen sein / würden (uns) gelaufen haben
+      ihr: würdet gelaufen sein / würdet (euch) gelaufen haben
+      sie: würden gelaufen sein / würden (sich) gelaufen haben
+  Imperativ:
+    2. Person Singular [du]: lauf (dich/dir), laufe (dich/dir)!
+    2. Person Plural [ihr]: lauft (euch)!
+  Infinite Formen:
+    Infinitiv mit zu: zu laufen
+    Partizip I: laufend
+    Partizip II: gelaufen

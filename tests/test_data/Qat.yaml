@@ -11,7 +11,6 @@ meaning_overview: null
 origin: null
 grammar_overview: null
 compounds: null
-grammar_raw: []
 synonyms: null
 words_before:
 - q
@@ -27,3 +26,4 @@ words_after:
 - q. e. d.
 phonetic: '[kat]'
 alternative_spellings: []
+inflection: null

@@ -58,4 +58,4 @@ target-version = ['py310']
 additional-builtins = ["_"]
 
 [tool.pylint.'MESSAGES CONTROL']
-disable = ["consider-using-f-string"]
+disable = ["consider-using-f-string", "fixme"]

@@ -14,7 +14,6 @@ origin: englisch meme, eigentlich = weit verbreitete Idee o. Ä., zu griechisc
 grammar_overview: 'das Meme; Genitiv: des Memes, Plural: die Memes oder das Mem; Genitiv:
   des Mems, Plural: die Meme'
 compounds: null
-grammar_raw: []
 synonyms: null
 words_before:
 - Membra
@@ -31,3 +30,4 @@ words_after:
 phonetic: '[miːm]'
 alternative_spellings:
 - Mem
+inflection: null

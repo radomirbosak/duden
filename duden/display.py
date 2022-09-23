@@ -4,49 +4,18 @@ Console printing functions
 """
 from string import ascii_lowercase
 
+import yaml
 from crayons import blue, white, yellow  # pylint: disable=no-name-in-module
 
 
-def display_grammar(word, grammar_args):
+def display_inflections(word):
     """
-    Display word grammar forms, corresponds to --grammar switch
+    Display word's inflection table
     """
-    grammar_struct = word.grammar_raw
-    if not grammar_struct:
-        return
-
-    grammar_tokens = [token.lower() for token in grammar_args.split(",")]
-
-    # filter out grammar forms which do not match provided keys
-    tag_columns = []
-    value_column = []
-    for keys, value in word.grammar_raw:
-        lkeys = {key.lower() for key in keys}
-
-        if not (grammar_args == "ALL" or lkeys.issuperset(grammar_tokens)):
-            continue
-
-        reduced_keys = lkeys.difference(grammar_tokens)
-
-        tag_columns.append(list(reduced_keys))
-        value_column.append(value)
-
-    # determine the width of the table
-    max_keys_count = max(map(len, tag_columns))
-
-    # if provided keys uniquely determine the value(s), display a 1-col table
-    if max_keys_count == 0:
-        display_table([[value] for value in value_column])
-        return
-
-    # otherwise make a nice "| key1 key2 | value |" table
-    table = []
-    for keys, value in zip(tag_columns, value_column):
-        padding = [""] * (max_keys_count - len(keys))
-        row = keys + padding + [blue("|")] + [value]
-        table.append(row)
-
-    display_table(table)
+    inf_str = yaml.dump(
+        word.inflection.data, indent=2, allow_unicode=True, sort_keys=False
+    )
+    print(inf_str)
 
 
 def display_table(table, cell_spacing=" "):

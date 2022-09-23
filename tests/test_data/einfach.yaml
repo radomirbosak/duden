@@ -44,7 +44,6 @@ compounds:
   - passen
   - stimmen
   - werden
-grammar_raw: []
 synonyms:
 - einmal, nicht doppelt, nicht mehrfach, bequem
 words_before:
@@ -61,3 +60,4 @@ words_after:
 - Einfachheit
 phonetic: '[ˈaɪ̯nfax]'
 alternative_spellings: []
+inflection: null

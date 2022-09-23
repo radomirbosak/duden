@@ -12,10 +12,12 @@ import requests
 from xdg.BaseDirectory import xdg_cache_home
 
 from .common import clear_text
+from .inflection import Inflector
 from .word import DudenWord
 
 URL_FORM = "https://www.duden.de/rechtschreibung/{word}"
 SEARCH_URL_FORM = "https://www.duden.de/suchen/dudenonline/{word}"
+GRAMMAR_BASE = "https://www.duden.de/{urlpart}"
 DEFAULT_TIMEOUT = 10
 
 
@@ -155,3 +157,39 @@ def search(word, exact=True, return_words=True, cache=True):
     if not return_words:
         return urlnames
     return [get(urlname, cache=cache) for urlname in urlnames]
+
+
+@cached_response(prefix="grammar-")
+def request_grammar(urlpart):
+    """
+    Fetch inflection-related page and cache the result
+
+    Args:
+        urlpart (str): the url suffix in the one of three forms:
+            '/deklination/substantive/{word}'
+            '/deklination/adjektive/{word}'
+            '/konjugation/{word}'
+
+    Returns:
+        str: HTML content of the page
+    """
+    url = GRAMMAR_BASE.format(urlpart=urlpart)
+    return requests.get(url, timeout=DEFAULT_TIMEOUT).text
+
+
+def grammar(urlpart):
+    """
+    Return word inflections when given url suffix for word's grammar page
+
+    Args:
+        urlpart (str): the url suffix in the one of three forms:
+            '/deklination/substantive/{word}'
+            '/deklination/adjektive/{word}'
+            '/konjugation/{word}'
+
+    Returns:
+        Inflector: object providing word inflections
+    """
+    response_text = request_grammar(urlpart)
+    soup = bs4.BeautifulSoup(response_text, "html.parser")
+    return Inflector(soup)
