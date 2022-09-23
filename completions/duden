@@ -17,7 +17,7 @@ _duden () {
         --origin
         --grammar-overview
         --compounds
-        -g --grammar
+        -i --inflect
         -r --result
         --fuzzy
         --version

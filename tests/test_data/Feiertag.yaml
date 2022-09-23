@@ -42,7 +42,6 @@ compounds:
   - schließen
   - verbringen
   - öffnen
-grammar_raw: []
 synonyms:
 - Festtag, Gedenktag, Ehrentag
 words_before:
@@ -59,3 +58,15 @@ words_after:
 - Feiertagsstille
 phonetic: null
 alternative_spellings: []
+inflection:
+  Deklination:
+    Singular:
+      Nominativ: der Feiertag
+      Akkusativ: den Feiertag
+      Dativ: dem Feiertag
+      Genitiv: des Feiertages, Feiertags
+    Plural:
+      Nominativ: die Feiertage
+      Akkusativ: die Feiertage
+      Dativ: den Feiertagen
+      Genitiv: der Feiertage

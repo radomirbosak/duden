@@ -20,7 +20,6 @@ origin: mittelhochdeutsch krage = Hals, Kehle, Nacken; Kragen (1), ursprünglic
 grammar_overview: 'der Kragen; Genitiv: des Kragens, Plural: die Kragen, süddeutsch,
   österreichisch, schweizerisch: Krägen'
 compounds: null
-grammar_raw: []
 synonyms:
 - Gurgel, Kehle
 words_before:
@@ -37,3 +36,4 @@ words_after:
 - Kragennummer
 phonetic: null
 alternative_spellings: []
+inflection: null

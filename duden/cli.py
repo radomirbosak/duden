@@ -13,11 +13,11 @@ from .__version__ import __version__
 from .display import (
     describe_word,
     display_compounds,
-    display_grammar,
+    display_inflections,
     print_string_or_list,
     print_tree_of_strings,
 )
-from .search import get, search
+from .request import get, search
 
 
 def display_word(word, args):
@@ -67,8 +67,9 @@ def display_word(word, args):
         if word.alternative_spellings:
             for spelling in word.alternative_spellings:
                 print(spelling)
-    elif args.grammar:
-        display_grammar(word, args.grammar)
+    elif args.inflect:
+        if word.inflection:
+            display_inflections(word)
     elif args.export:
         yaml_string = yaml.dump(word.export(), sort_keys=False, allow_unicode=True)
         print(yaml_string, end="")
@@ -124,7 +125,7 @@ def parse_args():
         "--compounds", nargs="?", const="ALL", help=_("list common compounds")
     )
     parser.add_argument(
-        "-g", "--grammar", nargs="?", const="ALL", help=_("list grammar forms")
+        "-i", "--inflect", action="store_true", help=_("display inflections")
     )
     parser.add_argument(
         "--export",

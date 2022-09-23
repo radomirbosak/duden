@@ -16,7 +16,6 @@ origin: mittelhochdeutsch pētersil(je), althochdeutsch petersilie, petrasile < 
   petrosilium < lateinisch petroselinon < griechisch petrosélinon = Felsen-, Steineppich
 grammar_overview: 'die Petersilie; Genitiv: der Petersilie, Plural: die Petersilien'
 compounds: null
-grammar_raw: []
 synonyms:
 - (schweizerisch) Peterli; (bayrisch, österreichisch umgangssprachlich) Petersil;
   (südwestdeutsch und schweizerisch mundartlich) Peterle
@@ -34,3 +33,15 @@ words_after:
 - Peterskirche
 phonetic: '[petɐˈziːli̯ə]'
 alternative_spellings: []
+inflection:
+  Deklination:
+    Singular:
+      Nominativ: die Petersilie
+      Akkusativ: die Petersilie
+      Dativ: der Petersilie
+      Genitiv: der Petersilie
+    Plural:
+      Nominativ: die Petersilien
+      Akkusativ: die Petersilien
+      Dativ: den Petersilien
+      Genitiv: der Petersilien

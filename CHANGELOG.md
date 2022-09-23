@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+Breaking:
+
+* Rework and fix (grammatic) inflection parsing
+  * Replace the `.grammar` and `.grammar_raw` word properties with `.inflection`, `--grammar` with `--inflect`
+
 New features:
 
 * Add `pronunciation_audio_url` property #183 by @mundanevision20

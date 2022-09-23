@@ -16,7 +16,6 @@ origin: 'englisch keyboard, eigentlich = Klaviatur, Tastatur, aus: key = Taste
   und board = Brett'
 grammar_overview: 'das Keyboard; Genitiv: des Keyboards, Plural: die Keyboards'
 compounds: null
-grammar_raw: []
 synonyms: null
 words_before:
 - Key-Accounter
@@ -32,3 +31,15 @@ words_after:
 - Keylogger
 phonetic: '[ˈkiːbɔːɐ̯t]'
 alternative_spellings: []
+inflection:
+  Deklination:
+    Singular:
+      Nominativ: das Keyboard
+      Akkusativ: das Keyboard
+      Dativ: dem Keyboard
+      Genitiv: des Keyboards
+    Plural:
+      Nominativ: die Keyboards
+      Akkusativ: die Keyboards
+      Dativ: den Keyboards
+      Genitiv: der Keyboards

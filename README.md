@@ -35,18 +35,16 @@ Ohr; [Ge]hörorgan; (salopp) Horcher, Horchlappen, Lauscher; (Jägersprache) Los
 
 ```console
 $ duden --help
-usage: duden [-h] [--title] [--name] [--article] [--part-of-speech]
-             [--frequency] [--usage] [--word-separation]
-             [--meaning-overview] [--synonyms] [--origin]
-             [--compounds [COMPOUNDS]] [-g [GRAMMAR]] [--export]
-             [--words-before] [--words-after] [-r RESULT] [--fuzzy]
+usage: duden [-h] [--title] [--name] [--article] [--part-of-speech] [--frequency] [--usage]
+             [--word-separation] [--meaning-overview] [--synonyms] [--origin] [--grammar-overview]
+             [--compounds [COMPOUNDS]] [-i] [--export] [--words-before] [--words-after] [-r RESULT] [--fuzzy]
              [--no-cache] [-V] [--phonetic] [--alternative-spellings]
              word
 
 positional arguments:
   word
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   --title               display word and article
   --name                display the word itself
@@ -58,10 +56,10 @@ optional arguments:
   --meaning-overview    display meaning overview
   --synonyms            list synonyms (line separated)
   --origin              display origin
+  --grammar-overview    display short grammar overview
   --compounds [COMPOUNDS]
                         list common compounds
-  -g [GRAMMAR], --grammar [GRAMMAR]
-                        list grammar forms
+  -i, --inflect         display inflections
   --export              export parsed word attributes in yaml format
   --words-before        list 5 words before this one
   --words-after         list 5 words after this one

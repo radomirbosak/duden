@@ -8,7 +8,8 @@ import copy
 import gettext
 import os
 
-from .common import clear_text, recursively_extract, table_node_to_tagged_cells
+from . import request  # pylint: disable=cyclic-import
+from .common import clear_text, recursively_extract
 
 EXPORT_ATTRIBUTES = [
     "name",
@@ -23,7 +24,6 @@ EXPORT_ATTRIBUTES = [
     "origin",
     "grammar_overview",
     "compounds",
-    "grammar_raw",
     "synonyms",
     "words_before",
     "words_after",
@@ -52,6 +52,7 @@ class DudenWord:
 
     def __init__(self, soup):
         self.soup = soup
+        self._inflection = None
 
     def __repr__(self):
         return "{} ({})".format(self.title, self.part_of_speech)
@@ -312,39 +313,40 @@ class DudenWord:
 
         return compounds_sorted
 
-    def grammar(self, *target_tags):
+    @property
+    def inflection(self):
         """
-        Return the information from grammar section
+        Return word's Inflector object with methods for conjugation and declension
 
-        Example:
-        >>> word_laufen.grammar(duden.SINGULAR, duden.PRASENS, \
-                                duden.INDIKATIV, duden.PERSON_3)
-        ['er/sie/es läuft']
+        This property performs a network request, so unless the request is cached, it
+        takes a few seconds to return the result.
         """
-        tagged_strings = self.grammar_raw
-        target_tags = set(target_tags)
-        return [string for tags, string in tagged_strings if target_tags.issubset(tags)]
+        if self._inflection is None:
+            self._inflection = (
+                request.grammar(self.grammar_link) if self.grammar_link else None
+            )
+
+        return self._inflection
 
     @property
-    def grammar_raw(self):
-        """
-        Find the Grammar sections in the document and extract tagged string
-        list of all tables found there.
-
-        The concatenated tagged string list (for all tables) is returned
-        """
+    def grammar_link(self):
         section = self.soup.find("div", id="grammatik")
         if not section:
-            return []
+            return None
 
-        table_nodes = self.soup.find_all(
-            "div", class_="wrap-table"
-        ) + self.soup.find_all("table", class_="mere-table")
+        link = section.find("a", id="grammatik")
+        if not link:
+            return None
 
-        tagged_strings = []
-        for table_node in table_nodes:
-            tagged_strings.extend(table_node_to_tagged_cells(table_node))
-        return tagged_strings
+        return link.attrs["href"]
+
+    @property
+    def can_decline(self):
+        return self.grammar_link.startswith("/deklination")
+
+    @property
+    def can_conjugate(self):
+        return self.grammar_link.startswith("/konjugation")
 
     def export(self):
         """
@@ -355,13 +357,7 @@ class DudenWord:
         worddict = {}
         for attribute in EXPORT_ATTRIBUTES:
             worddict[attribute] = getattr(self, attribute, None)
-
-        # convert grammar to lists
-        if worddict["grammar_raw"] is not None:
-            listed_grammar = []
-            for keylist, form in worddict["grammar_raw"]:
-                listed_grammar.append([sorted(keylist), form])
-            worddict["grammar_raw"] = listed_grammar
+        worddict["inflection"] = self.inflection and self.inflection.data
         return worddict
 
     @property
