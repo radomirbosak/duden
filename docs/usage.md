@@ -36,7 +36,7 @@ This example showcases the most useful functions of the `DudenWord` class.
 'barmherziges Wesen, Verhalten'
 
 > w.synonyms
-'[Engels]güte, Milde, Nachsicht, Nachsichtigkeit; (gehoben) Herzensgüte, Mildtätigkeit, Seelengüte; (bildungssprachlich) Humanität, Indulgenz; (veraltend) Wohltätigkeit; (Religion) Gnade'
+['[Engels]güte, Milde, Nachsicht, Nachsichtigkeit']
 
 > w.origin
 'mittelhochdeutsch barmherzekeit, barmherze, althochdeutsch armherzi, nach (kirchen)lateinisch misericordia'
