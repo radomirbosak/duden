@@ -82,6 +82,7 @@ The `duden.get` function requests directly the url `https://www.duden.de/rechtsc
 ### search
 
 Some words such as `einfach` have multiple entries in the database and simply fetching `https://www.duden.de/rechtschreibung/einfach` yields a 404 page not found:
+
 ```python
 > duden.get('einfach')
 None
@@ -114,6 +115,7 @@ By default, just words with title matching exactly the searched word are returne
 ```
 
 To avoid automatically retrieving and parsing the search results, use the `return_words` keyword. This will return the word urlnames only.
+
 ```python
 > duden.search('einfach', return_words=False)
 ['einfach_einmal_simpel', 'einfach_vollkommen_wirklich']
@@ -122,6 +124,7 @@ To avoid automatically retrieving and parsing the search results, use the `retur
 ### Word of the day
 
 Retrieves a parses the Word of the day from the main page.
+
 ```python
 > duden.get_word_of_the_day
 Quasimodogeniti (Substantiv ohne Artikel)
