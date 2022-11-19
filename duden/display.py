@@ -161,6 +161,14 @@ def describe_word(word):
     if word.grammar_overview:
         print(white(_("Grammar:"), bold=True), word.grammar_overview)
 
+    if word.word_pronunciation_audio:
+        print(
+            "{label} {content}".format(
+                label=white(_("Pronunciation audio:"), bold=True),
+                content=white(word.word_pronunciation_audio, bold=False),
+            )
+        )
+
     if word.meaning_overview:
         print(white(_("Meaning overview:"), bold=True))
         print_tree_of_strings(word.meaning_overview)
