@@ -130,19 +130,19 @@ def describe_word(word):
     print(yellow("=" * len(word.title)))
 
     if word.phonetic:
-        print(white("Pronunciation:", bold=True), word.phonetic)
+        print(white(_("Pronunciation:"), bold=True), word.phonetic)
     if word.alternative_spellings:
         print(
-            white("Alternative spellings:", bold=True),
+            white(_("Alternative spellings:"), bold=True),
             ", ".join(word.alternative_spellings),
         )
     if word.part_of_speech:
-        print(white("Word type:", bold=True), word.part_of_speech)
+        print(white(_("Word type:"), bold=True), word.part_of_speech)
     if word.usage:
-        print(white("Usage:", bold=True), word.usage)
+        print(white(_("Usage:"), bold=True), word.usage)
     if word.frequency:
         commonness = "{label} {frequency}{max_frequency}".format(
-            label=white("Commonness:", bold=True),
+            label=white(_("Commonness:"), bold=True),
             frequency=word.frequency,
             max_frequency=blue("/5"),
         )
@@ -150,29 +150,34 @@ def describe_word(word):
     if word.word_separation:
         print(
             "{label} {content}".format(
-                label=white("Separation:", bold=True),
+                label=white(_("Separation:"), bold=True),
                 content=str(blue("|")).join(word.word_separation),
             )
         )
 
     if word.origin:
-        print(white("Origin:", bold=True), word.origin)
+        print(white(_("Origin:"), bold=True), word.origin)
 
     if word.grammar_overview:
-        print(white("Grammar:", bold=True), word.grammar_overview)
+        print(white(_("Grammar:"), bold=True), word.grammar_overview)
 
     if word.word_pronunciation_audio:
-        print('{label} {content}'.format(label=white('Pronunciation audio:', bold=True), content=white(word.word_pronunciation_audio, bold=False)))
+        print(
+            "{label} {content}".format(
+                label=white(_("Pronunciation audio:"), bold=True),
+                content=white(word.word_pronunciation_audio, bold=False),
+            )
+        )
 
     if word.meaning_overview:
-        print(white("Meaning overview:", bold=True))
+        print(white(_("Meaning overview:"), bold=True))
         print_tree_of_strings(word.meaning_overview)
 
     if word.synonyms:
-        print(white("Synonyms:", bold=True))
+        print(white(_("Synonyms:"), bold=True))
         print_tree_of_strings(word.synonyms)
 
     if word.compounds:
-        print(white("Typical compounds:", bold=True))
+        print(white(_("Typical compounds:"), bold=True))
         for part_of_speech, words in word.compounds.items():
             print(blue(" - {}:".format(part_of_speech.capitalize())), ", ".join(words))

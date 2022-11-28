@@ -195,11 +195,11 @@ class DudenWord:
         """
         Return the a url of a audio file for the word pronunciation.
         """
-        audio_link = self.soup.select('a.pronunciation-guide__sound')
+        audio_link = self.soup.select("a.pronunciation-guide__sound")
         if not audio_link:
             return None
-        
-        audio_link_href = str(audio_link[0].get('href'))
+
+        audio_link_href = str(audio_link[0].get("href"))
 
         return audio_link_href
 
