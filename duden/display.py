@@ -126,6 +126,7 @@ def describe_word(word):
     """
     Print overall word description
     """
+    # pylint: disable=too-many-branches
     print(yellow(word.title, bold=True))
     print(yellow("=" * len(word.title)))
 
