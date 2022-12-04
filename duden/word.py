@@ -191,7 +191,7 @@ class DudenWord:
         return sep_element.text.split("|")
 
     @property
-    def word_pronunciation_audio(self):
+    def pronunciation_audio_url(self):
         """
         Return the a url of a audio file for the word pronunciation.
         """

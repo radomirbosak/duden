@@ -161,11 +161,11 @@ def describe_word(word):
     if word.grammar_overview:
         print(white(_("Grammar:"), bold=True), word.grammar_overview)
 
-    if word.word_pronunciation_audio:
+    if word.pronunciation_audio_url:
         print(
             "{label} {content}".format(
                 label=white(_("Pronunciation audio:"), bold=True),
-                content=white(word.word_pronunciation_audio, bold=False),
+                content=white(word.pronunciation_audio_url, bold=False),
             )
         )
 
