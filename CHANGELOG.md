@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+New features:
+
+* Add `pronunciation_audio_url` property #183 by @mundanevision20
+
 ## 0.18.0 (2022-09-21)
 
 New features:
