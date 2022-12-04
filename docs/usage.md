@@ -51,6 +51,9 @@ This example showcases the most useful functions of the `DudenWord` class.
   "substantive": ["Ruder", "Amok", "Vorbereitung", "Gefahr", "Geschäft", "Vertrag", "Hochtour"]
 }
 
+> w.pronunciation_audio_url
+'https://.../filename.mp3'
+
 > w.grammar_raw
 [({'Indikativ', 'Person I', 'Präsens', 'Singular'}, 'ich laufe'),
  ({'Konjunktiv I', 'Person I', 'Präsens', 'Singular'}, 'ich laufe'),
