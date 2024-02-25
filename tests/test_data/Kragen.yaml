@@ -21,7 +21,8 @@ grammar_overview: 'der Kragen; Genitiv: des Kragens, Plural: die Kragen, süddeu
   österreichisch, schweizerisch: Krägen'
 compounds: null
 synonyms:
-- Gurgel, Kehle
+- Gurgel
+- Kehle
 words_before:
 - Kraftwerksbetreiberin
 - Kraftwort
