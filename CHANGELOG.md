@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.19.0 (2024-02-25)
+
 Breaking:
 
 * Rework and fix (grammatic) inflection parsing
