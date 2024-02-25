@@ -1,10 +1,13 @@
 """
 Module containing the base class for duden pages
 """
+
+
 class DudenPage:
     """
     Represents a general duden page
     """
+
     # pylint: disable=too-few-public-methods
     def __init__(self, soup):
         self.soup = soup

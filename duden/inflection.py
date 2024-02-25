@@ -23,12 +23,14 @@ VERB_INFINITIVE_FORMS = "Infinite Formen"
 
 class Number(Enum):
     """Grammatical number"""
+
     SINGULAR = "Singular"
     PLURAL = "Plural"
 
 
 class Case(Enum):
     """Grammatical case"""
+
     NOMINATIVE = "Nominativ"
     GENITIVE = "Genitiv"
     DATIVE = "Dativ"
@@ -37,6 +39,7 @@ class Case(Enum):
 
 class Gender(Enum):
     """Grammatical gender"""
+
     MASCULINE = "Maskulinum"
     FEMININE = "Femininum"
     NEUTER = "Neutrum"
@@ -44,6 +47,7 @@ class Gender(Enum):
 
 class Degree(Enum):
     """Grammatical degree (for adjective comparison)"""
+
     POSITIVE = "Positiv"
     COMPARATIVE = "Komparativ"
     SUPERLATIVE = "Superlativ"
@@ -52,6 +56,7 @@ class Degree(Enum):
 # TODO: reduce to three categories
 class Person(Enum):
     """Grammatical person"""
+
     FIRST_SINGULAR = "ich"
     SECOND_SINGULAR = "du"
     THIRD_SINGULAR = "er/sie/es"
@@ -62,6 +67,7 @@ class Person(Enum):
 
 class Mood(Enum):
     """Grammatical mood"""
+
     INDICATIVE = VERB_INDICATIVE
     SUBJUNCTIVE_I = VERB_SUBJUNCTIVE_I
     SUBJUNCTIVE_II = VERB_SUBJUNCTIVE_II
@@ -69,6 +75,7 @@ class Mood(Enum):
 
 class Tense(Enum):
     """Grammatical tense"""
+
     PRESENT = "Präsens"
     PAST = "Präteritum"
     PERFECT = "Perfekt"
@@ -80,12 +87,14 @@ class Tense(Enum):
 # TODO: rely only on number
 class ImperativePerson(Enum):
     """Grammatical person (only for imperative forms of verbs)"""
+
     PERSON_2_SINGULAR = "2. Person Singular [du]"
     PERSON_2_PLURAL = "2. Person Plural [ihr]"
 
 
 class InfinitiveForm(Enum):
     """Infinitive form of verb"""
+
     INFINITIVE_WITH_ZU = "Infinitiv mit zu"
     PARTICIPLE_I = "Partizip I"
     PARTICIPLE_II = "Partizip II"
@@ -107,6 +116,7 @@ class Enumdict:
     * Enums behave as their raw values when used as keys (d["Singular"] == d[Number.SINGULAR])
     * Nested inner dicts are also Enumdicts and store the key path they were accessed with
     """
+
     def __init__(self, source, key_prefix=None):
         self.source = source
         self.key_prefix = key_prefix or []  # used for error messages
