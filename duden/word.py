@@ -239,16 +239,17 @@ class DudenWord:
         """
         Return the structure with word synonyms
         """
-        try:
-            section = self.soup.find("div", id="synonyme")
-            section = copy.copy(section)
-            if section.header:
-                section.header.extract()
-            return recursively_extract(
-                section, maxdepth=2, exfun=lambda x: x.text.strip()
-            )
-        except AttributeError:
+        section = self.soup.find("div", id="synonyme")
+        if section is None:
             return None
+        section = copy.copy(section)
+        if section.header:
+            section.header.extract()
+        more_nav = section.find("nav", class_="more")
+        if more_nav:
+            more_nav.extract()
+
+        return split_synonyms(section.text.strip())
 
     @property
     def origin(self):
@@ -430,3 +431,34 @@ class DudenWord:
             return None
 
         return [spelling.get_text() for spelling in alternative_spellings]
+
+
+def split_synonyms(text):
+    """
+    Properly split strings like
+
+    meaning1, (commonly) meaning2; (formal, distant) meaning3
+    """
+    # split by ',' and ';'
+    comma_splits = text.split(",")
+    fine_splits = []
+    for split in comma_splits:
+        fine_splits.extend(split.split(";"))
+
+    # now join back parts which are inside of parentheses
+    final_splits = []
+    inside_parens = False
+    for split in fine_splits:
+        if inside_parens:
+            final_splits[-1] = final_splits[-1] + "," + split
+        else:
+            final_splits.append(split)
+
+        if "(" in split and ")" in split:
+            inside_parens = split.index("(") > split.index("(")
+        elif "(" in split:
+            inside_parens = True
+        elif ")" in split:
+            inside_parens = False
+
+    return [split.strip() for split in final_splits]

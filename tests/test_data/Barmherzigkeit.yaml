@@ -16,7 +16,10 @@ origin: mittelhochdeutsch barmherzekeit, barmherze, althochdeutsch armherzi, nac
 grammar_overview: 'die Barmherzigkeit; Genitiv: der Barmherzigkeit'
 compounds: null
 synonyms:
-- '[Engels]güte, Milde, Nachsicht, Nachsichtigkeit'
+- '[Engels]güte'
+- Milde
+- Nachsicht
+- Nachsichtigkeit
 words_before:
 - barmen
 - Barmen
