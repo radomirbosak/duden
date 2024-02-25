@@ -11,6 +11,10 @@ New features:
 
 * Add `pronunciation_audio_url` property #183 by @mundanevision20
 
+Bugfixes:
+
+* Fix failing "words_before" and "words_after" properties #191
+
 ## 0.18.0 (2022-09-21)
 
 New features:
