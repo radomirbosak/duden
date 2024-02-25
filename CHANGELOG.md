@@ -10,6 +10,7 @@ Breaking:
 New features:
 
 * Add `pronunciation_audio_url` property #183 by @mundanevision20
+* Synonyms are now properly split #195
 
 Bugfixes:
 
