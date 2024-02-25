@@ -382,7 +382,7 @@ class DudenWord:
               ('Lauferei', 'Lauferei')]}
         """
         result = {}
-        section = self.soup.find("div", id="block-beforeafterblock-2")
+        section = self.soup.find("div", id="block-numero-beforeafterblock-2")
         for group in section.find_all("nav", class_="hookup__group"):
             h3title = group.h3.text
             result[h3title] = []
