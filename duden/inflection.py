@@ -164,6 +164,7 @@ class Inflector:
         return f"({self.__class__.__name__}: {example})"
 
     def inflect(self, *key_chain):
+        """Fetch data from nested dict in self.enumraw by providing a list of keys to apply"""
         inner = self.enumraw
         try:
             for key in key_chain:
@@ -185,37 +186,47 @@ class Inflector:
 
     # adjectives
     def adjective_decline_strong(self, gender, case):
+        """Strong adjective inflection"""
         return self.inflect(ADJ_STRONG, gender, case)
 
     def adjective_decline_weak(self, gender, case):
+        """Weak adjective inflection"""
         return self.inflect(ADJ_WEAK, gender, case)
 
     def adjective_decline_mixed(self, gender, case):
+        """Mixed adjective inflection"""
         return self.inflect(ADJ_MIXED, gender, case)
 
     def adjective_compare(self, degree):
+        """Adjective comparative"""
         return self.inflect(ADJ_COMPARE, degree)
 
     # verbs
     def verb_conjugate(self, mood, tense, person):
+        """Verb conjugation"""
         return self.inflect(mood, tense, person)
 
     def verb_imperative(self, person):
+        """Verb imperative form"""
         return self.inflect(VERB_IMPERATIVE, person)
 
     def verb_infinitive_forms(self, form):
+        """Verb infinitive form"""
         return self.inflect(VERB_INFINITIVE_FORMS, form)
 
 
 def legend_left_transform(structure):
+    """Transform data for tables where legend on the left"""
     return dict(zip(*structure[0]))
 
 
 def legend_top_transform(structure):
+    """Transform data for tables where legend at the top"""
     return dict(s[0] for s in structure)
 
 
 def hidden_title_transform(structure):
+    """Transform data for most verb and noun tables"""
     resmap = {}
     for legend, content in structure:
         name = content[0]
@@ -225,6 +236,7 @@ def hidden_title_transform(structure):
 
 
 def square_transform(structure):
+    """Transform data for most adjective tables"""
     _, *left_legend = structure[0][0]
     res = {}
     for _, column in structure:
@@ -234,6 +246,7 @@ def square_transform(structure):
 
 
 def conditional_transform(key, structure):
+    """Transform grammar table data conditionally based on table title"""
     transformation = table_transformations[key]
     return transformation(structure)
 

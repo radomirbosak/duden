@@ -330,6 +330,9 @@ class DudenWord:
 
     @property
     def grammar_link(self):
+        """
+        Relative url for grammar table page, e.g. "/deklination/substantive/Petersilie"
+        """
         section = self.soup.find("div", id="grammatik")
         if not section:
             return None
@@ -342,10 +345,12 @@ class DudenWord:
 
     @property
     def can_decline(self):
+        """Whether word provides declination data"""
         return self.grammar_link.startswith("/deklination")
 
     @property
     def can_conjugate(self):
+        """Whether word provides conjugation data"""
         return self.grammar_link.startswith("/konjugation")
 
     def export(self):
