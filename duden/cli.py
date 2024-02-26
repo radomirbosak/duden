@@ -125,6 +125,9 @@ def parse_args():
         "--compounds", nargs="?", const="ALL", help=_("list common compounds")
     )
     parser.add_argument(
+        "-g", "--grammar", const="_", nargs="?", help="Removed. Use -i/--inflect"
+    )
+    parser.add_argument(
         "-i", "--inflect", action="store_true", help=_("display inflections")
     )
     parser.add_argument(
@@ -169,8 +172,11 @@ def parse_args():
         action="store_true",
         help=_("display alternative spellings"),
     )
+    args = parser.parse_args()
 
-    return parser.parse_args()
+    if args.grammar:
+        parser.error("The -g/--grammar was replaced with -i/--inflect .")
+    return args
 
 
 def main():
