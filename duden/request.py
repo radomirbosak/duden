@@ -81,7 +81,7 @@ def request_word(word):
     try:
         response = requests.get(url, timeout=DEFAULT_TIMEOUT)
     except requests.exceptions.ConnectionError as exc:
-        raise Exception(
+        raise RuntimeError(
             _("Connection could not be established. Check your internet connection.")
         ) from exc
 
