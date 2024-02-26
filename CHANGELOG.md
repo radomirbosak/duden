@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.19.1 (2024-02-27)
+
+Other:
+
+* Revive the removed grammar-related CLI options and word properties just to gracefully redirect the user to use the replacement, `--inflect` and `.inflection`
+
 ## 0.19.0 (2024-02-25)
 
 Breaking:
