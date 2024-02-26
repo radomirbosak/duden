@@ -42,7 +42,7 @@ def recursively_extract(node, exfun, maxdepth=2):
     if lilist and maxdepth:
         # apply 'recursively_extract' to every 'li' node found under this node
         return [
-            recursively_extract(li, exfun, maxdepth=(maxdepth - 1))
+            recursively_extract(li, exfun, maxdepth=maxdepth - 1)
             for li in lilist.find_all("li", recursive=False)
         ]
     # if this node doesn't contain 'ol' or 'ul' node, return the transformed
