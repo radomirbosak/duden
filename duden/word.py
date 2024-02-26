@@ -315,6 +315,16 @@ class DudenWord:
         return compounds_sorted
 
     @property
+    def grammar(self):
+        """Redirect users to new function"""
+        raise RuntimeError("The .grammar property was replaced by .inflection")
+
+    @property
+    def grammar_raw(self):
+        """Redirect users to new function"""
+        raise RuntimeError("The .grammar_raw property was replaced by .inflection")
+
+    @property
     def inflection(self):
         """
         Return word's Inflector object with methods for conjugation and declension
