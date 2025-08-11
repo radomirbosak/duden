@@ -29,6 +29,7 @@ EXPORT_ATTRIBUTES = [
     "words_after",
     "phonetic",
     "alternative_spellings",
+    "examples",
 ]
 
 gettext.install("duden", os.path.join(os.path.dirname(__file__), "locale"))
@@ -363,6 +364,44 @@ class DudenWord:
     def can_conjugate(self):
         """Whether word provides conjugation data"""
         return self.grammar_link.startswith("/konjugation")
+
+    @property
+    def examples(self):
+        """Returns usage examples."""
+        # load html with meaning section
+        section = self.soup.find("div", id="bedeutung") or self.soup.find(
+            "div", id="bedeutungen"
+        )
+        if section is None:
+            return None
+        section = copy.copy(section)
+        section.header.extract()
+
+        # find example section
+        dl_nodes = []
+        dl_nodes_text = []
+
+        for dl_node in section.find_all("dl", class_="note"):
+            dl_nodes.append(dl_node)
+
+        def remove_beispiele_header(text: str):
+            """Remove 'Beispiel(e)' from the text.'"""
+            text = text.strip()
+            if text.startswith("Beispiele"):
+                return text.replace("Beispiele", "")
+            elif text.startswith("Beispiel"):
+                return text.replace("Beispiel", "")
+            else:
+                return text
+
+        def apply_cosmetics(text: str):
+            """Removes Beispiele header and strips the result from newlines."""
+            return remove_beispiele_header(text).strip()
+
+        for dl_node in dl_nodes:
+            dl_nodes_text.append(apply_cosmetics(dl_node.text))
+
+        return "\n".join(dl_nodes_text)
 
     def export(self):
         """
