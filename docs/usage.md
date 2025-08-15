@@ -41,6 +41,10 @@ This example showcases the most useful functions of the `DudenWord` class.
 > w.origin
 'mittelhochdeutsch barmherzekeit, barmherze, althochdeutsch armherzi, nach (kirchen)lateinisch misericordia'
 
+> w.examples
+'die Barmherzigkeit Gottes'
+'Barmherzigkeit üben'
+
 > w.grammar_overview
 'die Barmherzigkeit; Genitiv: der Barmherzigkeit'
 

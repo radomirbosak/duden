@@ -54,6 +54,9 @@ def display_word(word, args):
     elif args.origin:
         if word.origin:
             print(word.origin)
+    elif args.examples:
+        if word.examples:
+            print(word.examples)
     elif args.grammar_overview:
         if word.grammar_overview:
             print(word.grammar_overview)
@@ -116,6 +119,7 @@ def parse_args():
         "--synonyms", action="store_true", help=_("list synonyms (line separated)")
     )
     parser.add_argument("--origin", action="store_true", help=_("display origin"))
+    parser.add_argument("--examples", action="store_true", help=_("display examples"))
     parser.add_argument(
         "--grammar-overview",
         action="store_true",
