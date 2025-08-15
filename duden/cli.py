@@ -119,6 +119,7 @@ def parse_args():
         "--synonyms", action="store_true", help=_("list synonyms (line separated)")
     )
     parser.add_argument("--origin", action="store_true", help=_("display origin"))
+    parser.add_argument("--examples", action="store_true", help=_("display examples"))
     parser.add_argument(
         "--grammar-overview",
         action="store_true",
