@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## 0.19.2 (2025-08-31)
+
+New features:
+
+* Add the `.example` word attribute #205 and `--example` CLI option #206 by @MiVHQW
+
+Bugfixes:
+
+* Replace deprecated `pkg_resources` module with newer `importlib.metadata`
+
 ## 0.19.1 (2024-02-27)
 
 Other:
