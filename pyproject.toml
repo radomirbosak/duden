@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "duden"
-version = "0.19.1"
+version = "0.19.2"
 description = "CLI-based german dictionary"
 authors = ["Radomír Bosák <radomir.bosak@gmail.com>"]
 license = "MIT"

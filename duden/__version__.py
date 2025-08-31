@@ -2,9 +2,9 @@
 """
 Contains module version constant
 """
-import pkg_resources
+from importlib.metadata import PackageNotFoundError, version
 
 try:
-    __version__ = pkg_resources.get_distribution("duden").version
-except pkg_resources.DistributionNotFound:
+    __version__ = version("duden")
+except PackageNotFoundError:
     __version__ = "unknown"
