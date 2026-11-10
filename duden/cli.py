@@ -220,6 +220,11 @@ def main():
 
     result_index = args.result if args.result is not None else 1
 
+    # result numbers start at 1; 0 or negative numbers never match anything
+    if result_index < 1:
+        print(red(_("Result number must be 1 or higher.")))
+        sys.exit(1)
+
     # choose the correct result
     try:
         word_url_suffix = words[result_index - 1]
